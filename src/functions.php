@@ -4,6 +4,7 @@ require_once( get_stylesheet_directory() . '/includes/interra-child-nav-menus-cl
 require_once( get_stylesheet_directory() . '/includes/widgets/interra-child-widgets-class.php');
 require_once( get_stylesheet_directory() . '/includes/customizer/interra-child-customizer-class.php');
 require_once( get_stylesheet_directory() . '/includes/acf/interra-child-acf-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-staff-cpt-class.php');
 
 /**
  * Child Theme Nav Menus
@@ -39,6 +40,14 @@ if ( class_exists( 'Interra_Customizer' ) ) {
 
 
 
+/**
+ * Torque Staff Extras
+ */
+if ( class_exists( 'Torque_Staff_CPT' ) && class_exists( 'Interra_Staff_CPT' ) ) {
+  new Interra_Staff_CPT();
+}
+
+
 
 /**
  * Admin settings
@@ -51,7 +60,7 @@ if ( class_exists( 'Interra_Customizer' ) ) {
    //remove_menu_page( 'edit.php' );                   //Posts
    //remove_menu_page( 'upload.php' );                 //Media
    //remove_menu_page( 'edit.php?post_type=page' );    //Pages
-   //remove_menu_page( 'edit-comments.php' );          //Comments
+   remove_menu_page( 'edit-comments.php' );          //Comments
    //remove_menu_page( 'themes.php' );                 //Appearance
    //remove_menu_page( 'plugins.php' );                //Plugins
    //remove_menu_page( 'users.php' );                  //Users
