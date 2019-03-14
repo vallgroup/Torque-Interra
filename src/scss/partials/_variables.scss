@@ -1,5 +1,22 @@
 // colours
+$white: #fff;
+$black: #000;
+$light-green: #93ce4f;
+$medium-green: #78b855;
+$dark-green: #63a559;
+$darkest-green: #3e6c3a;
+$dark-grey: #686a6c;
+$medium-gray: #b0b3b5;
+$light-grey: rgba(176, 179, 181, 0.22);
+$very-light-gray: #e6e9ec;
 
 // breakpoints
 $MobileMaxWidth: 767px;
 $TabletMaxWidth: 1023px;
+
+// padding
+$bodyPadding1: 9vw;
+$bodyPadding2: 16vw;
+
+// fonts
+$font_primary: "Montserrat", sans-serif;

@@ -2,19 +2,141 @@
 @import "../partials/variables";
 
 body {
+  font-family: $font_primary;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: $dark-grey;
+
+  @include respond-to(tablet) {
+    font-size: 16px;
+    line-height: 1.31;
+  }
 }
 
 h1 {
+  font-family: $font_primary;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+
+  @include respond-to(tablet) {
+    font-size: 41px;
+    line-height: 1.07;
+  }
+
+  @include respond-to(desktop) {
+    font-size: 83px;
+    line-height: 1.05;
+  }
 }
 
 h2 {
+  font-family: $font_primary;
+  font-size: 27px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $medium-green;
+
+  @include respond-to(tablet) {
+    font-size: 36px;
+  }
+
+  @include respond-to(desktop) {
+    font-size: 60px;
+  }
 }
 
 h3 {
+  font-family: $font_primary;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $white;
+
+  @include respond-to(tablet) {
+    font-size: 27px;
+    line-height: 1.26;
+  }
+
+  @include respond-to(desktop) {
+    font-size: 50px;
+  }
 }
 
 h4 {
+  font-family: $font_primary;
+  font-size: 26px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
 }
 
 a {
+}
+
+button {
+  border: 2px solid $medium-green;
+  padding: 15px 30px;
+  box-sizing: border-box;
+
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-align: center;
+
+  background-color: $medium-green;
+  color: $white;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $white;
+    color: $medium-green;
+  }
+
+  &.white {
+    border-color: $white;
+    background-color: $white;
+    color: $darkest-green;
+
+    &:hover {
+      background-color: transparent;
+      color: $white;
+    }
+  }
+}
+
+input,
+textarea {
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.81;
+  letter-spacing: normal;
+  color: $dark-grey;
+
+  &::placeholder {
+    color: $medium-gray;
+  }
 }
