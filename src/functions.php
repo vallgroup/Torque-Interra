@@ -5,6 +5,7 @@ require_once( get_stylesheet_directory() . '/includes/widgets/interra-child-widg
 require_once( get_stylesheet_directory() . '/includes/customizer/interra-child-customizer-class.php');
 require_once( get_stylesheet_directory() . '/includes/acf/interra-child-acf-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-staff-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-listing-cpt-class.php');
 
 /**
  * Child Theme Nav Menus
@@ -47,7 +48,12 @@ if ( class_exists( 'Torque_Staff_CPT' ) && class_exists( 'Interra_Staff_CPT' ) )
   new Interra_Staff_CPT();
 }
 
-
+/**
+ * Listing CPT
+ */
+if ( class_exists( 'Interra_Listing_CPT' ) ) {
+  new Interra_Listing_CPT();
+}
 
 /**
  * Admin settings
