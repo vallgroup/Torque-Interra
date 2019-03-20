@@ -1,0 +1,72 @@
+.torque-slideshow-react-entry {
+  .tq-items-list {
+    display: none;
+  }
+
+  .tq-slideshow {
+    @include respond-to(desktop) {
+      padding-bottom: 45%;
+    }
+  }
+
+  .tq-tracker-wrapper {
+    @include respond-to(tablet) {
+      left: 25%;
+    }
+
+    @include respond-to(tablet) {
+      left: 28.75%;
+    }
+  }
+
+  .post-slide {
+    .post-image {
+      width: 100%;
+      height: 100%;
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: $medium-gray;
+    }
+
+    .post-details {
+      @extend %text_block_next_to_image;
+
+      @include respond-to-max(mobile) {
+        padding: 35px $bodyPadding2 20px;
+      }
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .slideshow-listing_city {
+        margin-bottom: 10px;
+      }
+
+      button {
+        @extend %button_white;
+
+        margin-bottom: 10px;
+      }
+
+      .slideshow-post-terms {
+        display: flex;
+        flex-wrap: wrap;
+
+        .post-term {
+          margin-right: 10px;
+
+          text-transform: uppercase;
+        }
+      }
+
+      .slideshow-post-excerpt,
+      .slideshow-listing_status {
+        display: none;
+      }
+    }
+  }
+}

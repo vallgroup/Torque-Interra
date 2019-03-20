@@ -1,7 +1,10 @@
 @import "partials/variables";
 
 @import "grid";
+@import "partials/extends";
 
 @import "typography/typography";
 
 @import "parts/shared/header-templates/header-style-1";
+
+@import "parts/acf/post-slideshow";

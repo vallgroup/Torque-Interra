@@ -1,0 +1,27 @@
+%text_block_next_to_image {
+  padding: 35px $bodyPadding1 20px;
+
+  background-color: $medium-green;
+  color: $white;
+
+  @include respond-to(tablet) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 35px $bodyPadding1;
+    height: 100%;
+    width: 50%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background-color: $medium-green_80;
+  }
+
+  @include respond-to(desktop) {
+    padding: 100px 7vw;
+    width: 42.5%;
+  }
+}

@@ -89,14 +89,27 @@ h4 {
 a {
 }
 
+%button_white {
+  border-color: $white;
+  background-color: $white;
+  color: $darkest-green;
+
+  &:hover,
+  &.active {
+    background-color: transparent;
+    color: $white;
+  }
+}
+
 button {
   border: 2px solid $medium-green;
-  padding: 15px 30px;
+  padding: 3px 10px;
   box-sizing: border-box;
 
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
+  font-size: 16px;
   line-height: 1.75;
   letter-spacing: normal;
   text-align: center;
@@ -106,20 +119,17 @@ button {
 
   transition: all 0.3s ease;
 
+  @include respond-to(tablet) {
+    padding: 8px 15px;
+  }
+
   &:hover {
     background-color: $white;
     color: $medium-green;
   }
 
   &.white {
-    border-color: $white;
-    background-color: $white;
-    color: $darkest-green;
-
-    &:hover {
-      background-color: transparent;
-      color: $white;
-    }
+    @extend %button_white;
   }
 }
 
