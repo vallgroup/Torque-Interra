@@ -8,6 +8,8 @@
       <?php get_template_part( 'parts/shared/logo', 'white'); ?>
     </div>
 
+    <?php get_search_form(); ?>
+
     <div class="torque-header-burger-menu-wrapper">
       <?php get_template_part( 'parts/elements/element', 'burger-menu-squeeze'); ?>
     </div>

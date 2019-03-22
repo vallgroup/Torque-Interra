@@ -1,4 +1,5 @@
 $mobileMenuZ: 100;
+$header-transition: none;
 
 @mixin useHeaderHeight($property) {
   #{$property}: 40px;
@@ -12,28 +13,58 @@ $mobileMenuZ: 100;
   }
 }
 
+@mixin useHeaderPadding() {
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+  box-sizing: border-box;
+
+  @include respond-to(tablet) {
+    padding: {
+      top: 10px;
+      bottom: 10px;
+    }
+  }
+
+  @include respond-to(desktop) {
+    padding: {
+      top: 30px;
+      bottom: 30px;
+    }
+  }
+}
+
 header#header-style-1 {
   .torque-header-content-wrapper {
+    @include useHeaderHeight(height);
+
     display: flex;
     justify-content: flex-end;
     align-items: center;
 
-    @include useHeaderHeight(height);
-    padding: 5px $bodyPadding1;
+    padding: 0 $bodyPadding1;
     box-sizing: border-box;
 
     background-color: $header-gray;
 
-    @include respond-to(tablet) {
-      padding: 10px $bodyPadding1;
-    }
-
     @include respond-to(desktop) {
-      padding: 30px $bodyPadding1;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: center;
     }
 
     .torque-header-logo-wrapper {
-      width: 40%;
+      @include useHeaderPadding();
+
+      flex: 1 0 50%;
+      height: 100%;
+
+      @include respond-to(desktop) {
+        height: 100%;
+        width: 50%;
+      }
 
       div {
         width: auto;
@@ -41,9 +72,79 @@ header#header-style-1 {
       }
     }
 
+    form.searchform {
+      @include useHeaderPadding();
+
+      flex: 1 1 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      padding-left: 8px;
+      padding-right: $bodyPadding1;
+      height: 100%;
+
+      background-color: transparent;
+
+      transition: $header-transition;
+
+      @include respond-to(desktop) {
+        padding: 10px 0;
+        width: 170px;
+        height: 50%;
+      }
+
+      .search-icon {
+        flex: 0 0 auto;
+        padding-right: 10px;
+        width: 17px;
+        height: 17px;
+
+        background-image: url("../statics/images/searchicon.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+      }
+
+      input#search {
+        flex: 1 1 100%;
+        border: none;
+        border-bottom: 2px solid white;
+        padding: 2px 5px;
+
+        background-color: transparent;
+        color: white;
+        outline: none;
+
+        transition: $header-transition;
+      }
+
+      &:not(.closed) {
+        @include respond-to-max(desktop) {
+          background-color: $header-gray;
+        }
+      }
+
+      &.closed {
+        @include respond-to-max(desktop) {
+          padding-right: 10px;
+
+          input#search {
+            flex: 0 1 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+
     .torque-header-burger-menu-wrapper {
+      @include useHeaderPadding();
+
+      flex: 0 0 25px;
       z-index: $mobileMenuZ + 1;
-      flex-grow: 1;
+      overflow: hidden;
+
+      transition: $header-transition;
 
       @include respond-to(desktop) {
         display: none;
@@ -55,12 +156,19 @@ header#header-style-1 {
     }
 
     .torque-header-menu-items-inline-wrapper {
+      @include useHeaderPadding();
       flex-grow: 1;
 
       text-align: right;
 
       @include respond-to-max(desktop) {
         display: none;
+      }
+
+      @include respond-to(desktop) {
+        padding: 10px 0;
+        width: 50%;
+        height: 50%;
       }
 
       .torque-menu-item-wrapper {
@@ -76,6 +184,20 @@ header#header-style-1 {
         &:hover {
           color: $medium-green;
         }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &.searchform-open {
+      @include respond-to-max(desktop) {
+        padding-right: 0;
+
+        .torque-header-burger-menu-wrapper {
+          flex: 0;
+        }
       }
     }
   }
@@ -87,7 +209,7 @@ header#header-style-1 {
     @include useHeaderHeight(padding-top);
     width: auto;
 
-    background-color: $header-gray;
+    background-color: $dark-grey;
 
     @include respond-to(desktop) {
       display: none;
