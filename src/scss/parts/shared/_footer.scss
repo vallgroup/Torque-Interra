@@ -1,4 +1,6 @@
 footer {
+  @extend %useSideGraphic;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

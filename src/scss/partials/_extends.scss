@@ -25,3 +25,23 @@
     width: 42.5%;
   }
 }
+
+%useSideGraphic {
+  position: relative;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: $bodyPadding1;
+    transform: translateX(-70%);
+
+    background-image: url("../statics/images/side-graphic.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
