@@ -24,6 +24,23 @@ header#header-style-1 {
 
     background-color: $header-gray;
 
+    @include respond-to(tablet) {
+      padding: 10px $bodyPadding1;
+    }
+
+    @include respond-to(desktop) {
+      padding: 30px $bodyPadding1;
+    }
+
+    .torque-header-logo-wrapper {
+      width: 40%;
+
+      div {
+        width: auto;
+        max-width: 175px;
+      }
+    }
+
     .torque-header-burger-menu-wrapper {
       z-index: $mobileMenuZ + 1;
       flex-grow: 1;
@@ -38,8 +55,27 @@ header#header-style-1 {
     }
 
     .torque-header-menu-items-inline-wrapper {
+      flex-grow: 1;
+
+      text-align: right;
+
       @include respond-to-max(desktop) {
         display: none;
+      }
+
+      .torque-menu-item-wrapper {
+        padding: 0 10px;
+
+        font-size: 16px;
+        font-weight: 500;
+        color: $white;
+        text-transform: uppercase;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: $medium-green;
+        }
       }
     }
   }
@@ -59,13 +95,14 @@ header#header-style-1 {
 
     .torque-menu-items-stacked {
       padding: 10px $bodyPadding1;
-      width: 170px;
+      width: auto;
+      min-width: 170px;
       box-sizing: border-box;
 
       background-color: $light-green;
 
       @include respond-to(tablet) {
-        width: 250px;
+        min-width: 250px;
       }
 
       .torque-menu-item-wrapper {
