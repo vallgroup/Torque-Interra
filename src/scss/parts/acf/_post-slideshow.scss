@@ -1,4 +1,4 @@
-.torque-slideshow-react-entry {
+.torque-slideshow-react-entry[data-template^="interra"] {
   .tq-items-list {
     display: none;
   }
@@ -20,6 +20,9 @@
   }
 
   .post-slide {
+    width: 100%;
+    height: 100%;
+
     .post-image {
       width: 100%;
       height: 100%;
@@ -34,6 +37,7 @@
       @extend %text_block_next_to_image;
 
       @include respond-to-max(mobile) {
+        background-color: $light-green;
         padding: 35px $bodyPadding2 20px;
       }
 
@@ -50,6 +54,10 @@
         @extend %button_white;
 
         margin-bottom: 10px;
+
+        @include respond-to-max(mobile) {
+          color: $light-green;
+        }
       }
 
       .slideshow-post-terms {
@@ -61,11 +69,6 @@
 
           text-transform: uppercase;
         }
-      }
-
-      .slideshow-post-excerpt,
-      .slideshow-listing_status {
-        display: none;
       }
     }
   }
