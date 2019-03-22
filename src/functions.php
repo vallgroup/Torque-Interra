@@ -55,6 +55,31 @@ if ( class_exists( 'Interra_Listing_CPT' ) ) {
   new Interra_Listing_CPT();
 }
 
+
+/**
+* Slideshow plugin settings
+*/
+
+if ( class_exists( 'Torque_Slideshow' ) ) {
+  add_filter( Torque_Slideshow::$USE_POST_SLIDESHOW_FILTER_HOOK, function() { return true; });
+
+  if ( class_exists( 'Torque_Post_Slideshow_CPT' ) ) {
+    add_filter( Torque_Post_Slideshow_CPT::$RELATIONSHIP_FIELD_FILTER_HOOK, function($field) {
+
+      $field['post_type'] = array(
+        0 => Interra_Listing_CPT::$listing_labels['post_type_name'],
+      );
+
+      $field['filters'] = array(
+        0 => 'post_type',
+      );
+
+      return $field;
+    });
+  }
+}
+
+
 /**
  * Admin settings
  */
