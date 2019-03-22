@@ -20,6 +20,16 @@ if ( have_rows( $modules ) ):
 
         break;
 
+      case 'cta_section' :
+
+        $heading = get_sub_field( 'heading' );
+        $content = get_sub_field( 'content' );
+        $cta = get_sub_field('cta');
+
+        include locate_template('/parts/acf/modules/cta-section.php');
+
+        break;
+
       case 'post_slideshow' :
 
         $slideshow_id = get_sub_field('slideshow_id');
