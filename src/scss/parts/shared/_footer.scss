@@ -1,0 +1,90 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 35px $bodyPadding2 10px;
+  box-sizing: border-box;
+
+  background-color: $dark-grey;
+  color: $white;
+
+  @include respond-to(tablet) {
+    padding: 40px $bodyPadding1 20px;
+    justify-content: space-between;
+  }
+
+  @include respond-to(desktop) {
+    padding: 80px $bodyPadding1;
+  }
+
+  .footer-block {
+    margin-bottom: 20px;
+    width: 100%;
+
+    font-weight: 300;
+    text-align: center;
+
+    @include respond-to(tablet) {
+      margin-bottom: 50px;
+      flex: 1 1 33%;
+
+      text-align: left;
+    }
+
+    @include respond-to(desktop) {
+      flex-basis: 25%;
+    }
+
+    &.footer-logo {
+      box-sizing: border-box;
+
+      @include respond-to(tablet) {
+        padding-right: 50px;
+      }
+
+      @include respond-to(desktop) {
+        flex-basis: 50%;
+      }
+
+      img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        object-fit: contain;
+
+        @include respond-to(tablet) {
+          max-width: 130px;
+        }
+
+        @include respond-to(desktop) {
+          padding-right: 50px;
+          max-width: 250px;
+        }
+      }
+    }
+
+    .contact-details {
+      line-height: 2;
+    }
+
+    .torque-menu-items-stacked .torque-menu-item-wrapper {
+      padding: 8px 0;
+
+      font-weight: 500;
+      color: $medium-green;
+    }
+  }
+
+  .footer-copyright {
+    width: 100%;
+
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+
+    @include respond-to(tablet) {
+      text-align: left;
+    }
+  }
+}
