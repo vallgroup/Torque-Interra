@@ -35,6 +35,12 @@ h1 {
     font-size: 83px;
     line-height: 1.05;
   }
+
+  em {
+    color: $light-green;
+    font-weight: bold;
+    font-style: normal;
+  }
 }
 
 h2 {

@@ -1,4 +1,4 @@
-$mobileMenuZ: 100;
+$mobileMenuZ: 110;
 $header-transition: none;
 
 @mixin useHeaderHeight($property) {
@@ -36,6 +36,12 @@ $header-transition: none;
 }
 
 header#header-style-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+
   .torque-header-content-wrapper {
     @include useHeaderHeight(height);
 
