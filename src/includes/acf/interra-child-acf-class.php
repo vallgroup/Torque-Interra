@@ -106,6 +106,110 @@ class Interra_ACF {
       	'description' => '',
       ));
 
+      if( function_exists('acf_add_local_field_group') ):
+
+        acf_add_local_field_group(array(
+        	'key' => 'group_5c953fd028818',
+        	'title' => 'Company Details',
+        	'fields' => array(
+        		array(
+        			'key' => 'field_5c953fd49ef57',
+        			'label' => 'Address',
+        			'name' => 'address',
+        			'type' => 'textarea',
+        			'instructions' => '',
+        			'required' => 0,
+        			'conditional_logic' => 0,
+        			'wrapper' => array(
+        				'width' => '',
+        				'class' => '',
+        				'id' => '',
+        			),
+        			'default_value' => '',
+        			'placeholder' => '',
+        			'maxlength' => '',
+        			'rows' => 4,
+        			'new_lines' => 'br',
+        		),
+        		array(
+        			'key' => 'field_5c953fe99ef58',
+        			'label' => 'Phone',
+        			'name' => 'phone',
+        			'type' => 'text',
+        			'instructions' => '',
+        			'required' => 0,
+        			'conditional_logic' => 0,
+        			'wrapper' => array(
+        				'width' => '',
+        				'class' => '',
+        				'id' => '',
+        			),
+        			'default_value' => '',
+        			'placeholder' => '',
+        			'prepend' => '',
+        			'append' => '',
+        			'maxlength' => '',
+        		),
+        		array(
+        			'key' => 'field_5c953fff9ef59',
+        			'label' => 'Fax',
+        			'name' => 'fax',
+        			'type' => 'text',
+        			'instructions' => '',
+        			'required' => 0,
+        			'conditional_logic' => 0,
+        			'wrapper' => array(
+        				'width' => '',
+        				'class' => '',
+        				'id' => '',
+        			),
+        			'default_value' => '',
+        			'placeholder' => '',
+        			'prepend' => '',
+        			'append' => '',
+        			'maxlength' => '',
+        		),
+        		array(
+        			'key' => 'field_5c9540109ef5a',
+        			'label' => 'Copyright',
+        			'name' => 'copyright',
+        			'type' => 'text',
+        			'instructions' => '',
+        			'required' => 0,
+        			'conditional_logic' => 0,
+        			'wrapper' => array(
+        				'width' => '',
+        				'class' => '',
+        				'id' => '',
+        			),
+        			'default_value' => '',
+        			'placeholder' => '',
+        			'prepend' => '',
+        			'append' => '',
+        			'maxlength' => '',
+        		),
+        	),
+        	'location' => array(
+        		array(
+        			array(
+        				'param' => 'options_page',
+        				'operator' => '==',
+        				'value' => 'acf-options',
+        			),
+        		),
+        	),
+        	'menu_order' => 0,
+        	'position' => 'normal',
+        	'style' => 'default',
+        	'label_placement' => 'top',
+        	'instruction_placement' => 'label',
+        	'hide_on_screen' => '',
+        	'active' => 1,
+        	'description' => '',
+        ));
+
+        endif;
+
       endif;
   }
 }
