@@ -206,13 +206,6 @@ class Interra_ACF {
       			array(
       				'param' => 'post_type',
       				'operator' => '==',
-      				'value' => 'post',
-      			),
-      		),
-      		array(
-      			array(
-      				'param' => 'post_type',
-      				'operator' => '==',
       				'value' => 'torque_listing',
       			),
       		),

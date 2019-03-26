@@ -57,6 +57,14 @@ if ( class_exists( 'Interra_Listing_CPT' ) ) {
 
 
 /**
+ * Filtered Loop plugin settings
+ */
+
+if ( class_exists( 'Torque_Filtered_Loop' ) && class_exists( 'Torque_Filtered_Loop_Shortcode' ) ) {
+  add_filter( Torque_Filtered_Loop_Shortcode::$LOOP_TEMPLATE_FILTER_HANDLE, function() { return "2"; } );
+}
+
+/**
 * Slideshow plugin settings
 */
 

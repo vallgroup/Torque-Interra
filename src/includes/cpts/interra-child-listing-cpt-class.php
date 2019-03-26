@@ -39,6 +39,7 @@ class Interra_Listing_CPT {
 			'thumbnail',
 		),
 		'menu_icon'           => 'dashicons-building',
+    'show_in_rest'        => true
 	);
 
 	/**
@@ -63,6 +64,7 @@ class Interra_Listing_CPT {
           'singular_name'   => 'Property Type'
         ),
         'hierarchical' => true,
+        'show_in_rest' => true
       )
     );
 
@@ -75,6 +77,7 @@ class Interra_Listing_CPT {
           'singular_name'   => 'Region'
         ),
         'hierarchical' => true,
+        'show_in_rest' => true
       )
     );
   }
