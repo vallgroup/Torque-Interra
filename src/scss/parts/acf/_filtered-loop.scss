@@ -1,0 +1,142 @@
+%dropdown_text {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: $medium-green;
+  text-transform: uppercase;
+
+  user-select: none;
+}
+
+.torque-filtered-loop-react-entry {
+  .custom-filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    .torque-acf-tabs-filters {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      background-color: $light-green;
+
+      button.torque-filtered-loop-filter-button {
+        flex-grow: 1;
+
+        font-size: 13px;
+        text-transform: uppercase;
+        background-color: $light-green;
+        border-color: $light-green;
+
+        @include respond-to(tablet) {
+          flex-grow: 0;
+          padding: 10px 40px;
+
+          font-size: 16px;
+        }
+
+        &:hover,
+        &.active {
+          font-weight: 500;
+          background-color: $medium-green;
+          border-color: $medium-green;
+          color: $white;
+        }
+
+        &.active {
+          position: relative;
+
+          &::after {
+            content: "";
+
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            z-index: 2;
+            transform: translateX(-50%);
+
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid $medium-green;
+          }
+        }
+      }
+    }
+
+    .torque-custom-filter-dropdown {
+      position: relative;
+      width: 50%;
+
+      background-color: $very-light-gray;
+      cursor: pointer;
+
+      .dropdown-title-wrapper {
+        @extend %dropdown_text;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 10px;
+
+        background-color: $very-light-gray;
+
+        &::before {
+          content: "";
+
+          padding-right: 5px;
+          width: 15px;
+          height: 15px;
+
+          background-image: url("../statics/images/filter-icon.svg");
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        &::after {
+          content: "";
+
+          margin-left: 5px;
+          width: 0;
+          height: 0;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+          border-top: 7px solid $medium-green;
+        }
+
+        .dropdown-title {
+          &:not(:only-child) {
+            padding-right: 5px;
+
+            @include respond-to-max(tablet) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .dropdown-wrapper {
+        position: absolute;
+        top: 105%;
+        right: 0;
+        z-index: 2;
+
+        padding: 10px 20px;
+        max-width: 150px;
+
+        background-color: $very-light-gray;
+
+        @include respond-to(tablet) {
+          right: 10%;
+        }
+
+        .dropdown-item {
+          @extend %dropdown_text;
+
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+}
