@@ -93,3 +93,24 @@
     text-transform: uppercase;
   }
 }
+
+%useTermStyle {
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  letter-spacing: -0.4px;
+  color: $medium-gray;
+
+  &::before {
+    content: "";
+
+    padding-right: 5px;
+    height: 15px;
+    width: 15px;
+
+    background-image: url("../statics/images/tag-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
