@@ -553,6 +553,16 @@ class Interra_ACF {
       					'min' => '',
       					'max' => '',
       				),
+              '5c9ba1ad52cd2' => array(
+      					'key' => '5c9ba1ad52cd2',
+      					'name' => 'region_quick_search',
+      					'label' => 'Region Quick Search',
+      					'display' => 'block',
+      					'sub_fields' => array(
+      					),
+      					'min' => '',
+      					'max' => '',
+      				),
       			),
       			'button_label' => 'Add Module',
       			'min' => '',

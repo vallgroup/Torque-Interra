@@ -38,6 +38,16 @@ if ( have_rows( $modules ) ):
 
         break;
 
+        case 'region_quick_search' :
+
+          if ( class_exists( 'Interra_Listing_CPT' ) ) {
+            $taxonomy = Interra_Listing_CPT::$LISTING_REGION_TAX_SLUG;
+
+            include locate_template('/parts/acf/modules/quick-search.php');
+          }
+
+          break;
+
     }
 
   endwhile;
