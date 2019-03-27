@@ -1,0 +1,69 @@
+.torque_listing-title {
+  display: flex;
+  flex-wrap: wrap;
+
+  .listing-title-content {
+    @extend %useCustomTemplateHeader;
+
+    @include useHeaderHeight(margin-top);
+    padding: 60px $bodyPadding1 50px;
+    width: 100%;
+
+    @include respond-to-max(tablet) {
+      order: 2;
+
+      margin-top: 0;
+      padding: 30px $bodyPadding1 20px;
+
+      &::before,
+      .back-link {
+        display: none;
+      }
+    }
+
+    .back-link {
+      margin-bottom: 10px;
+
+      font-weight: 500;
+      font-size: 14px;
+      color: $medium-gray;
+      text-transform: uppercase;
+    }
+
+    .the-terms {
+      .term {
+        @extend %useTermStyle;
+      }
+    }
+
+    h2 {
+      margin: 10px 0 0;
+
+      @include respond-to(desktop) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .featured-image-size {
+    @extend %imageSize;
+
+    padding-bottom: 56%;
+
+    @include respond-to-max(tablet) {
+      order: 1;
+    }
+
+    @include respond-to(desktop) {
+      padding-bottom: 45%;
+    }
+
+    .featured-image {
+      @extend %imageInner;
+    }
+  }
+
+  .torque-slideshow-react-entry {
+    width: 100%;
+  }
+}

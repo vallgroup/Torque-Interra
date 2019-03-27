@@ -243,6 +243,85 @@ class Interra_Listing_CPT {
       ));
 
       acf_add_local_field_group(array(
+      	'key' => 'group_5c9bdef982949',
+      	'title' => 'Listing Header',
+      	'fields' => array(
+      		array(
+      			'key' => 'field_5c9bdf032847a',
+      			'label' => 'Image',
+      			'name' => 'listing_image',
+      			'type' => 'radio',
+      			'instructions' => '',
+      			'required' => 0,
+      			'conditional_logic' => 0,
+      			'wrapper' => array(
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'choices' => array(
+      				'featured' => 'Use Featured Image',
+      				'slideshow' => 'Use Slideshow',
+      			),
+      			'allow_null' => 0,
+      			'other_choice' => 0,
+      			'default_value' => 'featured',
+      			'layout' => 'horizontal',
+      			'return_format' => 'value',
+      			'save_other_choice' => 0,
+      		),
+      		array(
+      			'key' => 'field_5c9bdf292847b',
+      			'label' => 'Slideshow',
+      			'name' => 'listing_slideshow',
+      			'type' => 'post_object',
+      			'instructions' => '',
+      			'required' => 1,
+      			'conditional_logic' => array(
+      				array(
+      					array(
+      						'field' => 'field_5c9bdf032847a',
+      						'operator' => '==',
+      						'value' => 'slideshow',
+      					),
+      				),
+      			),
+      			'wrapper' => array(
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'post_type' => array(
+      				0 => 'torque_slideshow',
+      			),
+      			'taxonomy' => array(
+      			),
+      			'allow_null' => 0,
+      			'multiple' => 0,
+      			'return_format' => 'id',
+      			'ui' => 1,
+      		),
+      	),
+      	'location' => array(
+      		array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => self::$listing_labels['post_type_name'],
+      			),
+      		),
+      	),
+      	'menu_order' => 0,
+      	'position' => 'normal',
+      	'style' => 'default',
+      	'label_placement' => 'top',
+      	'instruction_placement' => 'label',
+      	'hide_on_screen' => '',
+      	'active' => 1,
+      	'description' => '',
+      ));
+
+      acf_add_local_field_group(array(
       	'key' => 'group_5c9ba4e29e924',
       	'title' => 'Featured Image',
       	'fields' => array(

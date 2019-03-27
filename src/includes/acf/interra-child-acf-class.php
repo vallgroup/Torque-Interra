@@ -202,13 +202,6 @@ class Interra_ACF {
       				'value' => 'default',
       			),
       		),
-      		array(
-      			array(
-      				'param' => 'post_type',
-      				'operator' => '==',
-      				'value' => 'torque_listing',
-      			),
-      		),
       	),
       	'menu_order' => 0,
       	'position' => 'normal',
