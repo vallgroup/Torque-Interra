@@ -73,6 +73,25 @@
   }
 }
 
+%useBottomGraphic {
+  position: relative;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+
+    background-image: url("../statics/images/side-graphic.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
 %useCustomTemplateHeader {
   @extend %useSideGraphic;
 
