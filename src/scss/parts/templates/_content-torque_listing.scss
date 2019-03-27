@@ -1,0 +1,147 @@
+.torque-listing-content {
+  display: flex;
+  flex-wrap: wrap;
+
+  h4 {
+    margin-top: 0;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -0.3px;
+    color: $medium-green;
+    text-transform: uppercase;
+
+    @include respond-to(tablet) {
+      font-size: 20px;
+    }
+  }
+
+  .torque-listing-content-details {
+    padding: 0 $bodyPadding1 25px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include respond-to(tablet) {
+      width: 66%;
+
+      padding: 70px $bodyPadding1;
+    }
+
+    @include respond-to(desktop) {
+      width: 60%;
+    }
+
+    .the-content {
+      margin-bottom: 20px;
+
+      @include respond-to(tablet) {
+        margin-bottom: 80px;
+      }
+    }
+
+    .key-detail {
+      display: flex;
+      padding: 20px 0;
+
+      .key-detail-name {
+        width: 60%;
+
+        font-weight: bold;
+        letter-spacing: -0.3px;
+        color: $dark-grey;
+        text-transform: uppercase;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:not(:first-child) {
+        border-top: solid 1px $medium-gray;
+      }
+    }
+  }
+
+  .torque-listing-content-brokers {
+    padding: 30px $bodyPadding1;
+    width: 100%;
+    box-sizing: border-box;
+
+    background-color: $dark-green;
+
+    @include respond-to(tablet) {
+      padding: 60px;
+      flex-basis: 33%;
+      flex-grow: 1;
+      width: 33%;
+    }
+
+    @include respond-to(desktop) {
+      padding: 60px 7vw;
+    }
+
+    h4.brokers-section-title {
+      font-size: 26px;
+      color: $white;
+
+      @include respond-to-max(desktop) {
+        display: none;
+      }
+    }
+
+    .broker {
+      display: flex;
+      margin-bottom: 50px;
+
+      color: $white;
+
+      @include respond-to(tablet) {
+        flex-wrap: wrap;
+      }
+
+      @include respond-to(desktop) {
+        flex-wrap: nowrap;
+      }
+
+      h4 {
+        color: $white;
+      }
+
+      img {
+        display: block;
+        width: 167px;
+        max-width: 50%;
+        height: 137px;
+        object-fit: cover;
+
+        @include respond-to(tablet) {
+          width: 100%;
+          max-width: none;
+          height: 170px;
+        }
+
+        @include respond-to(desktop) {
+          max-width: 50%;
+        }
+      }
+
+      .broker-content {
+        padding-left: 30px;
+        box-sizing: border-box;
+
+        @include respond-to(tablet) {
+          padding: 0;
+          padding-top: 30px;
+        }
+
+        @include respond-to(desktop) {
+          padding-left: 25px;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
