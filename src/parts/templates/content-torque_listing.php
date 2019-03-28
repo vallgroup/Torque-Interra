@@ -44,21 +44,30 @@
 
           $meta = get_post_meta($broker->ID, 'staff_meta', true);
         ?>
+
     	    <div class="broker">
             <img class="broker-image" src="<?php echo get_the_post_thumbnail_url($broker->ID, 'large'); ?>" />
 
             <div class="broker-content" >
       	    	<h4><?php echo $broker->post_title; ?></h4>
 
+
+              <div class="meet-broker" >
+                <a href="<?php echo get_the_permalink($broker->ID); ?>">
+                  Meet <?php echo explode(' ', $broker->post_title)[0]; ?>
+                </a>
+              </div>
+
+
               <?php if ($meta['email']) { ?>
                 <a href="mailto:<?php echo $meta['email']; ?>" >
-                  <?php echo $meta['email']; ?>
+                  <div class="broker-icon envelope"></div>
                 </a>
               <?php } ?>
 
               <?php if ($meta['tel']) { ?>
                 <a href="tel:<?php echo $meta['tel']; ?>" >
-                  <?php echo $meta['tel']; ?>
+                  <div class="broker-icon phone"></div>
                 </a>
               <?php } ?>
             </div>

@@ -107,7 +107,7 @@
         color: $white;
       }
 
-      img {
+      img.broker-image {
         display: block;
         width: 167px;
         max-width: 50%;
@@ -126,6 +126,9 @@
       }
 
       .broker-content {
+        display: flex;
+        flex-wrap: wrap;
+
         padding-left: 30px;
         box-sizing: border-box;
 
@@ -136,6 +139,39 @@
 
         @include respond-to(desktop) {
           padding-left: 25px;
+        }
+
+        h4,
+        .meet-broker {
+          margin-bottom: 10px;
+        }
+
+        h4 {
+          width: 100%;
+        }
+
+        .meet-broker {
+          width: 100%;
+          text-decoration: underline;
+          text-transform: uppercase;
+        }
+
+        .broker-icon {
+          margin-right: 15px;
+          width: 30px;
+          height: 30px;
+
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          &.envelope {
+            background-image: url("../statics/images/envelope.svg");
+          }
+
+          &.phone {
+            background-image: url("../statics/images/phone.svg");
+          }
         }
       }
 
