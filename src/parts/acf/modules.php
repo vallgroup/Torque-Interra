@@ -38,15 +38,21 @@ if ( have_rows( $modules ) ):
 
         break;
 
-        case 'region_quick_search' :
+      case 'region_quick_search' :
 
-          if ( class_exists( 'Interra_Listing_CPT' ) ) {
-            $taxonomy = Interra_Listing_CPT::$LISTING_REGION_TAX_SLUG;
+        if ( class_exists( 'Interra_Listing_CPT' ) ) {
+          $taxonomy = Interra_Listing_CPT::$LISTING_REGION_TAX_SLUG;
 
-            include locate_template('/parts/acf/modules/quick-search.php');
-          }
+          include locate_template('/parts/acf/modules/quick-search.php');
+        }
 
-          break;
+        break;
+
+      case 'staff_members' :
+
+        include locate_template('/parts/acf/modules/staff-members.php');
+
+        break;
 
     }
 
