@@ -132,4 +132,10 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  &.tag-green {
+    &::before {
+      background-image: url("../statics/images/tag-icon-green.svg");
+    }
+  }
 }

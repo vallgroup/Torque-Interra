@@ -31,8 +31,23 @@
     }
 
     .the-terms {
+      display: flex;
+
+      .availability,
+      .term {
+        margin-right: 15px;
+      }
+
+      .availability {
+        color: $medium-green;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
       .term {
         @extend %useTermStyle;
+
+        color: $medium-green;
       }
     }
 
