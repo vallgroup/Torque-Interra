@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="14px" viewBox="0 0 22 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Profile-Mobile" transform="translate(-36.000000, -640.000000)" fill-rule="nonzero">
+            <g id="Group-3-Copy-17" transform="translate(36.000000, 623.000000)">
+                <g id="Group-9" transform="translate(0.000000, 17.000000)">
+                    <rect id="Rectangle" stroke="#686A6C" x="0.5" y="0.5" width="21" height="13"></rect>
+                    <circle id="Oval" stroke="#686A6C" cx="7" cy="5" r="2"></circle>
+                    <path d="M13,5.5 L18.6533203,5.5" id="Path-9" stroke="#686A6C"></path>
+                    <path d="M13,7.5 L18.6533203,7.5" id="Path-9-Copy" stroke="#686A6C"></path>
+                    <path d="M13,9.5 L18.6533203,9.5" id="Path-9-Copy-2" stroke="#686A6C"></path>
+                    <path d="" id="Path-8" stroke="#979797"></path>
+                    <path d="" id="Path-10" stroke="#979797"></path>
+                    <path d="M5.04431152,7.48498535 C4.1282959,8.48400879 3.72884115,9.80208333 3.84594727,11.439209" id="Path-11" stroke="#686A6C"></path>
+                    <path d="M10.0443115,7.48498535 C9.1282959,8.48400879 8.72884115,9.80208333 8.84594727,11.439209" id="Path-11" stroke="#686A6C" transform="translate(9.435174, 9.462097) scale(-1, 1) translate(-9.435174, -9.462097) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
