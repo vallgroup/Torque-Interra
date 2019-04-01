@@ -74,6 +74,50 @@ class Interra_Staff_CPT {
       	'description' => '',
       ));
 
+      acf_add_local_field_group(array(
+      	'key' => 'group_5ca2340c4df93',
+      	'title' => 'Vcard',
+      	'fields' => array(
+      		array(
+      			'key' => 'field_5ca2340fb9dde',
+      			'label' => 'Vcard File',
+      			'name' => 'vcard_file',
+      			'type' => 'file',
+      			'instructions' => '',
+      			'required' => 0,
+      			'conditional_logic' => 0,
+      			'wrapper' => array(
+      				'width' => '',
+      				'class' => '',
+      				'id' => '',
+      			),
+      			'return_format' => 'url',
+      			'library' => 'all',
+      			'min_size' => '',
+      			'max_size' => '',
+      			'mime_types' => 'vcf,vcard',
+      		),
+      	),
+      	'location' => array(
+      		array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => 'torque_staff',
+      			),
+      		),
+      	),
+      	'menu_order' => 10,
+      	'position' => 'normal',
+      	'style' => 'default',
+      	'label_placement' => 'top',
+      	'instruction_placement' => 'label',
+      	'hide_on_screen' => '',
+      	'active' => 1,
+      	'description' => '',
+      ));
+
+
       endif;
   }
 }
