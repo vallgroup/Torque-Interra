@@ -96,6 +96,16 @@ add_filter( 'excerpt_length', function( $length ) {
 }, 999 );
 
 
+
+
+// vcard support
+add_filter('upload_mimes', function ($mime_types){
+  $mime_types['vcf'] = 'text/vcard';
+  $mime_types['vcard'] = 'text/vcard';
+  return $mime_types;
+}, 1, 1);
+
+
 /**
  * Admin settings
  */
