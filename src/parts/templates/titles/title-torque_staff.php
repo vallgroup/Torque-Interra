@@ -1,6 +1,5 @@
 <?php
 
-$meta = get_post_meta(get_the_ID(), 'staff_meta', true);
 $roles = get_the_terms( get_the_ID(), Interra_Staff_CPT::$STAFF_ROLE_TAX_SLUG );
 
 ?>
