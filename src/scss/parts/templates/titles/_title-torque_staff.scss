@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  padding: 0 $bodyPadding1 30px;
+  padding: 0 $bodyPadding1 0px;
 
   @include respond-to(desktop) {
     padding-left: 0;

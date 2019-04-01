@@ -113,6 +113,14 @@
   }
 }
 
+%useTermGreen {
+  color: $medium-green;
+
+  &::before {
+    background-image: url("../statics/images/tag-icon-green.svg");
+  }
+}
+
 %useTermStyle {
   display: flex;
   align-items: center;
@@ -134,8 +142,6 @@
   }
 
   &.tag-green {
-    &::before {
-      background-image: url("../statics/images/tag-icon-green.svg");
-    }
+    @extend %useTermGreen;
   }
 }

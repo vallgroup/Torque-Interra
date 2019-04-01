@@ -9,13 +9,12 @@
 @import "parts/shared/footer";
 @import "parts/shared/page-hero";
 @import "parts/shared/page-intro";
+@import "parts/shared/terms-listing";
 
 @import "parts/templates/titles/title-listings";
 @import "parts/templates/titles/title-blog";
 @import "parts/templates/titles/title-torque_listing";
 @import "parts/templates/titles/title-torque_staff";
-
-@import "parts/templates/content-torque_listing";
 
 @import "parts/acf/post-slideshow";
 @import "parts/acf/content-section";
@@ -23,3 +22,6 @@
 @import "parts/acf/filtered-loop";
 @import "parts/acf/quick-search";
 @import "parts/acf/staff-members";
+
+@import "parts/templates/content-torque_listing";
+@import "parts/templates/content-torque_staff";

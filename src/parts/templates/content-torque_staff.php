@@ -1,5 +1,7 @@
 <?php
 
+$first_name = explode(' ', get_the_title())[0];
+
 // setup listings
 $listings = get_posts(array(
 	'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
@@ -33,3 +35,31 @@ $blog_posts = get_posts(array(
 ));
 
 ?>
+
+<?php if (count($available_listings)) { ?>
+
+<div class="listings-wrapper active-listings" >
+	<h2><?php echo $first_name."'s"; ?> Active Listings</h2>
+
+	<?php foreach ($available_listings as $listing) {
+		$listing_id = $listing->ID;
+
+		include locate_template('parts/shared/loop-listing.php');
+	} ?>
+</div>
+
+<?php } ?>
+
+<?php if (count($closed_listings)) { ?>
+
+<div class="listings-wrapper closed-listings" >
+	<h2><?php echo $first_name."'s"; ?> Recently Closed Listings</h2>
+
+	<?php foreach ($closed_listings as $listing) {
+		$listing_id = $listing->ID;
+
+		include locate_template('parts/shared/loop-listing.php');
+	} ?>
+</div>
+
+<?php } ?>

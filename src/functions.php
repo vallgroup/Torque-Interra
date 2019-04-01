@@ -88,6 +88,14 @@ if ( class_exists( 'Torque_Slideshow' ) ) {
 }
 
 
+
+
+//excerpt length
+add_filter( 'excerpt_length', function( $length ) {
+  return 20;
+}, 999 );
+
+
 /**
  * Admin settings
  */

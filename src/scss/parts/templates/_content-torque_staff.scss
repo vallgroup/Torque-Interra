@@ -1,0 +1,44 @@
+.listings-wrapper {
+  box-sizing: border-box;
+
+  h2 {
+    margin-top: 0;
+    width: 100%;
+
+    font-size: 19px;
+    text-align: center;
+
+    @include respond-to(tablet) {
+      font-size: 33px;
+      text-align: left;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 36px;
+    }
+  }
+
+  @extend %listings_loop;
+
+  &.closed-listings {
+    background-color: $dark-green;
+    color: $white;
+
+    h2,
+    h4,
+    div,
+    p {
+      color: $white !important;
+    }
+
+    button {
+      @extend %button_white;
+    }
+
+    .term-listing {
+      &::before {
+        background-image: url("../statics/images/tag-icon-white.svg");
+      }
+    }
+  }
+}

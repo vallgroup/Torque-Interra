@@ -2,10 +2,6 @@
 
 $availability = get_field('listing_status');
 
-$terms = [];
-$terms += get_the_terms( get_the_ID(), Interra_Listing_CPT::$LISTING_PROPERTY_TYPE_TAX_SLUG );
-$terms += get_the_terms( get_the_ID(), Interra_Listing_CPT::$LISTING_REGION_TAX_SLUG );
-
 $image_type = get_field('listing_image');
 
 ?>
@@ -23,11 +19,10 @@ $image_type = get_field('listing_image');
         <?php echo $availability; ?>
       </div>
 
-      <?php foreach ($terms as $term) { ?>
-        <div class="term tag-green">
-          <?php echo $term->name; ?>
-        </div>
-      <?php } ?>
+      <?php
+      $listing_id = get_the_ID();
+      include locate_template('parts/shared/terms-listing.php');
+      ?>
     </div>
 
     <h2><?php the_title(); ?></h2>
