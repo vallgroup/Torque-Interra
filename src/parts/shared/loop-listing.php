@@ -1,4 +1,4 @@
-<div class="loop-post">
+<div class="loop-post loop-listing">
   <a href=<?php echo get_the_permalink($listing_id); ?>>
     <div class="featured-image-wrapper">
       <div
@@ -18,7 +18,7 @@
     </div>
 
     <a href=<?php echo get_the_permalink($listing_id); ?>>
-      <button>View</button>
+      <button>View listing</button>
     </a>
 
     <div class="post-terms-wrapper">

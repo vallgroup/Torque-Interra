@@ -30,9 +30,10 @@ $closed_listings = array_filter($listings, function($listing) {
 // setup blog posts
 $user = get_field('user');
 
-$blog_posts = get_posts(array(
-  'author'  => $user
-));
+$blog_posts = $user
+	? get_posts(array( 'author'  => $user ))
+	: [];
+
 
 ?>
 
@@ -59,6 +60,20 @@ $blog_posts = get_posts(array(
 		$listing_id = $listing->ID;
 
 		include locate_template('parts/shared/loop-listing.php');
+	} ?>
+</div>
+
+<?php } ?>
+
+<?php if (count($blog_posts)) { ?>
+
+<div class="listings-wrapper blog-posts" >
+	<h2>Blog Posts written by <?php echo $first_name; ?></h2>
+
+	<?php foreach ($blog_posts as $blog_post) {
+		$blog_post_id = $blog_post->ID;
+
+		include locate_template('parts/shared/loop-blog.php');
 	} ?>
 </div>
 
