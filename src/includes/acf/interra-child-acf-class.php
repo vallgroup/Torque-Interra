@@ -644,6 +644,16 @@ class Interra_ACF {
       					'min' => '',
       					'max' => '',
       				),
+              '5ca3d42d39fc0' => array(
+      					'key' => '5ca3d42d39fc0',
+      					'name' => 'careers',
+      					'label' => 'Careers',
+      					'display' => 'block',
+      					'sub_fields' => array(
+      					),
+      					'min' => '',
+      					'max' => '',
+      				),
       			),
       			'button_label' => 'Add Module',
       			'min' => '',

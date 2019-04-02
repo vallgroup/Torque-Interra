@@ -1,0 +1,81 @@
+.careers-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  padding: 28px $bodyPadding1;
+
+  @include respond-to(tablet) {
+    padding: 35px $bodyPadding2;
+  }
+
+  @include respond-to(desktop) {
+    padding: 90px $bodyPadding1;
+  }
+
+  h3 {
+    margin-top: 0;
+    width: 100%;
+
+    color: $dark-green;
+  }
+
+  .loop-career {
+    width: 100%;
+    padding-bottom: 30px;
+
+    @include respond-to(tablet) {
+      padding-bottom: 60px;
+    }
+
+    @include respond-to(desktop) {
+      width: 45%;
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: -0.4px;
+      color: $light-green;
+
+      text-transform: uppercase;
+    }
+
+    &:not(:first-child) {
+      &:not(:nth-child(2)) {
+        border-top: solid 1px #979797;
+        padding-top: 30px;
+
+        @include respond-to(tablet) {
+          padding-top: 60px;
+        }
+
+        @include respond-to(desktop) {
+          border-top: none;
+          padding-top: 0;
+        }
+
+        &:not(:nth-child(3)) {
+          @include respond-to(desktop) {
+            border-top: solid 1px #979797;
+            padding-top: 60px;
+          }
+        }
+      }
+    }
+  }
+
+  .torque-load-more-button-wrapper {
+    width: 100%;
+
+    button {
+      @extend %useLoadMoreButtonStyle;
+
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+}
