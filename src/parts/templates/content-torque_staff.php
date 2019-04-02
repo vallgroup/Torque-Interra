@@ -4,7 +4,7 @@ require_once( get_template_directory() . '/includes/load-more/load-more-loop.php
 
 $available_listings_loop = new Torque_Load_More_Loop(
   'available-listings',
-  1,
+  6,
   array(
     'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
     'meta_query' => array(
@@ -26,7 +26,7 @@ $available_listings_loop = new Torque_Load_More_Loop(
 
 $closed_listings_loop = new Torque_Load_More_Loop(
   'closed-listings',
-  1,
+  6,
   array(
     'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
     'meta_query' => array(
@@ -49,7 +49,7 @@ $closed_listings_loop = new Torque_Load_More_Loop(
 $user = get_field('user');
 $blog_posts_loop = new Torque_Load_More_Loop(
   'blog-posts',
-  1,
+  6,
   array( 'author'  => $user ),
   'parts/shared/loop-blog.php'
 );
