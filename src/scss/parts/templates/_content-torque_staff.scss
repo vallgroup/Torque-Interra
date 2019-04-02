@@ -20,6 +20,15 @@
 
   @extend %listings_loop;
 
+  .torque-load-more-button-wrapper {
+    width: 100%;
+
+    button {
+      @extend %useLoadMoreButtonStyle;
+      width: 100%;
+    }
+  }
+
   &.closed-listings {
     background-color: $dark-green;
     color: $white;
@@ -38,6 +47,26 @@
     .term-listing {
       &::before {
         background-image: url("../statics/images/tag-icon-white.svg");
+      }
+    }
+
+    .torque-load-more-button-wrapper {
+      button {
+        background-color: transparent;
+        border-color: transparent;
+        color: $white;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  &.blog-posts {
+    .torque-load-more-button-wrapper {
+      button {
+        margin-bottom: 0;
       }
     }
   }

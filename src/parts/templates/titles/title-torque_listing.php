@@ -19,10 +19,7 @@ $image_type = get_field('listing_image');
         <?php echo $availability; ?>
       </div>
 
-      <?php
-      $listing_id = get_the_ID();
-      include locate_template('parts/shared/terms-listing.php');
-      ?>
+      <?php include locate_template('parts/shared/terms-listing.php'); ?>
     </div>
 
     <h2><?php the_title(); ?></h2>

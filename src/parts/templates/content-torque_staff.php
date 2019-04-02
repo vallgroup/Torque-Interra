@@ -1,80 +1,101 @@
 <?php
 
-$first_name = explode(' ', get_the_title())[0];
+require_once( get_template_directory() . '/includes/load-more/load-more-loop.php');
 
-// setup listings
-$listings = get_posts(array(
-	'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
-	'meta_query' => array(
-		array(
-			'key' => 'listing_brokers',
-			'value' => '"' . get_the_ID() . '"',
-			'compare' => 'LIKE'
-		)
-	)
-));
+$available_listings_loop = new Torque_Load_More_Loop(
+  'available-listings',
+  1,
+  array(
+    'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
+    'meta_query' => array(
+      'relation' => 'AND',
+      array(
+        'key' => 'listing_brokers',
+        'value' => '"' . get_the_ID() . '"',
+        'compare' => 'LIKE'
+      ),
+      array(
+        'key' => 'listing_status',
+        'value' => 'available',
+        'compare' => 'LIKE'
+      )
+    )
+  ),
+  'parts/shared/loop-listing.php'
+);
 
-foreach ($listings as &$listing) {
-  $listing->availability = get_field('listing_status', $listing->ID);
-}
+$closed_listings_loop = new Torque_Load_More_Loop(
+  'closed-listings',
+  1,
+  array(
+    'post_type' => Interra_Listing_CPT::$listing_labels['post_type_name'],
+    'meta_query' => array(
+      'relation' => 'AND',
+      array(
+        'key' => 'listing_brokers',
+        'value' => '"' . get_the_ID() . '"',
+        'compare' => 'LIKE'
+      ),
+      array(
+        'key' => 'listing_status',
+        'value' => 'closed',
+        'compare' => 'LIKE'
+      )
+    )
+  ),
+  'parts/shared/loop-listing.php'
+);
 
-$available_listings = array_filter($listings, function($listing) {
-  return $listing->availability === 'available';
-});
-
-$closed_listings = array_filter($listings, function($listing) {
-  return $listing->availability === 'closed';
-});
-
-
-// setup blog posts
 $user = get_field('user');
+$blog_posts_loop = new Torque_Load_More_Loop(
+  'blog-posts',
+  1,
+  array( 'author'  => $user ),
+  'parts/shared/loop-blog.php'
+);
 
-$blog_posts = $user
-	? get_posts(array( 'author'  => $user ))
-	: [];
 
+Torque_Load_More::get_inst()->register_loop( $available_listings_loop );
+Torque_Load_More::get_inst()->register_loop( $closed_listings_loop );
+Torque_Load_More::get_inst()->register_loop( $blog_posts_loop );
+
+
+/*
+Set up other staff vars
+ */
+
+$first_name = explode(' ', get_the_title())[0];
 
 ?>
 
-<?php if (count($available_listings)) { ?>
+<?php if ($available_listings_loop->has_first_page()) { ?>
 
 <div class="listings-wrapper active-listings" >
 	<h2><?php echo $first_name."'s"; ?> Active Listings</h2>
 
-	<?php foreach ($available_listings as $listing) {
-		$listing_id = $listing->ID;
-
-		include locate_template('parts/shared/loop-listing.php');
-	} ?>
+	<?php $available_listings_loop->the_first_page(); ?>
 </div>
 
 <?php } ?>
 
-<?php if (count($closed_listings)) { ?>
+
+<?php if ($closed_listings_loop->has_first_page()) { ?>
 
 <div class="listings-wrapper closed-listings" >
 	<h2><?php echo $first_name."'s"; ?> Recently Closed Listings</h2>
 
-	<?php foreach ($closed_listings as $listing) {
-		$listing_id = $listing->ID;
-
-		include locate_template('parts/shared/loop-listing.php');
-	} ?>
+	<?php $closed_listings_loop->the_first_page(); ?>
 </div>
 
 <?php } ?>
 
-<?php if (count($blog_posts)) { ?>
+
+<?php if ($user && $blog_posts_loop->has_first_page()) { ?>
 
 <div class="listings-wrapper blog-posts" >
 	<h2>Blog Posts written by <?php echo $first_name; ?></h2>
 
-	<?php foreach ($blog_posts as $blog_post) {
-		$blog_post_id = $blog_post->ID;
-
-		include locate_template('parts/shared/loop-blog.php');
-	} ?>
+	<?php $blog_posts_loop->the_first_page(); ?>
 </div>
 
 <?php } ?>

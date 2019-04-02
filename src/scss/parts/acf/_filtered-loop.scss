@@ -230,24 +230,7 @@
   }
 
   button.torque-filtered-loop-load-more {
-    margin: 0 auto 75px;
-
-    font-size: 26px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 2.42;
-    letter-spacing: normal;
-    text-align: center;
-    color: $light-green;
-    text-transform: uppercase;
-
-    background-color: $white;
-    border-color: $white;
-
-    &:hover {
-      color: $medium-green;
-    }
+    @extend %useLoadMoreButtonStyle;
   }
 
   &[data-post_type^="post"] {
