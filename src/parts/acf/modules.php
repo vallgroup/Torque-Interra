@@ -20,6 +20,16 @@ if ( have_rows( $modules ) ):
 
         break;
 
+      case 'images' :
+
+        $image_1 = get_sub_field('image_1');
+        $image_2_start = get_sub_field('image_2_start');
+        $image_2 = get_sub_field('image_2');
+
+        include locate_template('/parts/acf/modules/images.php');
+
+        break;
+
       case 'cta_section' :
 
         $heading = get_sub_field( 'heading' );
