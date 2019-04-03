@@ -1,5 +1,9 @@
 <div id="careers-form" class="careers-form">
-  <h3>Apply Today</h3>
+  <h2>Start Wearing Green</h2>
+
+  <div class="form-intro" >
+    If you’re interested in any of these positions, fill out this form, and get started on the path to Interra.
+  </div>
 
   <?php if (isset($message)) {
     $success_class = ! $message['success'] ? 'error' : '';
@@ -21,39 +25,34 @@
     <input type="hidden" name="tq-careers-form" />
 
     <div class="input-wrapper">
-      <label for="tq-name">Name</label>
-      <input type="text" name="tq-name" id="tq-name" />
+      <input type="text" name="tq-name" id="tq-name" placeholder="Name"/>
     </div>
 
     <div class="input-wrapper">
-      <label for="tq-email">Email</label>
-      <input type="email" name="tq-email" id="tq-email" />
+      <input type="email" name="tq-email" id="tq-email" placeholder="Email Address"/>
     </div>
 
     <div class="input-wrapper">
-      <label for="tq-phone">Phone</label>
-      <input type="tel" name="tq-phone" id="tq-phone" />
+      <input type="tel" name="tq-phone" id="tq-phone" placeholder="Phone Number"/>
     </div>
 
     <div class="input-wrapper">
-      <label for="tq-intro">Intro About Yourself</label>
-      <textarea name="tq-intro" id="tq-intro" ></textarea>
+      <textarea name="tq-intro" id="tq-intro" placeholder="Tell us about yourself"></textarea>
     </div>
 
     <div class="input-wrapper">
       <div class="file-picker">
-        <label for="tq-resume" class="file-picker-label">Resume</label>
-        <label for="tq-resume" class="custom-file-picker">Click to Choose a File</label>
+        <label for="tq-resume" >Upload Resume</label>
+        <label for="tq-resume" class="filename">Choose File</label>
         <input type="file" accept=".pdf" name="tq-resume" id="tq-resume" />
       </div>
     </div>
 
     <div class="input-wrapper" >
-      <label></label>
       <?php echo do_shortcode('[torque_recaptcha]'); ?>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="white">Send</button>
   </form>
 
 </div>

@@ -1,0 +1,83 @@
+.careers-form {
+  padding: 30px $bodyPadding1;
+
+  background-color: $medium-green;
+  color: $white;
+
+  @include respond-to(tablet) {
+    padding: 60px $bodyPadding1;
+  }
+
+  @include respond-to(desktop) {
+    padding: 80px $bodyPadding1;
+  }
+
+  h2 {
+    margin: 0 auto 10px;
+    max-width: 780px;
+
+    color: $white;
+    text-transform: uppercase;
+  }
+
+  .form-intro {
+    margin: 0 auto 10px;
+    max-width: 780px;
+
+    @include respond-to(tablet) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .form-message {
+    margin: 0 auto 10px;
+    max-width: 750px;
+
+    font-weight: bold;
+  }
+
+  form {
+    margin: 0 auto;
+    max-width: 780px;
+
+    input,
+    textarea,
+    label {
+      margin-bottom: 15px;
+
+      background-color: transparent;
+      color: $white;
+      border: 1px solid $white;
+      outline: none;
+
+      &::placeholder {
+        color: $white;
+      }
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    .file-picker {
+      label {
+        display: inline-block;
+        padding: 15px;
+
+        font-size: 11px;
+      }
+
+      label.filename {
+        border: none;
+      }
+
+      input {
+        display: none;
+      }
+    }
+
+    button[type="submit"] {
+      margin-top: 15px;
+    }
+  }
+}
