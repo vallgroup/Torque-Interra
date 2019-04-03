@@ -1,0 +1,83 @@
+.content-contact {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 25px $bodyPadding1 50px;
+
+  @include respond-to(tablet) {
+    padding: 40px $bodyPadding1 75px;
+  }
+
+  @include respond-to(desktop) {
+    padding: 80px $bodyPadding1;
+  }
+
+  .contact-blocks {
+    padding-bottom: 40px;
+    width: 100%;
+
+    @include respond-to(tablet) {
+      @include row();
+    }
+
+    @include respond-to(desktop) {
+      order: 2;
+      width: 25%;
+      padding-left: 20px;
+      box-sizing: border-box;
+    }
+
+    h4 {
+      margin: 0 0 10px;
+      width: 100%;
+
+      font-size: 19px;
+      font-weight: bold;
+      font-style: normal;
+      color: $medium-green;
+      text-transform: uppercase;
+    }
+
+    .address {
+      padding-bottom: 10px;
+
+      @include respond-to(tablet) {
+        float: left;
+        padding-right: 50px;
+      }
+
+      @include respond-to(desktop) {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  div[id^="contact-form-"] {
+    width: 100%;
+
+    @include respond-to(desktop) {
+      order: 1;
+      padding-left: 25%;
+      width: 75%;
+      box-sizing: border-box;
+    }
+
+    form {
+      width: 100%;
+
+      label {
+        display: none;
+      }
+
+      input,
+      textarea {
+        margin-bottom: 13px;
+        border: solid 1px $medium-green;
+        width: 100%;
+        max-width: none;
+        outline: none;
+      }
+    }
+  }
+}

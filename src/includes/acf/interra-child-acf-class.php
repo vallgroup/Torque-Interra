@@ -202,6 +202,18 @@ class Interra_ACF {
       				'value' => 'default',
       			),
       		),
+          array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => 'page',
+      			),
+      			array(
+      				'param' => 'post_template',
+      				'operator' => '==',
+      				'value' => 'contact.php',
+      			),
+      		),
       	),
       	'menu_order' => 0,
       	'position' => 'normal',
@@ -308,6 +320,18 @@ class Interra_ACF {
       				'param' => 'post_template',
       				'operator' => '==',
       				'value' => 'default',
+      			),
+      		),
+          array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => 'page',
+      			),
+      			array(
+      				'param' => 'post_template',
+      				'operator' => '==',
+      				'value' => 'contact.php',
       			),
       		),
       	),
