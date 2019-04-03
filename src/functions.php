@@ -6,6 +6,7 @@ require_once( get_stylesheet_directory() . '/includes/customizer/interra-child-c
 require_once( get_stylesheet_directory() . '/includes/acf/interra-child-acf-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-staff-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-listing-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-job-application-cpt-class.php');
 
 /**
  * Child Theme Nav Menus
@@ -63,6 +64,18 @@ if ( class_exists( 'Interra_Listing_CPT' ) ) {
 if ( class_exists( 'Torque_Filtered_Loop' ) && class_exists( 'Torque_Filtered_Loop_Shortcode' ) ) {
   add_filter( Torque_Filtered_Loop_Shortcode::$LOOP_TEMPLATE_FILTER_HANDLE, function() { return "2"; } );
 }
+
+
+/**
+ * Careers plugin settings
+ */
+
+if ( class_exists( 'Torque_Careers' ) ) {
+  if ( class_exists( 'Interra_Job_Application_CPT' ) ) {
+    new Interra_Job_Application_CPT();
+  }
+}
+
 
 /**
 * Slideshow plugin settings

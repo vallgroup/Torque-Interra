@@ -214,6 +214,18 @@ class Interra_ACF {
       				'value' => 'contact.php',
       			),
       		),
+          array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => 'page',
+      			),
+      			array(
+      				'param' => 'post_template',
+      				'operator' => '==',
+      				'value' => 'careers.php',
+      			),
+      		),
       	),
       	'menu_order' => 0,
       	'position' => 'normal',
@@ -332,6 +344,18 @@ class Interra_ACF {
       				'param' => 'post_template',
       				'operator' => '==',
       				'value' => 'contact.php',
+      			),
+      		),
+          array(
+      			array(
+      				'param' => 'post_type',
+      				'operator' => '==',
+      				'value' => 'page',
+      			),
+      			array(
+      				'param' => 'post_template',
+      				'operator' => '==',
+      				'value' => 'careers.php',
       			),
       		),
       	),
@@ -662,16 +686,6 @@ class Interra_ACF {
       					'key' => '5c9d3f4702dde',
       					'name' => 'staff_members',
       					'label' => 'Staff Members',
-      					'display' => 'block',
-      					'sub_fields' => array(
-      					),
-      					'min' => '',
-      					'max' => '',
-      				),
-              '5ca3d42d39fc0' => array(
-      					'key' => '5ca3d42d39fc0',
-      					'name' => 'careers',
-      					'label' => 'Careers',
       					'display' => 'block',
       					'sub_fields' => array(
       					),

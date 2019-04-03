@@ -20,4 +20,8 @@ Torque_Load_More::get_inst()->register_loop( $careers_loop );
 	<?php $careers_loop->the_first_page(); ?>
 </div>
 
-<?php } ?>
+<?php }
+
+get_template_part( 'parts/forms/form', 'careers' );
+
+?>

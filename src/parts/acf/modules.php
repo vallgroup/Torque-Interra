@@ -64,12 +64,6 @@ if ( have_rows( $modules ) ):
 
         break;
 
-      case 'careers' :
-
-        include locate_template('/parts/acf/modules/careers.php');
-
-        break;
-
     }
 
   endwhile;
