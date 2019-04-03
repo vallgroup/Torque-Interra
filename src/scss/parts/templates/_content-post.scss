@@ -1,5 +1,17 @@
 .post-main {
+  @include respond-to(desktop) {
+    display: flex;
+  }
+
   .post-content {
+    @include respond-to(desktop) {
+      position: relative;
+      flex: 1 0 65%;
+
+      padding-bottom: 50px;
+      box-sizing: border-box;
+    }
+
     .post-title {
       margin-bottom: 10px;
       padding: 25px $bodyPadding1 0;
@@ -9,9 +21,15 @@
         padding: 60px $bodyPadding2 0;
       }
 
+      @include respond-to(desktop) {
+        padding: 60px $bodyPadding1 0;
+      }
+
       h2 {
         margin-top: 0;
         margin-bottom: 5px;
+
+        text-transform: uppercase;
 
         @include respond-to(tablet) {
           margin-bottom: 10px;
@@ -46,12 +64,23 @@
       @include respond-to(tablet) {
         padding: 0 $bodyPadding2 60px;
       }
+
+      @include respond-to(desktop) {
+        padding: 0 $bodyPadding1 60px;
+      }
     }
 
     .torque-pagination {
       @include row();
 
       background-color: $medium-green;
+
+      @include respond-to(desktop) {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+      }
 
       button {
         width: 50%;
@@ -71,6 +100,52 @@
             padding-left: 5px;
           }
         }
+      }
+    }
+  }
+
+  .post-keep-reading {
+    @include respond-to-max(desktop) {
+      display: none;
+    }
+
+    flex: 0 1 500px;
+    padding: 70px 5%;
+    min-width: 300px;
+    box-sizing: border-box;
+
+    background-color: $dark-green;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .loop-post {
+      margin-bottom: 60px;
+
+      color: $white;
+
+      .featured-image-wrapper {
+        padding-bottom: 70%;
+
+        .featured-image {
+          background-color: $medium-green;
+        }
+      }
+
+      h4 {
+        margin: 30px 0 10px;
+
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .excerpt {
+        margin-bottom: 20px;
+      }
+
+      button {
+        @extend %button_white;
       }
     }
   }
