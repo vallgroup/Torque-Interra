@@ -1,0 +1,77 @@
+.post-main {
+  .post-content {
+    .post-title {
+      margin-bottom: 10px;
+      padding: 25px $bodyPadding1 0;
+
+      @include respond-to(tablet) {
+        margin-bottom: 40px;
+        padding: 60px $bodyPadding2 0;
+      }
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 5px;
+
+        @include respond-to(tablet) {
+          margin-bottom: 10px;
+        }
+      }
+
+      .the-date {
+        margin-bottom: 5px;
+
+        color: $medium-gray;
+
+        @include respond-to(tablet) {
+          margin-bottom: 10px;
+        }
+      }
+
+      .post-terms {
+        display: flex;
+        flex-wrap: wrap;
+
+        .post-term {
+          @extend %useTermStyle;
+
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .the-content {
+      padding: 0 $bodyPadding1 20px;
+
+      @include respond-to(tablet) {
+        padding: 0 $bodyPadding2 60px;
+      }
+    }
+
+    .torque-pagination {
+      @include row();
+
+      background-color: $medium-green;
+
+      button {
+        width: 50%;
+
+        &.prev-page {
+          &::before {
+            content: "<";
+            padding-right: 5px;
+          }
+        }
+
+        &.next-page {
+          float: right;
+
+          &::after {
+            content: ">";
+            padding-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}

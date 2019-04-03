@@ -1,0 +1,7 @@
+.featured-image-wrapper {
+  @extend %imageSize;
+
+  .featured-image {
+    @extend %imageInner;
+  }
+}
