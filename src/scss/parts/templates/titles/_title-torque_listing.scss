@@ -1,3 +1,26 @@
+%useCustomTemplateHeader {
+  @extend %useSideGraphic;
+
+  @include useHeaderHeight(margin-top);
+
+  padding: 50px $bodyPadding2;
+
+  @include respond-to(tablet) {
+    padding: 100px $bodyPadding1;
+  }
+
+  @include respond-to(desktop) {
+    padding: 180px $bodyPadding2;
+  }
+
+  h1 {
+    margin: 0;
+
+    color: $dark-grey;
+    text-transform: uppercase;
+  }
+}
+
 .torque_listing-title {
   display: flex;
   flex-wrap: wrap;
@@ -5,7 +28,6 @@
   .listing-title-content {
     @extend %useCustomTemplateHeader;
 
-    @include useHeaderHeight(margin-top);
     padding: 60px $bodyPadding1 50px;
     width: 100%;
 
