@@ -83,12 +83,13 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 20px;
+    height: 50%;
     width: 100%;
 
-    background-image: url("../statics/images/side-graphic.svg");
-    background-size: cover;
-    background-position: center;
+    background-image: url("../statics/images/bottom-graphic.svg");
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: bottom;
     background-repeat: no-repeat;
   }
 }

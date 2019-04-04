@@ -31,6 +31,7 @@
 
     .quick-search-term {
       position: relative;
+      overflow: hidden;
 
       display: flex;
       justify-content: flex-start;
@@ -70,23 +71,25 @@
 
       @extend %useBottomGraphic;
       &::after {
-        height: 0;
-
+        left: -5%;
+        width: 110%;
+        bottom: -30px;
         transition: all 0.3s ease;
       }
 
       &:hover {
-        padding-bottom: 35px;
+        padding-bottom: 8%;
 
         color: $light-green;
         font-weight: 500;
 
         .overlay {
-          height: 80px;
+          height: 33%;
         }
 
         &::after {
-          height: 30px;
+          bottom: 0px;
+          height: 33%;
         }
       }
     }
