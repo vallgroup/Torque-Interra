@@ -91,6 +91,9 @@
           flex-wrap: wrap;
 
           .post-term {
+            @extend %useTermStyle;
+            @extend %useTermWhite;
+
             margin-right: 10px;
 
             text-transform: uppercase;

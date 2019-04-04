@@ -94,6 +94,14 @@
   }
 }
 
+%useTermWhite {
+  color: $white !important;
+
+  &::before {
+    background-image: url("../statics/images/tag-icon-white.svg") !important;
+  }
+}
+
 %useTermGreen {
   color: $medium-green;
 
