@@ -23,7 +23,9 @@ $keep_reading_query = new WP_Query( array(
 
           <?php foreach ($terms as $term) { ?>
             <div class="post-term" >
-              <?php echo $term->name; ?>
+              <a href="/blog?<?php echo $term->taxonomy; ?>=<?php echo $term->term_id; ?>">
+                <?php echo $term->name; ?>
+              </a>
             </div>
           <?php } ?>
 

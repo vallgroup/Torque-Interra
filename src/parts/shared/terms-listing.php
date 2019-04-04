@@ -17,7 +17,9 @@ if ($region_terms) {
 foreach ($terms as $term) { ?>
 
   <div class="term-listing">
-    <?php echo $term->name; ?>
+    <a href="/listings?<?php echo $term->taxonomy; ?>=<?php echo $term->term_id; ?>" >
+      <?php echo $term->name; ?>
+    </a>
   </div>
 
 <?php } ?>
