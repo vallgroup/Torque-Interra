@@ -23,7 +23,13 @@ class Interra_ACF {
   }
 
   public function add_fields_to_search( $fields ) {
-    // $fields[] = 'custom_field_name';
+    $fields[] = 'hero_overlay_title';
+    $fields[] = 'hero_overlay_subtitle';
+    $fields[] = 'page_heading';
+    $fields[] = 'page_intro';
+    $fields[] = 'heading';
+    $fields[] = 'content';
+    
     return $fields;
   }
 
