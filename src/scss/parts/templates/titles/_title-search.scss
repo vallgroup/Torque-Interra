@@ -1,0 +1,39 @@
+#header-search {
+  @include useHeaderHeight(margin-top);
+
+  padding: 50px $bodyPadding1 20px;
+
+  background-color: $medium-green;
+  color: $white;
+
+  .content-wrapper {
+    margin: 0 auto;
+    max-width: 775px;
+
+    h2 {
+      margin-top: 0;
+
+      color: $white;
+      text-transform: uppercase;
+
+      @include respond-to(desktop) {
+        margin-bottom: 10px;
+      }
+    }
+
+    input#search {
+      margin-bottom: 15px;
+      border: 1px solid $white;
+      padding: 5px 10px;
+
+      background-color: transparent;
+      color: $white;
+      font-size: 20px;
+      outline: none;
+
+      &::placeholder {
+        color: $white;
+      }
+    }
+  }
+}
