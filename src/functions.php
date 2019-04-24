@@ -4,7 +4,6 @@ require_once( get_stylesheet_directory() . '/includes/interra-child-nav-menus-cl
 require_once( get_stylesheet_directory() . '/includes/widgets/interra-child-widgets-class.php');
 require_once( get_stylesheet_directory() . '/includes/customizer/interra-child-customizer-class.php');
 require_once( get_stylesheet_directory() . '/includes/acf/interra-child-acf-class.php');
-require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-staff-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-listing-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-job-application-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/interra-roles-class.php');
@@ -50,14 +49,6 @@ if ( class_exists( 'Interra_Customizer' ) ) {
    new Interra_ACF();
  }
 
-
-
-/**
- * Torque Staff Extras
- */
-if ( class_exists( 'Torque_Staff_CPT' ) && class_exists( 'Interra_Staff_CPT' ) ) {
-  new Interra_Staff_CPT();
-}
 
 /**
  * Listing CPT
@@ -119,14 +110,6 @@ add_filter( 'excerpt_length', function( $length ) {
 }, 999 );
 
 
-
-
-// vcard support
-add_filter('upload_mimes', function ($mime_types){
-  $mime_types['vcf'] = 'text/vcard';
-  $mime_types['vcard'] = 'text/vcard';
-  return $mime_types;
-}, 1, 1);
 
 
 /**
@@ -192,11 +175,12 @@ function torque_enqueue_child_scripts() {
 
 
 
-
+/*
 if ( isset($_GET['run_user_import']) ) {
   require( get_stylesheet_directory() . '/import_data/import.php' );
 
   interra_insert_users();
 }
+*/
 
 ?>

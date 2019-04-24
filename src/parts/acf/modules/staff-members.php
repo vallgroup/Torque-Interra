@@ -1,61 +1,52 @@
 <?php
 
-$query = new WP_Query( array(
-  'post_type' => Torque_Staff_CPT::$staff_labels['post_type_name'],
-  'posts_per_page'  => -1
-));
+$user_query = new WP_User_Query( array(
+  'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG )
+) );
 
-if ($query->have_posts()) { ?>
+if ( ! empty( $user_query->get_results() ) ) { ?>
 
   <div class="staff-members-module" >
 
-    <?php while($query->have_posts()) { $query->the_post();
+    <?php foreach ( $user_query->get_results() as $user ) {
 
-      $title = get_the_title();
-      $meta = get_post_meta(get_the_ID(), 'staff_meta', true);
-      $roles = get_the_terms( get_the_ID(), Interra_Staff_CPT::$STAFF_ROLE_TAX_SLUG );
+      $title = $user->data->display_name;
+      $permalink = get_author_posts_url( $user->ID );
+      $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );
+      if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 400 ) );
+      $tel = get_field( 'telephone', 'user_'.$user->ID );
 
       ?>
 
       <div class="staff-member" >
-        <a class="image-wrapper" href="<?php echo get_the_permalink(); ?>">
-          <img class="staff-member-image" src="<?php echo get_the_post_thumbnail_url(null, 'large'); ?>" />
+        <a class="image-wrapper" href="<?php echo $permalink; ?>">
+          <img class="staff-member-image" src="<?php echo $thumbnail; ?>" />
         </a>
 
         <div class="staff-member-content" >
           <h4><?php echo $title; ?></h4>
 
-          <?php if (count($roles)) { ?>
-            <div class="staff-roles" >
-
-              <?php foreach ($roles as $role) { ?>
-                <div class="staff-role" >
-                  <?php echo $role->name; ?>
-                </div>
-              <?php } ?>
-
-            </div>
-          <?php } ?>
+          <?php include locate_template( 'parts/shared/author-roles.php' ); ?>
 
           <div class="contact-container" >
 
             <div class="meet-broker" >
-              <a href="<?php echo get_the_permalink(); ?>">
+              <a href="<?php echo $permalink; ?>">
                 <button>
-                  Meet <?php echo explode(' ', $title)[0]; ?>
+                  Meet <?php echo $user->first_name; ?>
                 </button>
               </a>
             </div>
 
             <div class="broker-icons" >
-              <?php if ($meta['email']) { ?>
-                <a href="mailto:<?php echo $meta['email']; ?>" >
+              <?php if ($user->user_email) { ?>
+                <a href="mailto:<?php echo $user->user_email; ?>" >
                   <div class="broker-icon envelope"></div>
                 </a>
               <?php } ?>
 
-              <?php if ($meta['tel']) { ?>
-                <a href="tel:<?php echo $meta['tel']; ?>" >
+              <?php if ($tel) { ?>
+                <a href="tel:<?php echo $tel; ?>" >
                   <div class="broker-icon phone"></div>
                 </a>
               <?php } ?>

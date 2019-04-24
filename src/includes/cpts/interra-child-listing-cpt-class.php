@@ -117,31 +117,25 @@ class Interra_Listing_CPT {
       			'ajax' => 0,
       			'placeholder' => '',
       		),
-      		array(
-      			'key' => 'field_5c8ae9c7c08e3',
+          array(
+      			'key' => 'field_5cc09759d8bff',
       			'label' => 'Brokers',
       			'name' => 'listing_brokers',
-      			'type' => 'relationship',
+      			'type' => 'user',
       			'instructions' => '',
-      			'required' => 1,
+      			'required' => 0,
       			'conditional_logic' => 0,
       			'wrapper' => array(
       				'width' => '',
       				'class' => '',
       				'id' => '',
       			),
-      			'post_type' => array(
-      				0 => 'torque_staff',
+      			'role' => array(
+      				0 => 'broker',
+      				1 => 'manager',
       			),
-      			'taxonomy' => array(
-      				0 => 'torque_staff_role:broker',
-      			),
-      			'filters' => '',
-      			'elements' => array(
-      				0 => 'featured_image',
-      			),
-      			'min' => '',
-      			'max' => '',
+      			'allow_null' => 0,
+      			'multiple' => 1,
       			'return_format' => 'object',
       		),
       		array(

@@ -11,7 +11,7 @@ $available_listings_loop = new Torque_Load_More_Loop(
       'relation' => 'AND',
       array(
         'key' => 'listing_brokers',
-        'value' => '"' . get_the_ID() . '"',
+        'value' => '"' . $user->ID . '"',
         'compare' => 'LIKE'
       ),
       array(
@@ -33,7 +33,7 @@ $closed_listings_loop = new Torque_Load_More_Loop(
       'relation' => 'AND',
       array(
         'key' => 'listing_brokers',
-        'value' => '"' . get_the_ID() . '"',
+        'value' => '"' . $user->ID . '"',
         'compare' => 'LIKE'
       ),
       array(
@@ -46,11 +46,10 @@ $closed_listings_loop = new Torque_Load_More_Loop(
   'parts/shared/loop-listing.php'
 );
 
-$user = get_field('user');
 $blog_posts_loop = new Torque_Load_More_Loop(
   'blog-posts',
   6,
-  array( 'author'  => $user ),
+  array( 'author'  => $user->ID ),
   'parts/shared/loop-blog.php'
 );
 
@@ -64,7 +63,7 @@ Torque_Load_More::get_inst()->register_loop( $blog_posts_loop );
 Set up other staff vars
  */
 
-$first_name = explode(' ', get_the_title())[0];
+$first_name = $user->first_name;
 
 ?>
 

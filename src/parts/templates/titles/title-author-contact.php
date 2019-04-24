@@ -1,22 +1,23 @@
 <?php
 
-$meta = get_post_meta(get_the_ID(), 'staff_meta', true);
-$vcard = get_field('vcard_file');
+$email = $user->user_email;
+$tel = get_field( 'telephone', 'user_'.$user->ID );
+$vcard = get_field( 'vcard_file', 'user_'.$user->ID );
 
 ?>
 
 <div class="torque-staff-contact" >
-  <?php if ($meta['email']) { ?>
-    <a class="broker-icon-link" href="mailto:<?php echo $meta['email']; ?>" >
+  <?php if ($email) { ?>
+    <a class="broker-icon-link" href="mailto:<?php echo $email; ?>" >
       <div class="broker-icon envelope"></div>
-      <?php echo $meta['email']; ?>
+      <?php echo $email; ?>
     </a>
   <?php } ?>
 
-  <?php if ($meta['tel']) { ?>
-    <a class="broker-icon-link" href="tel:<?php echo $meta['tel']; ?>" >
+  <?php if ($tel) { ?>
+    <a class="broker-icon-link" href="tel:<?php echo $tel; ?>" >
       <div class="broker-icon phone"></div>
-      <?php echo $meta['tel']; ?>
+      <?php echo $tel; ?>
     </a>
   <?php } ?>
 

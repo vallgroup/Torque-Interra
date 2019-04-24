@@ -35,38 +35,44 @@
   <div class="torque-listing-content-brokers">
     <?php
 
-    $posts = get_field('listing_brokers');
+    $users = get_field('listing_brokers');
 
-    if( $posts ): ?>
+    if( $users ): ?>
     	<div class="brokers-wrapper">
         <h4 class="brokers-section-title">Brokers</h4>
-    	<?php foreach( $posts as $broker ): // variable must NOT be called $post (IMPORTANT)
+    	<?php foreach( $users as $user ): // variable must NOT be called $post (IMPORTANT)
 
-          $meta = get_post_meta($broker->ID, 'staff_meta', true);
+        $title = $user->data->display_name;
+        $permalink = get_author_posts_url( $user->ID );
+        $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );
+        if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 400 ) );
+        $tel = get_field( 'telephone', 'user_'.$user->ID );
+        $email = $user->user_email;
+        
         ?>
 
     	    <div class="broker">
-            <img class="broker-image" src="<?php echo get_the_post_thumbnail_url($broker->ID, 'large'); ?>" />
+            <img class="broker-image" src="<?php echo $thumbnail; ?>" />
 
             <div class="broker-content" >
-      	    	<h4><?php echo $broker->post_title; ?></h4>
+      	    	<h4><?php echo $title; ?></h4>
 
 
               <div class="meet-broker" >
-                <a href="<?php echo get_the_permalink($broker->ID); ?>">
-                  Meet <?php echo explode(' ', $broker->post_title)[0]; ?>
+                <a href="<?php echo $permalink; ?>">
+                  Meet <?php echo $user->first_name; ?>
                 </a>
               </div>
 
 
-              <?php if ($meta['email']) { ?>
-                <a href="mailto:<?php echo $meta['email']; ?>" >
+              <?php if ($email) { ?>
+                <a href="mailto:<?php echo $email; ?>" >
                   <div class="broker-icon envelope"></div>
                 </a>
               <?php } ?>
 
-              <?php if ($meta['tel']) { ?>
-                <a href="tel:<?php echo $meta['tel']; ?>" >
+              <?php if ($tel) { ?>
+                <a href="tel:<?php echo $tel; ?>" >
                   <div class="broker-icon phone"></div>
                 </a>
               <?php } ?>
