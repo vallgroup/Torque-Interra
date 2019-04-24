@@ -7,6 +7,16 @@ require_once( get_stylesheet_directory() . '/includes/acf/interra-child-acf-clas
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-staff-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-listing-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpts/interra-child-job-application-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/interra-roles-class.php');
+
+
+/**
+ * Custom Roles
+ */
+
+if ( class_exists( 'Interra_Roles' ) ) {
+  new Interra_Roles();
+}
 
 /**
  * Child Theme Nav Menus
@@ -177,6 +187,16 @@ function torque_enqueue_child_scripts() {
         wp_get_theme()->get('Version'),
         true       // put it in the footer
     );
+}
+
+
+
+
+
+if ( isset($_GET['run_user_import']) ) {
+  require( get_stylesheet_directory() . '/import_data/import.php' );
+
+  interra_insert_users();
 }
 
 ?>
