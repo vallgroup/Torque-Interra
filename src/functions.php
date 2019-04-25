@@ -173,8 +173,7 @@ function torque_enqueue_child_scripts() {
 }
 
 
-
-
+/*
 if ( isset($_GET['run_user_import']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );
 
@@ -190,5 +189,14 @@ if ( isset($_GET['run_listings_import']) ) {
     interra_insert_listings();
   });
 }
+
+if ( isset($_GET['remove_duplicates']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_remove_duplicates();
+  });
+}
+*/
 
 ?>

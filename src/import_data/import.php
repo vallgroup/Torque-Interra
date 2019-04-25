@@ -44,6 +44,9 @@ function interra_import_csv_to_acc_array($file_path): array {
  */
 
 function interra_insert_users(): void {
+  $should_run = get_option('interra_inserted_users') !== '1';
+  if (!$should_run) return;
+
   $users = interra_import_csv_to_acc_array( get_stylesheet_directory() . '/import_data/users.csv' );
 
   $new_ids = array();
@@ -80,6 +83,8 @@ function interra_insert_users(): void {
   echo '<br>';
   var_dump($new_ids);
   echo '</pre>';
+
+  update_option( 'interra_inserted_users', '1' );
 }
 
 function interra_prepare_user( &$user ) {
@@ -98,6 +103,9 @@ function interra_prepare_user( &$user ) {
  */
 
 function interra_insert_listings() {
+  $should_run = get_option('interra_inserted_listings') !== '1';
+  if (!$should_run) return;
+
   ob_implicit_flush(true);
   ob_start();
 
@@ -135,6 +143,8 @@ function interra_insert_listings() {
     flush();
     ob_flush();
   }
+
+  update_option( 'interra_inserted_listings', '1' );
 
   ob_end_flush();
 }
@@ -347,5 +357,29 @@ function interra_add_listing_image( $listing_id, $image_array ) {
     }
   }
 }
+
+
+function interra_remove_duplicates() {
+  global $wpdb;
+
+  $duplicate_titles = $wpdb->get_col("SELECT post_title FROM {$wpdb->posts} WHERE  post_type = 'attachment' GROUP BY post_title HAVING COUNT(*) > 1");
+
+  var_dump($duplicate_titles);
+
+  foreach( $duplicate_titles as $title ) {
+     $post_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_title=%s", $title ) );
+
+     var_dump($post_ids);
+     echo '<br>';
+
+     // Iterate over the second ID with this post title till the last
+     foreach( array_slice( $post_ids, 1 ) as $post_id ) {
+        wp_delete_post( $post_id, true ); // Force delete this post
+        echo 'deleted: '.$post_id;
+        echo '<br>';
+     }
+  }
+}
+
 
 ?>
