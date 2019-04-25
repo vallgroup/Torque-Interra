@@ -175,12 +175,20 @@ function torque_enqueue_child_scripts() {
 
 
 
-/*
 if ( isset($_GET['run_user_import']) ) {
-  require( get_stylesheet_directory() . '/import_data/import.php' );
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
 
-  interra_insert_users();
+  add_action('init', function() {
+    interra_insert_users();
+  });
 }
-*/
+
+if ( isset($_GET['run_listings_import']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_insert_listings();
+  });
+}
 
 ?>
