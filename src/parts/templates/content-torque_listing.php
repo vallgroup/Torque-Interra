@@ -1,16 +1,25 @@
 <?php
 
-
+$content = get_the_content();
+$highlights = get_field( 'listing_highlights' );
 
 ?>
 
 <div class="torque-listing-content">
 
   <div class="torque-listing-content-details" >
-    <h4>Highlights</h4>
-    <div class="the-content" >
-      <?php the_content(); ?>
-    </div>
+    <?php if ($content) { ?>
+      <div class="the-content" >
+        <?php echo $content; ?>
+      </div>
+    <?php } ?>
+
+    <?php if ($highlights) { ?>
+      <h4>Highlights</h4>
+      <div class="highlights" >
+        <?php echo $highlights; ?>
+      </div>
+    <?php } ?>
 
     <?php if( have_rows('key_details') ): ?>
       <h4>Key Details</h4>
@@ -48,7 +57,7 @@
         if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 400 ) );
         $tel = get_field( 'telephone', 'user_'.$user->ID );
         $email = $user->user_email;
-        
+
         ?>
 
     	    <div class="broker">

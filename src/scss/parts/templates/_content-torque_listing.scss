@@ -31,7 +31,8 @@
       width: 60%;
     }
 
-    .the-content {
+    .the-content,
+    .highlights {
       margin-bottom: 20px;
 
       @include respond-to(tablet) {
