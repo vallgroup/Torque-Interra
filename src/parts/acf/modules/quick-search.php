@@ -1,9 +1,17 @@
 <?php
 
-$terms = get_terms( array(
-    'taxonomy' => $taxonomy,
-    'hide_empty' => false,
-) );
+$term_ids = get_sub_field('regions');
+
+if ($term_ids) {
+  $terms = get_terms( array(
+      'taxonomy'   => $taxonomy,
+      'hide_empty' => false,
+      'include'    => $term_ids
+  ) );
+} else {
+  $terms = [];
+}
+
 
 if (count($terms)) {
 
