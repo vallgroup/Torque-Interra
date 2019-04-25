@@ -11,7 +11,7 @@ $available_listings_loop = new Torque_Load_More_Loop(
       'relation' => 'AND',
       array(
         'key' => 'listing_brokers',
-        'value' => '"' . $user->ID . '"',
+        'value' => $user->ID,
         'compare' => 'LIKE'
       ),
       array(
@@ -33,7 +33,7 @@ $closed_listings_loop = new Torque_Load_More_Loop(
       'relation' => 'AND',
       array(
         'key' => 'listing_brokers',
-        'value' => '"' . $user->ID . '"',
+        'value' => $user->ID,
         'compare' => 'LIKE'
       ),
       array(
