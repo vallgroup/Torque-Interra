@@ -190,6 +190,14 @@ if ( isset($_GET['run_listings_import']) ) {
   });
 }
 
+if ( isset($_GET['run_posts_import']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_insert_blog_posts();
+  });
+}
+
 if ( isset($_GET['remove_duplicates']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );
 
