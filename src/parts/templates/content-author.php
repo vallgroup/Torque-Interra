@@ -49,7 +49,17 @@ $closed_listings_loop = new Torque_Load_More_Loop(
 $blog_posts_loop = new Torque_Load_More_Loop(
   'blog-posts',
   6,
-  array( 'author'  => $user->ID ),
+  array(
+    'post_type' => 'post',
+    'meta_query' => array(
+      'relation' => 'AND',
+      array(
+        'key' => 'post_authors',
+        'value' => $user->ID,
+        'compare' => 'LIKE'
+      ),
+    )
+  ),
   'parts/shared/loop-blog.php'
 );
 
@@ -92,7 +102,7 @@ $first_name = $user->first_name;
 <?php if ($user && $blog_posts_loop->has_first_page()) { ?>
 
 <div class="listings-wrapper blog-posts" >
-	<h2>Blog Posts written by <?php echo $first_name; ?></h2>
+	<h2>Blog Posts featuring <?php echo $first_name; ?></h2>
 
 	<?php $blog_posts_loop->the_first_page(); ?>
 </div>

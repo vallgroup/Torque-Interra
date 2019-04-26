@@ -1,5 +1,12 @@
 <?php
 
+$authors = get_field('post_authors');
+if ($authors && count($authors)) {
+  $author_objs = get_users(array(
+  	'include'      => $authors,
+  ) );
+}
+
 $terms = get_the_terms( get_the_ID(), 'category' );
 $term_ids = array_map( function($term) { return $term->term_id; }, $terms);
 
@@ -16,7 +23,19 @@ $keep_reading_query = new WP_Query( array(
     <div class="post-title" >
       <h2><?php the_title(); ?></h2>
 
-      <div class="the-date"><?php the_date('M Y'); ?></div>
+      <?php if (isset($author_objs) && $author_objs && count($author_objs)) { ?>
+        <div class="post-terms authors" >
+
+          <?php foreach ($author_objs as $author) { ?>
+            <div class="post-term" >
+              <a href="<?php echo get_author_posts_url( $author->ID ); ?>">
+                <?php echo $author->display_name; ?>
+              </a>
+            </div>
+          <?php } ?>
+
+        </div>
+      <?php } ?>
 
       <?php if (count($terms)) { ?>
         <div class="post-terms" >

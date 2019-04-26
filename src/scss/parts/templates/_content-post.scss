@@ -36,16 +36,6 @@
         }
       }
 
-      .the-date {
-        margin-bottom: 5px;
-
-        color: $medium-gray;
-
-        @include respond-to(tablet) {
-          margin-bottom: 10px;
-        }
-      }
-
       .post-terms {
         display: flex;
         flex-wrap: wrap;
@@ -54,6 +44,16 @@
           @extend %useTermStyle;
 
           margin-right: 10px;
+        }
+
+        &.authors {
+          .post-term {
+            &::before {
+              display: none;
+            }
+
+            margin-bottom: 5px;
+          }
         }
       }
     }
