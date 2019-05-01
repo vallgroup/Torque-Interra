@@ -64,6 +64,12 @@ if ( have_rows( $modules ) ):
 
         break;
 
+      case 'mailchimp_form' :
+
+        include locate_template('/parts/acf/modules/mailchimp-form.php');
+
+        break;
+
     }
 
   endwhile;
