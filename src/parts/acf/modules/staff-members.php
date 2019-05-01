@@ -19,7 +19,7 @@ if ( ! empty( $user_query->get_results() ) ) { ?>
       }
       $second_img = get_field( 'second_image', 'user_'.$user->ID );
       if (!$second_img) {
-        $second_img = $thumbnail
+        $second_img = $thumbnail;
       }
 
       ?>
