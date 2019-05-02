@@ -38,6 +38,10 @@
 		color: #fff;
 	}
 
+	#mce-responses {
+		margin-top: 20px;
+	}
+
 	@include respond-to(tablet) {
 		.mc-field-group {
 			&.first {
