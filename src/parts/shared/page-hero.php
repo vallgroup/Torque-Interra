@@ -20,6 +20,18 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
     </div>
   <?php } else if ($type === 'image_slideshow' && $slideshow) {
     echo do_shortcode('[torque_slideshow id="'.$slideshow.'" type="image"]');
+  } else if ($type === 'video' && $video) {
+    ?>
+    <div class="hero-video-wrapper">
+      <video
+        autoplay
+        loop
+        muted
+        class="hero-video"
+        src="<?php echo $video; ?>">
+      </video>
+    </div>
+    <?php
   } ?>
 
   <?php if ($overlay_title || $overlay_subtitle) { ?>

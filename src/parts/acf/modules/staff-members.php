@@ -12,15 +12,22 @@ if ( ! empty( $user_query->get_results() ) ) { ?>
 
       $title = $user->data->display_name;
       $permalink = get_author_posts_url( $user->ID );
-      $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );
-      if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 400 ) );
       $tel = get_field( 'telephone', 'user_'.$user->ID );
+      $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );
+      if (!$thumbnail) {
+        $thumbnail = get_avatar_url( $user->ID, array( 'size' => 400 ) );
+      }
+      $second_img = get_field( 'second_image', 'user_'.$user->ID );
+      if (!$second_img) {
+        $second_img = $thumbnail;
+      }
 
       ?>
 
       <div class="staff-member" >
         <a class="image-wrapper" href="<?php echo $permalink; ?>">
           <img class="staff-member-image" src="<?php echo $thumbnail; ?>" />
+          <img class="staff-member-second-image" src="<?php echo $second_img; ?>" />
         </a>
 
         <div class="staff-member-content" >
