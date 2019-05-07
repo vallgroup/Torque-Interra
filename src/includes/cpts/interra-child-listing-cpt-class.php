@@ -23,7 +23,7 @@ class Interra_Listing_CPT {
 	public static $listing_labels = array(
 			'singular'       => 'Listing',
 			'plural'         => 'Listing',
-			'slug'           => 'torque-listing',
+			'slug'           => 'listing',
 			'post_type_name' => 'torque_listing',
 	);
 
