@@ -1,14 +1,37 @@
 <?php
 
-$user_query = new WP_User_Query( array(
-  'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG )
-) );
+$sorted_users = array();
+$search_terms = array(
+  'co-founder, managing principal',
+  'senior managing partner',
+  'managing partner',
+  'director',
+  'associate',
+  'office manager',
+  'marketing director'
+);
 
-if ( ! empty( $user_query->get_results() ) ) { ?>
+foreach ( $search_terms as $search_term ) {
+  $args = array(
+    'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
+    'meta_key'      => 'job_title',
+    'meta_value'    => $search_term,
+    'meta_compare'  => '=',
+    'orderby'       => 'display_name',
+    'order'         => 'ASC'
+  );
+
+  $user_query = new WP_User_Query( $args );
+
+  if ( ! empty( $user_query->get_results() ) ) {
+    $sorted_users = array_merge( $sorted_users, $user_query->get_results() );
+  }
+
+} ?>
 
   <div class="staff-members-module" >
 
-    <?php foreach ( $user_query->get_results() as $user ) {
+    <?php foreach ( $sorted_users as $user ) {
 
       $title = $user->data->display_name;
       $permalink = get_author_posts_url( $user->ID );
@@ -68,4 +91,4 @@ if ( ! empty( $user_query->get_results() ) ) { ?>
 
   </div>
 
-<?php } ?>
+<?php /* } */ ?>
