@@ -25,13 +25,34 @@ $highlights = get_field( 'listing_highlights' );
       <h4>Key Details</h4>
       <div class="key-details-wrapper">
 
-      <?php while ( have_rows('key_details') ) : the_row(); ?>
+      <?php while ( have_rows('key_details') ) : the_row();
+        $sub_field_name = get_sub_field('name');
+        $sub_field_value = get_sub_field('value');
+        
+        $geo_search_values = array( "LATITUDE", "LONGITUDE" );
+        $price_search_values = array( "PRICE", "ASKING PRICE" );
+        $size_search_values = array( "LOT SIZE", "BUILDING SIZE" );
+
+        /* Skip over Latitude & Longitude ACF keys */
+        if ( in_array(strtoupper($sub_field_name), $geo_search_values) ) {
+          continue;
+        }
+
+        if ( in_array(strtoupper($sub_field_name), $price_search_values) ) {
+          //setlocale(LC_MONETARY, 'en_US');
+          $sub_field_value = "$" . number_format($sub_field_value);
+        } 
+        
+        if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
+          //setlocale(LC_MONETARY, 'en_US');
+          $sub_field_value = number_format($sub_field_value);
+        }?>
         <div class="key-detail" >
           <div class="key-detail-name">
-            <?php the_sub_field('name'); ?>
+            <?php echo $sub_field_name; ?>
           </div>
           <div class="key-detail-value">
-            <?php the_sub_field('value'); ?>
+            <?php echo $sub_field_value; ?>
           </div>
         </div>
       <?php endwhile ?>

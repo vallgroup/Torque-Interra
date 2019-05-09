@@ -25,7 +25,7 @@ if (count($terms)) {
 
   $image = get_field('region_featured_image', $term);
   ?>
-  <a class="quick-search-term-wrapper" href="/listings?<?php echo $taxonomy.'='.$term->term_id; ?>" >
+  <a class="quick-search-term-wrapper" href="/listings?<?php echo $taxonomy.'='.$term->term_id; ?>&field_5c8ae924ce1a3=available" >
     <div class="quick-search-term" style="background-image: url('<?php echo $image; ?>')">
       <div class="term-name"><?php echo $term->name; ?></div>
 

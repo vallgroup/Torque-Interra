@@ -17,7 +17,10 @@ class Interra_Roles {
       $mime_types['vcf'] = 'text/vcard';
       $mime_types['vcard'] = 'text/vcard';
       return $mime_types;
-    }, 1, 1);
+		}, 1, 1);
+		
+		// setup job title choices select based on job title ACF
+		add_filter('acf/load_field/key=field_5cc096378bc25', array($this, 'setup_job_title_choices'));
   }
 
   public function add_broker() {
@@ -42,7 +45,41 @@ class Interra_Roles {
         array() // override capabilities
       )
     );
-  }
+	}
+	
+	public function setup_job_title_choices( $field ) {
+
+		/* Check the ACF for rows */
+		if( have_rows('staff_job_titles', 'options') ):
+			
+			/* Loop through any existing rows */
+			while ( have_rows('staff_job_titles', 'options') ) : the_row();
+
+				//$job_title_id = get_row_index();
+				$job_title = get_sub_field('staff_job_title');
+
+				$choices[] = $job_title;
+        $titles[] = $job_title;
+
+				if( is_array($choices) ){
+					foreach (array_combine($choices, $titles) as $choice => $title) {
+						$field['choices'][ $choice ] = $title;
+					}
+				}
+
+			endwhile;
+
+		else :
+
+			// Display placeholder
+			$field['choices'] = array(
+				'0' => 'No job titles found...'
+			);
+
+		endif;
+
+		return $field;
+	}
 
   public function add_custom_role_metaboxes() {
     if( function_exists('acf_add_local_field_group') ):
@@ -136,7 +173,7 @@ class Interra_Roles {
       			'key' => 'field_5cc096378bc25',
       			'label' => 'Job Title',
       			'name' => 'job_title',
-      			'type' => 'text',
+      			'type' => 'select',
       			'instructions' => 'Defaults to user role',
       			'required' => 0,
       			'conditional_logic' => 0,
@@ -146,10 +183,8 @@ class Interra_Roles {
       				'id' => '',
       			),
       			'default_value' => '',
-      			'placeholder' => '',
       			'prepend' => '',
       			'append' => '',
-      			'maxlength' => '',
       		),
       	),
       	'location' => array(
