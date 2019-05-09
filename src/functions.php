@@ -205,6 +205,14 @@ if ( isset($_GET['remove_duplicates']) ) {
     interra_remove_duplicates();
   });
 }
+
+if ( isset($_GET['run_listing_author_import']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_update_listings_with_authors();
+  });
+}
 */
 
 ?>
