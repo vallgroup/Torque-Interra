@@ -37,6 +37,7 @@ class Interra_Listing_CPT {
 			'title',
 			'editor',
 			'thumbnail',
+                  'author'
 		),
 		'menu_icon'           => 'dashicons-building',
     'show_in_rest'        => true
