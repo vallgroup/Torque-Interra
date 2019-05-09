@@ -91,7 +91,7 @@ $first_name = $user->first_name;
 <?php if ($closed_listings_loop->has_first_page()) { ?>
 
 <div class="listings-wrapper closed-listings" >
-	<h2><?php echo $first_name."'s"; ?> Recently Closed Listings</h2>
+	<h2><?php echo $first_name."'s"; ?> Recently Closed Deals</h2>
 
 	<?php $closed_listings_loop->the_first_page(); ?>
 </div>
