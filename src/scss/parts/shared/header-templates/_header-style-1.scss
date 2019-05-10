@@ -208,7 +208,7 @@ header#header-style-1 {
             top: 100%;
             left: -25%;
             width: 200px;
-            background-color: $overlay-background;
+            background-color: $submenu-background;
             padding: 10px;
             box-sizing: border-box;
 
@@ -218,7 +218,7 @@ header#header-style-1 {
 
             z-index: 99;
 
-            box-shadow: 0 0 1px #ccc;
+            box-shadow: 0 0 1px $submenu-background;
 
             .torque-menu-item-wrapper {
               display: block;
