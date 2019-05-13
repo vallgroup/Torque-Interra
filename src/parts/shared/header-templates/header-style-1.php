@@ -15,13 +15,13 @@
     </div>
 
     <div class="torque-header-menu-items-inline-wrapper">
-      <?php get_template_part( 'parts/shared/header-parts/menu-items/menu-items', 'inline'); ?>
+      <?php get_template_part( 'parts/shared/header-parts/menu-items/menu-tree', 'inline'); ?>
     </div>
 
   </div>
 
   <div class="torque-navigation-toggle torque-header-menu-items-mobile">
-    <?php get_template_part( 'parts/shared/header-parts/menu-items/menu-items', 'stacked'); ?>
+    <?php get_template_part( 'parts/shared/header-parts/menu-items/menu-tree', 'stacked'); ?>
   </div>
 
 </header>
