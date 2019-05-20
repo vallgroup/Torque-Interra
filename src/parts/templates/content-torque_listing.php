@@ -33,17 +33,25 @@ $highlights = get_field( 'listing_highlights' );
         $price_search_values = array( "PRICE", "ASKING PRICE" );
         $size_search_values = array( "LOT SIZE", "BUILDING SIZE" );
 
-        /* Skip over Latitude & Longitude ACF keys */
+        /* Skip over Latitude & Longitude ACF keys, as they are no currently required by the client */
         if ( in_array(strtoupper($sub_field_name), $geo_search_values) ) {
           continue;
         }
 
         if ( in_array(strtoupper($sub_field_name), $price_search_values) ) {
+          // First, remove any unwanted characters entered by the user
+          $illegal_chars = array( ",", "$" );
+          $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
+          // Second, format the number as required
           //setlocale(LC_MONETARY, 'en_US');
           $sub_field_value = "$" . number_format($sub_field_value);
         } 
         
         if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
+          // First, remove any unwanted characters entered by the user
+          $illegal_chars = array( "," );
+          $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
+          // Second, format the number as required
           //setlocale(LC_MONETARY, 'en_US');
           $sub_field_value = number_format($sub_field_value);
         }?>
