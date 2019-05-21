@@ -53,7 +53,11 @@ $highlights = get_field( 'listing_highlights' );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
           if ( strpos( strtoupper($sub_field_value), "SF" ) == false ) {
+            // Add the unit of measurement
             $sub_field_value = number_format($sub_field_value) . " SF";
+          } else {
+            // Just format as unit of measurement already entered
+            $sub_field_value = number_format($sub_field_value);
           }
         }?>
         <div class="key-detail" >
