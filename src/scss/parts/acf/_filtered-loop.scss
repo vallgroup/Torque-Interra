@@ -121,6 +121,10 @@
           font-size: 16px;
         }
 
+        @include respond-to-max(tablet) {
+          padding: 0.5rem 1rem;
+        }
+
         &:hover,
         &.active {
           font-weight: 500;
@@ -148,6 +152,10 @@
             border-top: 7px solid $medium-green;
           }
         }
+      }
+
+      @include respond-to-max(tablet) {
+        flex-wrap: wrap;
       }
     }
 
@@ -178,6 +186,10 @@
           background-image: url("../statics/images/filter-icon.svg");
           background-size: contain;
           background-repeat: no-repeat;
+
+          @include respond-to-max(tablet) {
+            margin-right: 15px;
+          }
         }
 
         &::after {
