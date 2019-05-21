@@ -41,18 +41,18 @@ $highlights = get_field( 'listing_highlights' );
 
         if ( in_array(strtoupper($sub_field_name), $price_search_values) ) {
           // First, remove any unwanted characters entered by the user
-          $illegal_chars = array( ",", ".", "$" );
+          $illegal_chars = array( ",", ".", "$", " " );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
-          $sub_field_value = "$" . number_format($sub_field_value);
+          $sub_field_value = "$" . number_format( trim( $sub_field_value ) );
         } 
         
         if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
           // First, remove any unwanted characters entered by the user
-          $illegal_chars = array( ",", "sf", ".", "square feet" );
-          $sub_field_value = str_replace( $illegal_chars, "", strtoupper($sub_field_value ));
+          $illegal_chars = array( ",", "SF", ".", "SQUARE FEET", " " );
+          $sub_field_value = str_replace( $illegal_chars, "", strtoupper($sub_field_value) );
           // Second, format the number as required
-          $sub_field_value = number_format($sub_field_value) . " SF";
+          $sub_field_value = number_format( trim( $sub_field_value ) ) . " SF";
         }?>
         <div class="key-detail" >
           <div class="key-detail-name">
