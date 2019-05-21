@@ -172,6 +172,14 @@ function torque_enqueue_child_scripts() {
     );
 }
 
+/* Customise the Jetpack 'Successful Submission' message */
+add_filter( 'grunion_contact_form_success_message', 'jetpackcom_contact_confirmation' );
+function jetpackcom_contact_confirmation() {
+  // Add new confirmation message here:
+  $conf = __( '<div class="contact-form-success-message">Thank you for your message!</div>', 'plugin-textdomain' );
+  return $conf;
+}
+
 
 /*
 if ( isset($_GET['run_user_import']) ) {
