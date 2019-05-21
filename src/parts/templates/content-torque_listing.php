@@ -9,6 +9,7 @@ $highlights = get_field( 'listing_highlights' );
 
   <div class="torque-listing-content-details" >
     <?php if ($content) { ?>
+      <h4>Property Overview</h4>
       <div class="the-content" >
         <?php echo $content; ?>
       </div>
