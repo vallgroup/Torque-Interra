@@ -44,7 +44,6 @@ $highlights = get_field( 'listing_highlights' );
           $illegal_chars = array( ",", "$" );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
-          //setlocale(LC_MONETARY, 'en_US');
           $sub_field_value = "$" . number_format($sub_field_value);
         } 
         
@@ -53,8 +52,9 @@ $highlights = get_field( 'listing_highlights' );
           $illegal_chars = array( "," );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
-          //setlocale(LC_MONETARY, 'en_US');
-          $sub_field_value = number_format($sub_field_value) . " SF";
+          if ( strpos( strtoupper($sub_field_value), "SF" ) == false ) {
+            $sub_field_value = number_format($sub_field_value) . " SF";
+          }
         }?>
         <div class="key-detail" >
           <div class="key-detail-name">
