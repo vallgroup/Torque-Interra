@@ -89,7 +89,9 @@ $highlights = get_field( 'listing_highlights' );
         ?>
 
     	    <div class="broker">
-            <img class="broker-image" src="<?php echo $thumbnail; ?>" />
+            <a class="broker-image-container" href="<?php echo $permalink; ?>">
+              <img class="broker-image" src="<?php echo $thumbnail; ?>" />
+            </a>
 
             <div class="broker-content" >
       	    	<h4><?php echo $title; ?></h4>
