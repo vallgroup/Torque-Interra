@@ -94,7 +94,9 @@ $highlights = get_field( 'listing_highlights' );
             </a>
 
             <div class="broker-content" >
-      	    	<h4><?php echo $title; ?></h4>
+              <a href="<?php echo $permalink; ?>">
+      	    	  <h4><?php echo $title; ?></h4>
+              </a>
 
 
               <div class="meet-broker" >
