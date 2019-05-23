@@ -27,6 +27,7 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
         autoplay
         loop
         muted
+		    playsinline
         class="hero-video"
         src="<?php echo $video; ?>">
       </video>
