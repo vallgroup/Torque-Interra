@@ -37,8 +37,11 @@
       margin-top: 0;
       padding: 30px $bodyPadding1 20px;
 
-      &::before,
+      /* &::before,
       .back-link {
+        display: none;
+      } */
+      &::before {
         display: none;
       }
     }
