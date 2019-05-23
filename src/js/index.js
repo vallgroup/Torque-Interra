@@ -4,3 +4,4 @@ import "./searchform";
 import "./labelToPlaceholder";
 import "./careersForm";
 import "./listingsPages";
+import "./backToTop";
