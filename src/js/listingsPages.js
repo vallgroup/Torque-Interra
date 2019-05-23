@@ -76,7 +76,7 @@
    function scrollToListingItem( $jObject_1 ) {
       // Element has been found, so scroll it into view!
       $('html, body').animate({
-         scrollTop: $jObject_1.offset().top - $(window).height()/2
+         scrollTop: $jObject_1.offset().top - $(window).height()/3
       }, 1, function() {
          // Once we've scrolled to the element, execute the following:
          // Add pulse animation to parent listing grid item element
