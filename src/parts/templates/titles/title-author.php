@@ -9,7 +9,9 @@ if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 1000 )
 ?>
 
 <div class="torque_staff-title" >
-  <img class="featured-image" src="<?php echo $thumbnail; ?>" />
+  <div class="staff-image-container">
+    <img class="featured-image" src="<?php echo $thumbnail; ?>" />
+  </div>
 
   <div class="staff-detail" >
     <h2><?php echo $title; ?></h2>
