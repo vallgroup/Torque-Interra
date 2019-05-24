@@ -6,3 +6,4 @@ import "./careersForm";
 import "./listingsPages";
 import "./backToTop";
 import "./teamImageResize";
+import "./listingsGridImageResize";
