@@ -16,7 +16,7 @@
 
          // Check localStorage for to see if user arrived from Listings Archive page
          var came_from_listings_archive = localStorage.getItem("cameFromListingsArchive");
-         console.log('came_from_listings_archive: ' + came_from_listings_archive);
+         //console.log('came_from_listings_archive: ' + came_from_listings_archive);
 
          back_to_listings_btn_el.click(function(e){
             
@@ -59,7 +59,7 @@
             // Remove the localStorage item for previously viewed listing, as we don't need it anymore
             localStorage.removeItem("previouslyViewedListing");
 
-            console.log('prev_listing_slug: ' + prev_listing_slug);
+            //console.log('prev_listing_slug: ' + prev_listing_slug);
             // Setup the selector used to check when element matching the selector has been loaded
             // Note: this is necessary because the listings grid is loaded via ReactJS, therefore not available on document.ready()
             var listing_selector = 'a[href*="' + prev_listing_slug + '"]';
@@ -77,11 +77,11 @@
 
          /* if ( has_custom_filters && is_mobile ) {
             $('.torque-custom-filter-dropdown').click(function(){
-               console.log('drop down clicked!');
+               //console.log('drop down clicked!');
                if ( $('.torque-custom-filter-dropdown .dropdown-wrapper').hasScrollBar() ){
-                  console.log('this content is scrollable...');
+                  //console.log('this content is scrollable...');
                } else {
-                  console.log('no scroll bar in sight...');
+                  //console.log('no scroll bar in sight...');
                }
             });
          } */
@@ -204,26 +204,26 @@
              */
             if ( max_attempts_pre_cb_2 != false && attempt_num_pre_cb_2 <= max_attempts_pre_cb_2 ) {
                // Keep trying to find element_1, and increment attempt_num var
-               console.log('attempt_num_pre_cb_2: ' + attempt_num_pre_cb_2);
+               //console.log('attempt_num_pre_cb_2: ' + attempt_num_pre_cb_2);
                attempt_num_pre_cb_2++;
             } else if ( max_attempts_pre_cb_2 != false && attempt_num_pre_cb_2 > max_attempts_pre_cb_2 ) {
                // We've exhausted all attempts, try callback_2 now (as long as it exists)!
                if ( $jObject_2.length > 0 ) {
-                  console.log('Attempting callback_2 now...');
+                  //console.log('Attempting callback_2 now...');
                   // Reset the attempt_num_pre_cb_2 counter
                   attempt_num_pre_cb_2 = 1;
                   // Attempt to do something via callback_2 function
                   callback_2($jObject_2);
                } else {
                   // We haven't found selector_1 yet, and now we cannot find selector_2, reset the counter and try again!
-                  console.log('We haven\'t found selector_1 yet, and now we cannot find selector_2, so let\'s try again from the start...');
+                  //console.log('We haven\'t found selector_1 yet, and now we cannot find selector_2, so let\'s try again from the start...');
                   // Reset the attempt_num_pre_cb_2 counter
                   attempt_num_pre_cb_2 = 1;
                }
             }
 
             // Increament the total_num_attempts counter
-            console.log( 'total_num_attempts: ' + total_num_attempts );
+            //console.log( 'total_num_attempts: ' + total_num_attempts );
             total_num_attempts++;
 
             // Try again to find selector_1
@@ -231,7 +231,7 @@
 
          } else if ( $jObject_1.length < 1 && total_num_attempts > max_total_num_attempts ) {
             // We have reached the maximum total number of
-            console.log('We\'ve reached the maximum number of attempts (' + total_num_attempts + ') to find selector_1, but didn\'t find it unfortunately. Pulling the plug now.');
+            //console.log('We\'ve reached the maximum number of attempts (' + total_num_attempts + ') to find selector_1, but didn\'t find it unfortunately. Pulling the plug now.');
             // Remove loading overlay
             $('.back-to-listing-overlay').remove();
             // Clear the interval
@@ -239,7 +239,7 @@
          }
             
          // We found selector_1!
-         console.log('We found selector_1! Clear the interval and call function callback_1!');
+         //console.log('We found selector_1! Clear the interval and call function callback_1!');
          // Remove loading overlay
          $('.back-to-listing-overlay').remove();
          // Clear the interval
