@@ -13,21 +13,35 @@
       
       // If on a SINGLE listings page & a back to listings btn exists
       if ( is_single_listing_pg && has_back_to_listings_btn ) {
+
+         // Check localStorage for to see if user arrived from Listings Archive page
+         var came_from_listings_archive = localStorage.getItem("cameFromListingsArchive");
+         //console.log('came_from_listings_archive: ' + came_from_listings_archive);
+
          back_to_listings_btn_el.click(function(e){
             
+            // Is user came from the Listings Archive page, and wants to go back using the 'back to listings'
+            // link, prevent the default action to retain the filter settings
+            // If we didn't come from that page, then just go back to where we arrived from  (team, slider, etc...)
+            if ( came_from_listings_archive && came_from_listings_archive == "true" ) {
+
+               // Remove the localStorage item, as we don't need it anymore
+               localStorage.removeItem("cameFromListingsArchive");
+            
+               // Get current Listing's URL slug
+               var prev_listing_slug = curr_url.split('/listing/')[1].replace(/\//g,'');
+               
+               /**
+                * Set localStorage to slug, for use if the users goes back to listings
+                * Note: if the user goes elsewhere, and then comes back to a different
+                * listing via the listings page, this will be overwritten which is fine!
+                */
+               localStorage.setItem("previouslyViewedListing", prev_listing_slug);
+            }
+
             // Prevent the default a href actions
             e.preventDefault();
             e.stopPropagation();
-            
-            // Get current Listing's URL slug
-            var prev_listing_slug = curr_url.split('/listing/')[1].replace(/\//g,'');
-            
-            /**
-             * Set localStorage to slug, for use if the users goes back to listings
-             * Note: if the user goes elsewhere, and then comes back to a different
-             * listing via the listings page, this will be overwritten which is fine!
-             */
-            localStorage.setItem("previouslyViewedListing", prev_listing_slug);
 
             // Redirect user exactly back to where they came from (incl. filters, etc)
             window.history.go(-1);
@@ -40,6 +54,7 @@
 
          // Check localStorage for previously viewed listing
          var prev_listing_slug = localStorage.getItem("previouslyViewedListing");
+         
          if ( prev_listing_slug ) {
             //console.log('prev_listing_slug: ' + prev_listing_slug);
             // Setup the selector used to check when element matching the selector has been loaded
@@ -50,9 +65,15 @@
             // Wait until the element is loaded
             waitForEl(listing_selector, scrollToListingItem, load_more_btn_selector, simulateMouseClick, overlay_selector, 5 );
 
-            // Now remove the localStorage item for previously viewed listing, as we don't need it anymore
-            localStorage.removeItem("previouslyViewedListing");  
+            // Remove the localStorage item for previously viewed listing, as we don't need it anymore
+            localStorage.removeItem("previouslyViewedListing");
          }
+
+         // Set the locaStorage to let the listing page know we arrived from the Listing Archive,
+         // on click of any listing page link matching the selector
+         $(document).on('click', '.single-listing-link', function(e) {
+            localStorage.setItem("cameFromListingsArchive", "true");
+         });
 
          /* if ( has_custom_filters && is_mobile ) {
             $('.torque-custom-filter-dropdown').click(function(){
