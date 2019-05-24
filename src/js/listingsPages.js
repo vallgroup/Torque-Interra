@@ -56,6 +56,9 @@
          var prev_listing_slug = localStorage.getItem("previouslyViewedListing");
          
          if ( prev_listing_slug ) {
+            // Remove the localStorage item for previously viewed listing, as we don't need it anymore
+            localStorage.removeItem("previouslyViewedListing");
+
             //console.log('prev_listing_slug: ' + prev_listing_slug);
             // Setup the selector used to check when element matching the selector has been loaded
             // Note: this is necessary because the listings grid is loaded via ReactJS, therefore not available on document.ready()
@@ -64,9 +67,6 @@
             var overlay_selector = '.torque-filtered-loop';
             // Wait until the element is loaded
             waitForEl(listing_selector, scrollToListingItem, load_more_btn_selector, simulateMouseClick, overlay_selector, 5 );
-
-            // Remove the localStorage item for previously viewed listing, as we don't need it anymore
-            localStorage.removeItem("previouslyViewedListing");
          }
 
          // Set the locaStorage to let the listing page know we arrived from the Listing Archive,
