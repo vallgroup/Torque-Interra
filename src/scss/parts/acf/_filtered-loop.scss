@@ -12,7 +12,7 @@
 %listings_loop {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
   padding: 35px $bodyPadding2;
   width: 100%;
@@ -22,7 +22,7 @@
   }
 
   @include respond-to(desktop) {
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
   }
 
   .loop-post {
@@ -30,12 +30,15 @@
     width: 100%;
 
     @include respond-to(tablet) {
-      width: 45%;
+      margin-left: 2%;
+      margin-right: 2%;
+      width: 46%;
     }
 
     @include respond-to(desktop) {
+      margin-left: 2%;
       margin-right: 2%;
-      width: 31%;
+      width: 28%;
     }
 
     .featured-image-wrapper {
@@ -44,9 +47,13 @@
       padding-bottom: 0;
 
       @include respond-to(tablet) {
-        width: 250px;
-        height: 190px;
+        /* width: 250px;
+        height: 190px; */
         max-width: 100%;
+
+        width: 100%;
+        height: auto;
+        min-height: 220px;
       }
 
       .featured-image {

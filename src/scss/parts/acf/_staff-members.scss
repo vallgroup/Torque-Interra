@@ -20,20 +20,35 @@
 
     @include respond-to(tablet) {
       display: block;
-      width: 49%;
+
+      margin-left: 2%;
+      margin-right: 2%;
+
+      width: 46%;
     }
 
     @include respond-to(desktop) {
-      width: 32%;
+      margin-left: 2%;
+      margin-right: 2%;
+      width: 28%;
     }
 
     .image-wrapper {
       display: block;
-      width: 170px;
-      height: 180px;
-      max-width: 50%;
+      width: 100% !important;
+      height: 100% !important;
       position: relative;
       overflow: hidden;
+      
+      @include respond-to-max-custom(550px) {
+        max-height: 160px;
+        max-width: 40% !important;
+      }
+
+      @include respond-to-max-custom(767px) {
+        max-height: 220px;
+        max-width: 30%;
+      }
 
       @include respond-to-max(tablet) {
         flex: 0 0 auto;
@@ -42,15 +57,15 @@
       @include respond-to(tablet) {
         margin-bottom: 15px;
 
-        width: 252px;
-        height: 200px;
+        max-height: 465px;
         max-width: 100%;
       }
 
       @include respond-to(desktop) {
         margin-bottom: 25px;
-        width: 373px;
-        height: 252px;
+        
+        max-height: 560px;
+        max-width: 100%;
       }
 
       .staff-member-image,
@@ -59,6 +74,7 @@
         height: 100%;
 
         object-fit: cover;
+        object-position: center top;
       }
 
       &:hover {
