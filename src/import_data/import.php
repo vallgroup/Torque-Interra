@@ -102,6 +102,66 @@ function interra_prepare_user( &$user ) {
 *
  */
 
+function interra_update_listings_with_authors() {
+  ob_implicit_flush(true);
+  ob_start();
+
+  $listings = interra_import_csv_to_acc_array( get_stylesheet_directory() . '/import_data/listing-author.csv' );
+
+  echo 'Importing '.count($listings).' listings <br>';
+
+  for ($count=0; $count < count($listings); $count++) {
+    $new_listing = $listings[$count];
+
+
+    $__listing = get_page_by_title(
+      $new_listing['post_title'],
+      null,
+      'torque_listing'
+    );
+
+    if ( ! $__listing ) {
+      echo '<pre>';
+      echo 'Did not find listing with title ' . $new_listing['post_title'];
+      echo '</pre>';
+      continue;
+    }
+
+    echo '<pre>';
+    echo 'Updating property ' . $new_listing['post_title'];
+    echo '</pre>';
+
+    $_brokers = get_post_meta( $__listing->ID, 'listing_brokers', true );
+    var_dump( $_brokers );
+    echo '<br />';
+    if ( "" !== $_brokers ) {
+      array_unshift( $_brokers, $new_listing['post_author'] );
+      update_field( 'listing_brokers', array_unique( $_brokers ), $__listing->ID );
+    } else {
+      update_field( 'listing_brokers', array( $new_listing['post_author'] ), $__listing->ID );
+    }
+    var_dump(get_post_meta( $__listing->ID, 'listing_brokers', true ));
+    echo '<hr /><br />';
+
+    $updated = wp_update_post( array(
+      'ID' => $__listing->ID,
+      'post_author' => intval( $new_listing['post_author'] ),
+    ) );
+
+    if ( ! is_wp_error( $updated ) ) {
+      echo '<pre>';
+      echo 'The listing (' . $new_listing['post_title'] . ') was updated successfully.';
+      echo '</pre>';
+    }
+
+    flush();
+    ob_flush();
+  }
+
+  ob_end_flush();
+}
+
+
 function interra_insert_listings() {
   $should_run = get_option('interra_inserted_listings') !== '1';
   if (!$should_run) return;
@@ -303,6 +363,54 @@ function interra_add_listing_meta( $listing_id, $meta_array ) {
  * Blog Posts
  *
  */
+
+function interra_update_blog_post_content() {
+  ob_implicit_flush(true);
+  ob_start();
+
+  $listings = interra_import_csv_to_acc_array( get_stylesheet_directory() . '/import_data/post-content.csv' );
+
+  echo 'Importing '.count($listings).' listings <br>';
+
+  for ($count=0; $count < count($listings); $count++) {
+    $new_listing = $listings[$count];
+
+
+    $__listing = get_page_by_title(
+      $new_listing['post_title'],
+      null,
+      'post'
+    );
+
+    if ( ! $__listing ) {
+      echo '<pre>';
+      echo 'Did not find listing with title ' . $new_listing['post_title'];
+      echo '</pre>';
+      continue;
+    }
+
+    echo '<pre>';
+    echo 'Updating property ' . $new_listing['post_title'];
+    echo '</pre>';
+
+    $updated = wp_update_post( array(
+      'ID' => $__listing->ID,
+      'post_content' => $new_listing['post_content'],
+    ) );
+
+    if ( ! is_wp_error( $updated ) ) {
+      echo '<pre>';
+      echo 'The listing (' . $new_listing['post_title'] . ') was updated successfully.';
+      echo '</pre>';
+    }
+
+    flush();
+    ob_flush();
+  }
+
+  ob_end_flush();
+}
+
 
  function interra_insert_blog_posts() {
    $should_run = get_option('interra_inserted_posts') !== '1';

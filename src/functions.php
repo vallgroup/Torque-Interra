@@ -328,6 +328,22 @@ if ( isset($_GET['remove_duplicates']) ) {
     interra_remove_duplicates();
   });
 }
+
+if ( isset($_GET['run_listing_author_import']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_update_listings_with_authors();
+  });
+}
+
+if ( isset($_GET['run_blog_post_content_update']) ) {
+  require_once( get_stylesheet_directory() . '/import_data/import.php' );
+
+  add_action('init', function() {
+    interra_update_blog_post_content();
+  });
+}
 */
 
 ?>

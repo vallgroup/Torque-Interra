@@ -1,8 +1,6 @@
 ($ => {
    $(document).ready(() => {
 
-      console.log('listingsGridImageResize.js loaded...');
-      
       // Set constant vars
       const listing_grid_iamges = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
       const height_to_width_ratio = 0.75; // 4:3 landscape ratio
@@ -21,15 +19,13 @@
    function resetImageRatio( $elements_selector, $heightToWidthRatio = 1, $maxAttempts = 1000 ) {
 
       var $currAttempt = 1;
-      
+
       var poller1 = setInterval(function(){
-      
+
          // Setup jQuery objects for the two selectors, each interval
          $elements = $($elements_selector);
 
          if ( $elements.length < 1 && $currAttempt <= $maxAttempts ) {
-            
-            console.log('$currAttempt: ' + $currAttempt);
             $currAttempt++;
 
             return;
@@ -40,8 +36,6 @@
             clearInterval(poller1);
 
          }
-
-         console.log('Found elements!');
 
          $elements.each(function(){
             var newHeight = $(this).width() * $heightToWidthRatio;
@@ -55,7 +49,7 @@
                   'height':      newHeight
                });
          });
-         
+
          // Clear the interval
          clearInterval(poller1);
 
