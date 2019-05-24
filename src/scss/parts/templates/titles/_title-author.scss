@@ -88,6 +88,8 @@
       margin-right: 15px;
       margin-bottom: 5px;
 
+      width: 100%;
+
       @include respond-to(tablet) {
         margin-bottom: 15px;
       }

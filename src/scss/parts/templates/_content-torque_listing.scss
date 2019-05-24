@@ -78,7 +78,7 @@
     }
 
     @include respond-to(desktop) {
-      padding: 60px 7vw;
+      padding: 50px 5vw;
     }
 
     h4.brokers-section-title {
@@ -108,17 +108,27 @@
         color: $white;
       }
 
-      img.broker-image {
-        display: block;
-        width: 167px;
-        max-width: 50%;
-        height: 137px;
-        object-fit: cover;
+      .broker-image-container {
+        
+        img.broker-image {
+          display: block;
+          width: 167px;
+          max-width: 50%;
+          height: 137px;
+          object-fit: cover;
+          object-position: 100% 10%;
+
+          @include respond-to(tablet) {
+            width: 100%;
+            max-width: none;
+            height: 170px;
+          }
+        }
 
         @include respond-to(tablet) {
           width: 100%;
           max-width: none;
-          height: 170px;
+          //height: 170px;
         }
 
         @include respond-to(desktop) {

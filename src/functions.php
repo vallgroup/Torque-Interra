@@ -173,6 +173,129 @@ function torque_enqueue_child_scripts() {
 }
 
 
+/**
+ * Customise the Jetpack 'Successful Submission' message
+ */
+add_filter( 'grunion_contact_form_success_message', 'jetpackcom_contact_confirmation' );
+function jetpackcom_contact_confirmation() {
+  // Add new confirmation message here:
+  $conf = __( '<div class="contact-form-success-message">Thank you for your message!</div>', 'plugin-textdomain' );
+  return $conf;
+}
+
+
+/**
+ * Update author slug to 'team'
+ */
+add_action('init', 'update_author_slug');
+function update_author_slug() {
+    global $wp_rewrite;
+    $author_slug = 'team'; // change slug name
+    $wp_rewrite->author_base = $author_slug;
+}
+
+
+/**
+ * Initialise ACF Social Media Options for theme
+ */
+add_action('acf/init', 'add_social_media_options_acf');
+function add_social_media_options_acf() {
+  if( function_exists('acf_add_local_field_group') ):
+
+    acf_add_local_field_group(array(
+      'key' => 'group_5ce3438132e73',
+      'title' => 'Social Media',
+      'fields' => array(
+        array(
+          'key' => 'field_5ce34402d4dab',
+          'label' => 'Social Media',
+          'name' => 'social_media',
+          'type' => 'repeater',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'collapsed' => '',
+          'min' => 0,
+          'max' => 0,
+          'layout' => 'table',
+          'button_label' => '',
+          'sub_fields' => array(
+            array(
+              'key' => 'field_5ce34426d4dac',
+              'label' => 'Social Channel',
+              'name' => 'social_channel',
+              'type' => 'select',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'choices' => array(
+                'twitter' => 'Twitter',
+                'linkedin' => 'LinkedIn',
+                'instagram' => 'Instagram',
+                'facebook' => 'Facebook',
+                'youtube' => 'YouTube',
+              ),
+              'default_value' => array(
+              ),
+              'allow_null' => 0,
+              'multiple' => 0,
+              'ui' => 0,
+              'return_format' => 'value',
+              'ajax' => 0,
+              'placeholder' => '',
+            ),
+            array(
+              'key' => 'field_5ce34444d4dad',
+              'label' => 'Social URL',
+              'name' => 'social_url',
+              'type' => 'url',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'default_value' => '',
+              'placeholder' => '',
+            ),
+          ),
+        ),
+      ),
+      'location' => array(
+        array(
+          array(
+            'param' => 'options_page',
+            'operator' => '==',
+            'value' => 'acf-options',
+          ),
+        ),
+      ),
+      'menu_order' => 0,
+      'position' => 'normal',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'hide_on_screen' => '',
+      'active' => 1,
+      'description' => '',
+    ));
+    
+    endif;
+}
+
+
 /*
 if ( isset($_GET['run_user_import']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );

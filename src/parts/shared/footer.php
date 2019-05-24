@@ -27,3 +27,7 @@ $copyright = get_field('copyright', 'options');
   <?php } ?>
 
 </footer>
+
+<div class="back-to-top-container">
+  <div class="back-to-top-btn fa fa-arrow-up"></div>
+</div>

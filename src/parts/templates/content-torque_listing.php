@@ -9,6 +9,7 @@ $highlights = get_field( 'listing_highlights' );
 
   <div class="torque-listing-content-details" >
     <?php if ($content) { ?>
+      <h4>Property Overview</h4>
       <div class="the-content" >
         <?php echo $content; ?>
       </div>
@@ -33,19 +34,25 @@ $highlights = get_field( 'listing_highlights' );
         $price_search_values = array( "PRICE", "ASKING PRICE" );
         $size_search_values = array( "LOT SIZE", "BUILDING SIZE" );
 
-        /* Skip over Latitude & Longitude ACF keys */
+        /* Skip over Latitude & Longitude ACF keys, as they are no currently required by the client */
         if ( in_array(strtoupper($sub_field_name), $geo_search_values) ) {
           continue;
         }
 
         if ( in_array(strtoupper($sub_field_name), $price_search_values) ) {
-          //setlocale(LC_MONETARY, 'en_US');
-          $sub_field_value = "$" . number_format($sub_field_value);
+          // First, remove any unwanted characters entered by the user
+          $illegal_chars = array( ",", ".", "$", " " );
+          $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
+          // Second, format the number as required
+          $sub_field_value = "$" . number_format( trim( $sub_field_value ) );
         } 
         
         if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
-          //setlocale(LC_MONETARY, 'en_US');
-          $sub_field_value = number_format($sub_field_value);
+          // First, remove any unwanted characters entered by the user
+          $illegal_chars = array( ",", "SF", ".", "SQUARE FEET", " " );
+          $sub_field_value = str_replace( $illegal_chars, "", strtoupper($sub_field_value) );
+          // Second, format the number as required
+          $sub_field_value = number_format( trim( $sub_field_value ) ) . " SF";
         }?>
         <div class="key-detail" >
           <div class="key-detail-name">
@@ -82,10 +89,14 @@ $highlights = get_field( 'listing_highlights' );
         ?>
 
     	    <div class="broker">
-            <img class="broker-image" src="<?php echo $thumbnail; ?>" />
+            <a class="broker-image-container" href="<?php echo $permalink; ?>">
+              <img class="broker-image" src="<?php echo $thumbnail; ?>" />
+            </a>
 
             <div class="broker-content" >
-      	    	<h4><?php echo $title; ?></h4>
+              <a href="<?php echo $permalink; ?>">
+      	    	  <h4><?php echo $title; ?></h4>
+              </a>
 
 
               <div class="meet-broker" >

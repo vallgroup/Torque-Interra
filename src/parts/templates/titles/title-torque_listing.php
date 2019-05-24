@@ -8,8 +8,8 @@ $image_type = get_field('listing_image');
 
 <div class="torque_listing-title" >
   <div class="listing-title-content" >
-    <div class="back-link" >
-      <a href="/listings">
+    <div class="back-link">
+      <a class="back-to-listings-btn" href="/listings">
         < Back To Listings
       </a>
     </div>
