@@ -20,6 +20,10 @@
 
          back_to_listings_btn_el.click(function(e){
             
+            // Set LocalStorage to indicate that we're going back to the Listings Archive FROM a single Listing
+            // Used to ensure we don't run the Listing Grid Item highlight feature unnecessarily....
+            localStorage.setItem("cameFromSingleListing", "true");
+            
             // Is user came from the Listings Archive page, and wants to go back using the 'back to listings'
             // link, prevent the default action to retain the filter settings
             // If we didn't come from that page, then just go back to where we arrived from  (team, slider, etc...)
@@ -54,10 +58,15 @@
 
          // Check localStorage for previously viewed listing
          var prev_listing_slug = localStorage.getItem("previouslyViewedListing");
+         // Check localStorage to see where we've arrived from
+         var came_from_singl_listing = localStorage.getItem("cameFromSingleListing");
          
-         if ( prev_listing_slug ) {
+         // Only if there is a previous listing AND we arrived from the Single Listing page do we want to continue
+         if ( prev_listing_slug && came_from_singl_listing == "true" ) {
             // Remove the localStorage item for previously viewed listing, as we don't need it anymore
             localStorage.removeItem("previouslyViewedListing");
+            // Remove the localStorage item for where we came from, as we don't need it anymore
+            localStorage.removeItem("cameFromSingleListing");
 
             //console.log('prev_listing_slug: ' + prev_listing_slug);
             // Setup the selector used to check when element matching the selector has been loaded
