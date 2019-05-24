@@ -21,20 +21,18 @@
 
    });
 
-   function resetImageRatio( $elements, $heightToWidthRatio = 1, $waitBeforeReset = 0 ) {
+   function resetImageRatio( $elements, $heightToWidthRatio = 1 ) {
       // Check if elements exist
       if ( $elements.length > 0 ) {
-        /*  setTimeout(function(){ */
-            $elements.each(function(){
-               // With each, reset the image ratio
-               $(this)
-                  .css({
-                     'transition':  '0.2s',
-                     'width'     :  '100%',
-                     'max-height'    :  $(this).width() * $heightToWidthRatio
-                  });
-            });
-         /* }, $waitBeforeReset); */
+         $elements.each(function(){
+            // With each, reset the image ratio
+            $(this)
+               .css({
+                  'transition':  '0.2s',
+                  'width'     :  '100%',
+                  'max-height'    :  $(this).width() * $heightToWidthRatio
+               });
+         });
       } else {
          return;
       }
