@@ -74,9 +74,9 @@ class Interra_Listing_CPT {
 			self::$LISTING_REGION_TAX_SLUG,
 			self::$listing_labels['post_type_name'],
 			array(
-			'label'        => 'Regions',
+			'label'        => 'Neighborhoods',
 			'labels'       => array(
-				'singular_name'   => 'Region'
+				'singular_name'   => 'Neighborhoods'
 			),
 			'hierarchical' => true,
 			'show_admin_column' => true,
