@@ -194,7 +194,7 @@ header#header-style-1 {
         &:last-child {
           padding-right: 0;
         }
-      
+
         &.parent {
           position: relative;
           padding-right: 20px;
@@ -295,7 +295,7 @@ header#header-style-1 {
           .torque-menu-item-children-wrapper {
             padding-right: 30px;
             position: relative;
-  
+
             &:after {
               content: '';
               position: absolute;
@@ -311,5 +311,14 @@ header#header-style-1 {
         }
       }
     }
+  }
+}
+
+
+// work with admin bar
+body.admin-bar #header-style-1 {
+  margin-top: 32px;
+  @media screen and (max-width: 782px) {
+    margin-top: 46px;
   }
 }
