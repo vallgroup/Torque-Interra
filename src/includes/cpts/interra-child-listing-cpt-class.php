@@ -77,7 +77,7 @@ class Interra_Listing_CPT {
 			array(
 			'label'        => 'Neighborhoods',
 			'labels'       => array(
-				'singular_name'   => 'Neighborhoods'
+				'singular_name'   => 'Neighborhood'
 			),
 			'hierarchical' => true,
 			'show_admin_column' => true,
@@ -93,19 +93,19 @@ class Interra_Listing_CPT {
 		// Apply this only on a specific post type
 		if ( 'torque_listing' !== $post_type )
 			return;
-	
+
 		// A list of taxonomy slugs to filter by
 		$taxonomies = array( 'interra_listing_property_type', 'interra_listing_region' );
-	
+
 		foreach ( $taxonomies as $taxonomy_slug ) {
-	
+
 			// Retrieve taxonomy data
 			$taxonomy_obj = get_taxonomy( $taxonomy_slug );
 			$taxonomy_name = $taxonomy_obj->labels->name;
-	
+
 			// Retrieve taxonomy terms
 			$terms = get_terms( $taxonomy_slug );
-	
+
 			// Display filter HTML
 			echo "<select name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'>";
 			echo '<option value="">' . sprintf( esc_html__( 'Show All %s', 'text_domain' ), $taxonomy_name ) . '</option>';
