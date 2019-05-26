@@ -7,8 +7,6 @@
       const isSingleListingPage = currUrl.includes('/listing/'); // Are we on a single /listing/listing-slug/ page?
       const hasBackToListingsBtn = $('.back-to-listings-btn').length > 0;
       const backToListingsBtnElement = $('.back-to-listings-btn');
-      /* const has_custom_filters = $('.custom-filters').length > 0; */
-
 
       // If on a SINGLE listings page & a back to listings btn exists
       if (isSingleListingPage && hasBackToListingsBtn) {
@@ -162,8 +160,9 @@
       if (prependOverlayToSelector != '') {
          $(prependOverlayToSelector)
             .css('position', 'relative')
-            .prepend('<div class="back-to-listing-overlay"></div>');
+            .prepend('<div class="back-to-listing-overlay"><img class="back-to-listing-loader" src="/wp-content/themes/interra-child/statics/images/loading.gif" width="40px" height="auto" /></div>');
          $('.back-to-listing-overlay').css({
+            'cursor': 'progress',
             'position': 'absolute',
             'top': '0',
             'left': '0',
@@ -171,7 +170,14 @@
             'width': '100%',
             'background': '#ffffff8c',
             'z-index': '9999'
-         })
+         });
+         $('.back-to-listing-loader').css({
+            'position': 'fixed',
+            'top': '60%',
+            'left': '0',
+            'right': '0',
+            'margin': '0 auto'
+         });
       }
 
       let poller1 = setInterval(function () {
@@ -251,21 +257,24 @@
          let elementTop = searchElement.offset().top;
          let elemntInView = ((elementTop <= docViewBottom) && (elementTop >= docViewTop));
 
+         /**
+          * IF: Element not in view, and maximum attemtps not exceeded, increment counter and continue
+          * ELSE IF: Element not in view, BUT maximum attemtps exceeded, abort mission
+          * ELSE IF: Element is in view! Ping the callback and kill the setInterval
+          * ELSE: Just in case, kill the setInterval
+          */
          if (!elemntInView && currAttempt <= maxAttempts) {
-            console.log('Element not in view yet. Checking again now.');
             currAttempt++;
             return;
          } else if (!elemntInView && currAttempt > maxAttempts) {
-            console.log('Exiting because max attempts reached.');
             // Clear the interval
             clearInterval(poller1);
          } else if (elemntInView) {
-            console.log('Element has been scrolled into view!');
+            // Found the element!
             callback(searchElement);
             // Clear the interval
             clearInterval(poller1);
          } else {
-            console.log('Exiting, because something terrible has happened.');
             // Clear the interval
             clearInterval(poller1);
          }

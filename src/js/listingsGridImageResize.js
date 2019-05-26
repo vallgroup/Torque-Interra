@@ -75,17 +75,14 @@
           * ELSE: We must have found the element(s), start resizing them!
           */
          if (elementsToFind.length < 1 && currSearchAttempt <= maxAttemptsToFindElements) {
-            console.log('currSearchAttempt: ' + currSearchAttempt);
             // Increment attempts counter
             currSearchAttempt++;
             // Try again...
             return;
          } else if (elementsToFind.length < 1 && currSearchAttempt > maxAttemptsToFindElements) {
-            console.log('Timed out! No elements found. Aborting mission...');
             // Clear the interval and exit
             clearInterval(poller1);
          } else {
-            console.log('Found some elements to resize! Going for it...');
             // We've found the element(s), so start resizing them!
             elementsToFind.each(function () {
                let newHeight = $(this).width() * WidthToHeightRatioTarget;
