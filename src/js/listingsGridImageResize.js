@@ -1,60 +1,107 @@
 ($ => {
    $(document).ready(() => {
+      // Set initial variables
+      const listingGridImagesSelector = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
+      const onListingGridPage = $('body').hasClass('page-template-listings'); // Bool check to see if on page with a Listings Grid
+      const onBlogGridPage = $('body').hasClass('page-template-blog'); // Bool check to see if on page with a Blog Grid
+      const WidthToHeightRatio = 0.75; // 4:3 landscape ratio
 
-      // Set constant vars
-      const listing_grid_iamges = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
-      const height_to_width_ratio = 0.75; // 4:3 landscape ratio
+      if (onListingGridPage || onBlogGridPage) {
+         // On load ensure image ratio is correct
+         //resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
 
-      // On load ensure image ratio is correct
-
-      resetImageRatio(listing_grid_iamges, height_to_width_ratio, 500);
-
-      // On resize ensure image ratio is correct
-      $(window).resize(function(){
-         resetImageRatio(listing_grid_iamges, height_to_width_ratio, 500);
-      });
-
-   });
-
-   function resetImageRatio( $elements_selector, $heightToWidthRatio = 1, $maxAttempts = 1000 ) {
-
-      var $currAttempt = 1;
-
-      var poller1 = setInterval(function(){
-
-         // Setup jQuery objects for the two selectors, each interval
-         $elements = $($elements_selector);
-
-         if ( $elements.length < 1 && $currAttempt <= $maxAttempts ) {
-            $currAttempt++;
-
-            return;
-
-         } else if ( $elements.length < 1 && $currAttempt > $maxAttempts ) {
-
-            // Clear the interval
-            clearInterval(poller1);
-
-         }
-
-         $elements.each(function(){
-            var newHeight = $(this).width() * $heightToWidthRatio;
-            // With each, reset the image ratio
-            $(this)
-               .css({
-                  'transition':  '0.2s',
-                  'width':       '100%',
-                  'max-height':  newHeight,
-                  'min-height':  newHeight,
-                  'height':      newHeight
-               });
+         // On window resize ensure image ratio is correct
+         $(window).resize(function () {
+            resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
          });
 
-         // Clear the interval
-         clearInterval(poller1);
+         // Setup a mutation observer to perform a given action if mutations are detected
+         let mutationObserver = new MutationObserver(function (mutations) {
+            let resetRequired = false;
+            mutations.forEach(function (mutation) {
+               if (mutation.addedNodes.length) {
+                  // Set flag so we know a reset is required
+                  resetRequired = true;
+                  // Attempt to exit the loop
+                  return false;
+               }
+            });
+            // Wait until all the mutations have occurred, and if we're determined that a reset is required, go for it!
+            if (resetRequired) {
+               resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
+            }
+         });
 
-      },10);
+         // Initialise mutation observer on the element with class name 'posts-wrapper'
+         mutationObserver.observe(
+            document.getElementsByClassName('posts-wrapper')[0],
+            {
+               childList: true,
+               subtree: true
+            }
+         );
 
+         // Kill the nutationObserve when leaving the page...
+         $(window).unload(function () {
+            mutationObserver.disconnect();
+         });
+      }
+   });
+
+
+   /**
+    * Attempts to find elements and resize them based on the WidthToHeightRatioTarget. If no elements are 
+    * @param {*} elementsToResizeSelector The selector used to find the element(s)
+    * @param {*} WidthToHeightRatioTarget A ratio, used to multiple by the width to get the new height
+    * @param {*} maxAttemptsToFindElements Maximum number of attempts before aborting mission
+    * @param {*} elementSearchInterval Milliseconds to wait between each search for the elements 
+    */
+   function resetImageRatio(
+      elementsToResizeSelector,
+      WidthToHeightRatioTarget = 1,
+      maxAttemptsToFindElements = 1000,
+      elementSearchInterval = 10
+   ) {
+      // Set initial variables
+      let currSearchAttempt = 1;
+      // Initialise a poller, to loop through at certain intervals until we find element(s)
+      let poller1 = setInterval(function () {
+         // Setup jQuery objects for the selector, each interval
+         elementsToFind = $(elementsToResizeSelector);
+
+         /**
+          * IF: we haven't found the elements, and we haven't reached the maximum number of attempts, try again
+          * ELSE IF: we haven't found the elements, BUT we've reached the maximum number of attempts, abort mission
+          * ELSE: We must have found the element(s), start resizing them!
+          */
+         if (elementsToFind.length < 1 && currSearchAttempt <= maxAttemptsToFindElements) {
+            console.log('currSearchAttempt: ' + currSearchAttempt);
+            // Increment attempts counter
+            currSearchAttempt++;
+            // Try again...
+            return;
+         } else if (elementsToFind.length < 1 && currSearchAttempt > maxAttemptsToFindElements) {
+            console.log('Timed out! No elements found. Aborting mission...');
+            // Clear the interval and exit
+            clearInterval(poller1);
+         } else {
+            console.log('Found some elements to resize! Going for it...');
+            // We've found the element(s), so start resizing them!
+            elementsToFind.each(function () {
+               let newHeight = $(this).width() * WidthToHeightRatioTarget;
+               // With each, reset the image ratio
+               $(this).css({
+                  transition: '0.2s',
+                  width: '100%',
+                  'max-height': newHeight,
+                  'min-height': newHeight,
+                  height: newHeight
+               });
+            });
+
+            // Clear the interval and exit
+            clearInterval(poller1);
+         }
+      }, elementSearchInterval);
    }
-
 })(jQuery);
