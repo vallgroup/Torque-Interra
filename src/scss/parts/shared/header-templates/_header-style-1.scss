@@ -96,8 +96,9 @@ header#header-style-1 {
 
       @include respond-to(desktop) {
         padding: 10px 0;
-        width: 170px;
-        height: 50%;
+        width: 300px;
+        height: 49%;
+        max-height: 49%;
       }
 
       .search-icon {
@@ -172,18 +173,25 @@ header#header-style-1 {
       }
 
       @include respond-to(desktop) {
-        padding: 10px 0;
+        padding: 10px 0 0;
         width: 50%;
-        height: 50%;
+        height: 51%;
+      }
+
+      .torque-menu-items-inline {
+        height: 100%;
       }
 
       .torque-menu-item-wrapper {
+        height: 100%;
         padding: 0 10px;
 
         font-size: 16px;
         font-weight: 500;
         color: $white;
         text-transform: uppercase;
+
+        cursor: pointer;
 
         transition: all 0.3s ease;
 
@@ -200,7 +208,7 @@ header#header-style-1 {
           padding-right: 20px;
           background-image: url('/wp-content/themes/interra-child/statics/images/dropdownarrow.png');
           background-repeat: no-repeat;
-          background-position: right center;
+          background-position: right 12%;
           background-size: 15px;
 
           .torque-menu-item-children-wrapper {
@@ -208,9 +216,11 @@ header#header-style-1 {
             top: 100%;
             left: -25%;
             width: 200px !important;
-            background-color: $submenu-background;
+            background-color: $header-gray;
             padding: 10px;
             box-sizing: border-box;
+
+            border-top: 5px solid $medium-green;
 
             transition: opacity .4s ease-in-out;
             visibility: hidden;
