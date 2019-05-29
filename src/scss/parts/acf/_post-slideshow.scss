@@ -66,10 +66,20 @@
           background-color: $light-green;
           padding: 35px $bodyPadding2 20px;
         }
+        
+
+        .slider-title {
+          position: absolute;
+          top: 12%;
+        }
 
         h3 {
           margin-top: 0;
           margin-bottom: 10px;
+
+          &.has-title {
+            margin-top: 136px;
+          }
         }
 
         .slideshow-listing_city {
