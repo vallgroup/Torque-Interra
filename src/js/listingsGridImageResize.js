@@ -6,10 +6,12 @@
       const onAuthorPage = $('body').hasClass('author'); // Bool check to see if on page with a Blog Grid
       const listingGridImagesSelector = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
       const WidthToHeightRatio = 0.75; // 4:3 landscape ratio
+      // Array of element selectors, used to apply the mutationObserve to each
+      let observe_these_wrappers = ['posts-wrapper', 'listings-wrapper'];
 
       if (onListingGridPage || onBlogGridPage || onAuthorPage) {
          // On load ensure image ratio is correct
-         //resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
+         resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
 
          // On window resize ensure image ratio is correct
          $(window).resize(function () {
@@ -33,19 +35,23 @@
             }
          });
 
-         // Initialise mutation observer on the element with class name 'posts-wrapper'
-         // TODO: Loop through all instances of *-wrapper, and assign a mutationObserver
-         let observe_this_wrapper = 'posts-wrapper';
-         if ( onAuthorPage ) {
-            observe_this_wrapper = 'listings-wrapper';
+         
+         // Loop through each selector in the array
+         for (let a = 0; a < observe_these_wrappers.length; a++ ) {
+            // Check how many of each selector/wrapper exists
+            let num_wrappers = jQuery('.'+observe_these_wrappers[a]).length;
+               // For each, if any, loop through and call the observe method on them
+               for (let b = 0; b < num_wrappers; b++ ) {
+                  // Call observe method on wrapper instance
+                  mutationObserver.observe(
+                     document.getElementsByClassName(observe_these_wrappers[a])[b],
+                     {
+                        childList: true,
+                        subtree: true
+                     }
+                  );
+               }
          }
-         mutationObserver.observe(
-            document.getElementsByClassName(observe_this_wrapper)[0],
-            {
-               childList: true,
-               subtree: true
-            }
-         );
 
          // Kill the nutationObserve when leaving the page...
          $(window).unload(function () {
