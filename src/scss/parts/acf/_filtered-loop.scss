@@ -12,7 +12,7 @@
 %listings_loop {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 
   padding: 35px $bodyPadding2;
   width: 100%;
@@ -36,9 +36,9 @@
     }
 
     @include respond-to(desktop) {
-      margin-left: 2%;
-      margin-right: 2%;
-      width: 28%;
+      margin-left: 2.15%;
+      margin-right: 2.15%;
+      width: 29%;
     }
 
     .featured-image-wrapper {
