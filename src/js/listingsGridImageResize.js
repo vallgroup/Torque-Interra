@@ -1,12 +1,13 @@
 ($ => {
    $(document).ready(() => {
       // Set initial variables
-      const listingGridImagesSelector = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
       const onListingGridPage = $('body').hasClass('page-template-listings'); // Bool check to see if on page with a Listings Grid
       const onBlogGridPage = $('body').hasClass('page-template-blog'); // Bool check to see if on page with a Blog Grid
+      const onAuthorPage = $('body').hasClass('author'); // Bool check to see if on page with a Blog Grid
+      const listingGridImagesSelector = '.loop-post .featured-image-wrapper'; // Both Listings & Blogs covered here...
       const WidthToHeightRatio = 0.75; // 4:3 landscape ratio
 
-      if (onListingGridPage || onBlogGridPage) {
+      if (onListingGridPage || onBlogGridPage || onAuthorPage) {
          // On load ensure image ratio is correct
          //resetImageRatio(listingGridImagesSelector, WidthToHeightRatio, 500);
 
@@ -33,8 +34,13 @@
          });
 
          // Initialise mutation observer on the element with class name 'posts-wrapper'
+         // TODO: Loop through all instances of *-wrapper, and assign a mutationObserver
+         let observe_this_wrapper = 'posts-wrapper';
+         if ( onAuthorPage ) {
+            observe_this_wrapper = 'listings-wrapper';
+         }
          mutationObserver.observe(
-            document.getElementsByClassName('posts-wrapper')[0],
+            document.getElementsByClassName(observe_this_wrapper)[0],
             {
                childList: true,
                subtree: true
