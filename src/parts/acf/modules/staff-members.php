@@ -12,20 +12,6 @@ if( have_rows('staff_job_titles', 'options') ):
   $job_title = get_sub_field('staff_job_title', 'options');
 
   /* Setup arguments for WP DB Query */
- /*  $args = array(
-    'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
-    'meta_key'      => 'job_title',
-    'meta_value'    => $job_title,
-    'meta_compare'  => '=',
-    'orderby'       => 'display_name',
-    'order'         => 'ASC'
-  ); */
-
-
-
-
-
-  /* Setup arguments for WP DB Query */
   $args = array(
     'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
     'meta_query' => array(
@@ -43,10 +29,6 @@ if( have_rows('staff_job_titles', 'options') ):
     'orderby' => 'last_name_clause',
   );
 
-
-
-
-
   $user_query = new WP_User_Query( $args );
 
   if ( ! empty( $user_query->get_results() ) ) {
@@ -57,13 +39,6 @@ if( have_rows('staff_job_titles', 'options') ):
   endwhile;
 
 else :
-
-  /* No AFC job titles added to system, therefore just query the users in alphabetical order */
- /*  $args = array(
-    'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
-    'orderby'       => 'display_name',
-    'order'         => 'ASC'
-  ); */
 
   /* No AFC job titles added to system, therefore just query the users in alphabetical order */
   $args = array(
