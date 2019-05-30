@@ -30,7 +30,8 @@
                .css({
                   'transition':  '0.2s',
                   'width'     :  '100%',
-                  'max-height'    :  $(this).width() * $heightToWidthRatio
+                  'max-height'    :  $(this).width() * $heightToWidthRatio,
+                  'min-height'    :  $(this).width() * $heightToWidthRatio
                });
          });
       } else {

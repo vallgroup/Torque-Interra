@@ -68,6 +68,14 @@
         max-width: 100%;
       }
 
+      .staff-member-image {
+        z-index: 20;
+      }
+
+      .staff-member-second-image {
+        z-index: 15;
+      }
+
       .staff-member-image,
       .staff-member-second-image {
         width: 100%;
@@ -75,11 +83,17 @@
 
         object-fit: cover;
         object-position: center top;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        transition: 0.2s ease-in-out all;
       }
 
       &:hover {
         .staff-member-image {
-          display: none;
+          opacity: 0;
         }
       }
     }
