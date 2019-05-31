@@ -28,6 +28,10 @@
             // If we didn't come from that page, then just go back to where we arrived from  (team, slider, etc...)
             if (cameFromListingsArchive != null && cameFromListingsArchive == 'true') {
 
+               // Prevent the default a href actions
+               e.preventDefault();
+               e.stopPropagation();
+
                // Get current Listing's URL slug
                let prevListingSlug = currUrl.split('/listing/')[1].replace(/\//g, '');
 
@@ -37,15 +41,18 @@
                 * listing via the listings page, this will be overwritten which is fine!
                 */
                localStorage.setItem('previouslyViewedListing', prevListingSlug);
+
+               // Redirect user exactly back to where they came from (incl. filters, last viewed listing in grid, etc)
+               window.history.go(-1);
             }
 
-            // Prevent the default a href actions
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Redirect user exactly back to where they came from (incl. filters, etc)
-            window.history.go(-1);
          });
+
+         $(window).unload(function(){
+            // Remove the 'cameFromListingsArchive' localStorage item, as we don't need it anymore
+            localStorage.removeItem('cameFromListingsArchive');
+         });
+
       }
 
 
@@ -78,6 +85,13 @@
          // on click of any listing page link matching the selector
          $(document).on('click', '.single-listing-link', function (e) {
             localStorage.setItem('cameFromListingsArchive', 'true');
+         });
+
+         $(window).unload(function(){
+            // Remove the localStorage item for previously viewed listing, as we don't need it anymore
+            localStorage.removeItem('previouslyViewedListing');
+            // Remove the localStorage item for where we came from, as we don't need it anymore
+            localStorage.removeItem('cameFromSingleListing');
          });
 
       }
