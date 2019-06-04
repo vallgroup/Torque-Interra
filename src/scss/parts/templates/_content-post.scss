@@ -43,16 +43,20 @@
         .post-term {
           @extend %useTermStyle;
 
+          font-size: 14px;
           margin-right: 10px;
         }
 
         &.authors {
+          margin-bottom: 5px;
+
           .post-term {
+            font-size: 16px;
+            font-weight: 700;
+
             &::before {
               display: none;
             }
-
-            margin-bottom: 5px;
           }
         }
       }
@@ -83,6 +87,9 @@
       }
 
       button {
+        font-weight: 500;
+        font-family: $font_primary;
+        text-transform: uppercase;
         width: 50%;
 
         &.prev-page {
@@ -118,6 +125,8 @@
 
     h3 {
       margin-top: 0;
+      font-size: 36px;
+      font-weight: 600;
     }
 
     .loop-post {

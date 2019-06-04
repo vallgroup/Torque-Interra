@@ -92,6 +92,13 @@
           @extend %useTermStyle;
 
           margin-right: 20px;
+          font-size: 14px;
+          text-transform: uppercase;
+
+          @include respond-to-max(tablet) {
+            font-size:14px;
+            line-height: 1.2;
+          }
         }
       }
     }
@@ -118,6 +125,8 @@
         flex-grow: 1;
 
         font-size: 13px;
+        font-weight: 500;
+        font-family: $font_primary;
         text-transform: uppercase;
         background-color: $light-green;
         border-color: $light-green;
@@ -161,9 +170,9 @@
 
             width: 0;
             height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 7px solid $medium-green;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 12px solid $medium-green;
           }
         }
       }
@@ -188,6 +197,8 @@
 
       .dropdown-title-wrapper {
         @extend %dropdown_text;
+
+        font-size: 16px;
 
         display: flex;
         justify-content: center;
@@ -230,6 +241,8 @@
         }
 
         .dropdown-title {
+          font-weight: 300;
+          
           &:not(:only-child) {
             padding-right: 5px;
 
@@ -247,10 +260,11 @@
         z-index: 2;
 
         padding: 10px 20px;
-        max-width: 150px;
-        max-height: 500px;
+        max-width: 200px;
+        max-height: 450px;
         overflow-y: auto;
 
+        box-shadow: inset 0 -10px 23px -20px #000;
         background-color: $very-light-gray;
 
         // Modified scrollbar for these filter dropdowns
@@ -277,23 +291,24 @@
         }
 
         @include respond-to(tablet) {
-          right: 10%;
+          right: 23%;
         }
 
         @include respond-to-max-custom(425px){
           border-top: 1px solid $light-grey;
-          box-shadow: inset 0 -10px 23px -20px #000;
           left: 0;
           right: 0;
           top: 100%;
           max-width: 100%;
-          max-height: 300px;
+          max-height: 280px;
           overflow-y: scroll;
 
         }
 
         .dropdown-item {
           @extend %dropdown_text;
+
+          font-size: 16px;
 
           padding: 5px 0;
 
@@ -308,10 +323,29 @@
 
   .posts-wrapper {
     @extend %listings_loop;
+
+    .loop-post {
+      .content-wrapper {
+        width: 95%;
+
+        h4 {
+          font-size: 22px;
+        }
+      }
+    }
   }
 
   button.torque-filtered-loop-load-more {
     @extend %useLoadMoreButtonStyle;
+
+    color: $medium-green;
+    border: 2px solid $medium-green;
+    font-size: 18px;
+    width: auto;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &[data-post_type^="post"] {

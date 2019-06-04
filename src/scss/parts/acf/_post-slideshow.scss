@@ -6,6 +6,15 @@
   }
 
   .tq-slideshow {
+    
+    img {
+      &.tq-slideshow-arrow {
+        @include respond-to-max(tablet) {
+          width: 15px
+        }
+      }
+    }
+
     @include respond-to-max(tablet) {
       height: auto;
       padding-bottom: 0;
@@ -57,10 +66,20 @@
         background-position: center;
         background-repeat: no-repeat;
         background-color: $medium-gray;
+
+        @include respond-to(tablet) {
+          max-width: 50%;
+        }
+
+        @include respond-to(tablet) {
+          max-width: 57.5%;
+        }
       }
 
       .post-details {
         @extend %text_block_next_to_image;
+
+        justify-content: center;
 
         @include respond-to-max(mobile) {
           background-color: $light-green;
@@ -92,7 +111,7 @@
         }
 
         .slideshow-listing_city {
-          margin-bottom: 10px;
+          margin-bottom: 30px;
         }
 
         button {
@@ -108,6 +127,8 @@
         .slideshow-post-terms {
           display: flex;
           flex-wrap: wrap;
+
+          margin-top: 30px;
 
           .post-term {
             @extend %useTermStyle;

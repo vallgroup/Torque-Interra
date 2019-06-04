@@ -50,6 +50,9 @@
       border: 1px solid $white;
       outline: none;
 
+      font-size: 16px;
+      font-family: $font_primary;
+
       &::placeholder {
         color: $white;
       }
@@ -64,11 +67,12 @@
         display: inline-block;
         padding: 15px;
 
-        font-size: 11px;
-      }
-
-      label.filename {
-        border: none;
+        font-size: 16px;
+        
+        &.filename {
+          border: none;
+          font-weight: 600;
+        }
       }
 
       input {

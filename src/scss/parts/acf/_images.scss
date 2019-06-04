@@ -28,7 +28,7 @@
     height: 400px;
 
     @include respond-to(desktop) {
-      height: 500px;
+      height: 600px;
     }
   }
 }

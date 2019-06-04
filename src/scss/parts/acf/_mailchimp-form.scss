@@ -1,6 +1,8 @@
 .interra-mailchimp-form {
 	@extend %useSideGraphic;
 
+	background-color: $white;
+
 	padding-top: 10px;
 	padding-left: 60px;
 	padding-right: 30px;
@@ -15,8 +17,6 @@
 	}
 
 	.mc-field-group {
-		border: solid 1px $medium-green;
-		margin-bottom: 20px;
 		box-sizing: border-box;
 
 		input {
@@ -24,6 +24,19 @@
 			padding: 10px;
 			border: 0;
 			background-color: #fff;
+			border: solid 1px $medium-green;
+			margin-bottom: 20px;
+
+			&.mce_inline_error {
+				border-color: $form-error-red !important;
+				background-color: #fff !important;
+			}
+		}
+
+		.mce_inline_error {
+			background-color: $form-error-red !important;
+			font-family: $font_primary;
+			font-weight: 500 !important;
 		}
 	}
 
@@ -78,7 +91,7 @@
 				padding: 15px;
 			}
 			&.email {
-				width: 85%;
+				width: 80%;
 			}
 		}
 
