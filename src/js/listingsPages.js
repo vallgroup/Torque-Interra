@@ -77,8 +77,10 @@
             let loadMoreBtnSelector = 'button.torque-filtered-loop-load-more';
             let prependOverlayToSelector = '.torque-filtered-loop';
             let attemptsBeforeCallingLoadMore = 100;
+            let maxTotalAttempts = 4000; // Set high as there are SO. MANY. LISTINGS.
+            let searchInterval = 10;
             // Wait until the element is loaded
-            waitForEl(listingSelector, scrollToElement, loadMoreBtnSelector, simulateMouseClick, prependOverlayToSelector, attemptsBeforeCallingLoadMore);
+            waitForEl(listingSelector, scrollToElement, loadMoreBtnSelector, simulateMouseClick, prependOverlayToSelector, attemptsBeforeCallingLoadMore, maxTotalAttempts, searchInterval);
          }
 
          // Set the locaStorage to let the listing page know we arrived from the Listing Archive,
