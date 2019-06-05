@@ -67,15 +67,23 @@
       }
     }
   }
-
+  
   .torque-load-more-button-wrapper {
+    text-align: center;
     width: 100%;
 
-    button {
-      @extend %useLoadMoreButtonStyle;
+      button {
+        @extend %useLoadMoreButtonStyle;
+        
+        margin-bottom: 0;
+        color: $medium-green;
+        border: 2px solid $medium-green;
+        font-size: 18px;
+        width:auto !important;
 
-      margin-bottom: 0;
-      width: 100%;
+        &:hover {
+          opacity: 0.75;
+        }
+      }
     }
-  }
 }

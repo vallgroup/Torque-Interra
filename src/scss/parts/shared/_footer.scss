@@ -67,14 +67,27 @@ footer {
     }
 
     .contact-details {
-      line-height: 2;
+      line-height: 1.5;
+
+      &>*{
+        margin-bottom: 15px;
+      }
     }
 
-    .torque-menu-items-stacked .torque-menu-item-wrapper {
-      padding: 8px 0;
+    .torque-menu-items-stacked {
+      .torque-menu-item-wrapper {
+        padding: 8px 0;
 
-      font-weight: 500;
-      color: $medium-green;
+        font-weight: 500;
+        color: $medium-green;
+
+        text-align: left;
+        text-transform: uppercase;
+
+        @include respond-to-max(tablet) {
+          text-align: center;
+        }
+      }
     }
 
     .social-media {
@@ -118,7 +131,7 @@ footer {
   .footer-copyright {
     width: 100%;
 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     text-align: center;
 

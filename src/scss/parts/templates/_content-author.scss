@@ -21,11 +21,32 @@
   @extend %listings_loop;
 
   .torque-load-more-button-wrapper {
+    text-align: center;
     width: 100%;
 
     button {
       @extend %useLoadMoreButtonStyle;
       width: 100%;
+    }
+  }
+
+  &.active-listings {
+    
+
+    .torque-load-more-button-wrapper {
+      text-align: center;
+
+      button {
+        margin-bottom: 0;
+        color: $medium-green;
+        border: 2px solid $medium-green;
+        font-size: 18px;
+        width:auto !important;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
     }
   }
 
@@ -51,13 +72,18 @@
     }
 
     .torque-load-more-button-wrapper {
+      text-align: center;
+
       button {
         background-color: transparent;
         border-color: transparent;
         color: $white;
+        border: 2px solid $white;
+        font-size: 18px;
+        width:auto !important;
 
         &:hover {
-          opacity: 0.8;
+          opacity: 0.75;
         }
       }
     }
@@ -65,8 +91,18 @@
 
   &.blog-posts {
     .torque-load-more-button-wrapper {
+    text-align: center;
+
       button {
         margin-bottom: 0;
+        color: $medium-green;
+        border: 2px solid $medium-green;
+        font-size: 18px;
+        width:auto !important;
+
+        &:hover {
+          opacity: 0.75;
+        }
       }
     }
   }

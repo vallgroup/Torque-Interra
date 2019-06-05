@@ -2,7 +2,7 @@
   position: relative;
 
   .tq-slideshow {
-    @extend %imageSize;
+    @extend %imageSizeHero;
 
     .tq-slideshow-arrow {
       display: none;
@@ -14,7 +14,7 @@
   }
 
   .hero-image-size {
-    @extend %imageSize;
+    @extend %imageSizeHero;
 
     .hero-image {
       @extend %imageInner;
@@ -23,9 +23,14 @@
 
   .hero-video-wrapper {
     position: relative;
-    padding-top: 54.6%;
+    padding-top: 85vh;
+
+    @include respond-to-max(tablet) {
+      padding-top: 55vh;
+    }
 
     .hero-video {
+      object-fit: cover !important;
       position: absolute;
       top: 0;
       left: 0;

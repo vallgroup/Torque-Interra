@@ -1,3 +1,14 @@
 .listings-title {
   @extend %useCustomTemplateHeader;
+  @include respond-to(desktop) {
+    padding: 70px 16vw;
+  } 
+}
+
+.torque_listing-title {
+  .listing-title-content {
+    @include respond-to(desktop) {
+      padding: 70px 16vw;
+    } 
+  }
 }

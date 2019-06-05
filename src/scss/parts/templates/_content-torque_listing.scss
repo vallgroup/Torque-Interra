@@ -125,7 +125,7 @@
           height: 100%;
           
           object-fit: cover;
-          object-position: center top;
+          object-position: 100% 10%;
 
           @include respond-to(tablet) {
             max-height: 255px;
@@ -141,12 +141,14 @@
         display: flex;
         flex-wrap: wrap;
 
+        padding-top: 0;
         padding-left: 30px;
         box-sizing: border-box;
 
+        align-content:center;
+
         @include respond-to(tablet) {
           padding: 0;
-          padding-top: 30px;
         }
 
         @include respond-to(desktop) {

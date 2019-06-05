@@ -57,6 +57,7 @@
 
     .the-terms {
       display: flex;
+      flex-wrap: wrap;
 
       .availability,
       .term {

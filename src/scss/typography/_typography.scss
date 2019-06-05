@@ -68,13 +68,13 @@ h3 {
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.21;
+  line-height: 1.1;
   letter-spacing: normal;
+  margin-bottom: 20px;
   color: $white;
 
   @include respond-to(tablet) {
     font-size: 27px;
-    line-height: 1.26;
   }
 
   @include respond-to(desktop) {
@@ -107,9 +107,15 @@ a {
   }
 }
 
+ul {
+  li {
+    margin-bottom: 15px;
+  }
+}
+
 button {
   border: 2px solid $medium-green;
-  padding: 3px 10px;
+  padding: 5px 25px;
   box-sizing: border-box;
 
   font-weight: 300;
@@ -126,7 +132,7 @@ button {
   transition: all 0.3s ease;
 
   @include respond-to(tablet) {
-    padding: 8px 15px;
+    
   }
 
   &:hover {

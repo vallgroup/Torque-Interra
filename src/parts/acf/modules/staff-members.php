@@ -14,11 +14,19 @@ if( have_rows('staff_job_titles', 'options') ):
   /* Setup arguments for WP DB Query */
   $args = array(
     'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
-    'meta_key'      => 'job_title',
-    'meta_value'    => $job_title,
-    'meta_compare'  => '=',
-    'orderby'       => 'display_name',
-    'order'         => 'ASC'
+    'meta_query' => array(
+      'relation' => 'AND',
+      'job_title_clause' => array(
+          'key' => 'job_title',
+          'value' => $job_title,
+          'compare' => '='
+      ),
+      'last_name_clause' => array(
+          'key' => 'last_name',
+          'compare' => 'EXISTS',
+      ), 
+    ),
+    'orderby' => 'last_name_clause',
   );
 
   $user_query = new WP_User_Query( $args );
@@ -34,9 +42,13 @@ else :
 
   /* No AFC job titles added to system, therefore just query the users in alphabetical order */
   $args = array(
-    'role__in' => array( Interra_Roles::$BROKER_ROLE_SLUG, Interra_Roles::$MANAGER_ROLE_SLUG ),
-    'orderby'       => 'display_name',
-    'order'         => 'ASC'
+    'meta_query' => array(
+      'last_name_clause' => array(
+          'key' => 'last_name',
+          'compare' => 'EXISTS',
+      ), 
+    ),
+    'orderby' => 'last_name_clause',
   );
 
   $sorted_users = new WP_User_Query( $args );
