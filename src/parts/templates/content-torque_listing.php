@@ -29,7 +29,7 @@ $highlights = get_field( 'listing_highlights' );
       <?php while ( have_rows('key_details') ) : the_row();
         $sub_field_name = get_sub_field('name');
         $sub_field_value = get_sub_field('value');
-        
+
         $geo_search_values = array( "LATITUDE", "LONGITUDE" );
         $price_search_values = array( "PRICE", "ASKING PRICE" );
         $size_search_values = array( "LOT SIZE", "BUILDING SIZE" );
@@ -45,8 +45,8 @@ $highlights = get_field( 'listing_highlights' );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
           $sub_field_value = "$" . number_format( trim( $sub_field_value ) );
-        } 
-        
+        }
+
         if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
           // First, remove any unwanted characters entered by the user
           $illegal_chars = array( ",", "SF", ".", "SQUARE FEET", " " );
@@ -78,7 +78,7 @@ $highlights = get_field( 'listing_highlights' );
     	<div class="brokers-wrapper">
         <h4 class="brokers-section-title">Brokers</h4>
     	<?php foreach( $users as $user ): // variable must NOT be called $post (IMPORTANT)
-
+        if (!$user) continue;
         $title = $user->data->display_name;
         $permalink = get_author_posts_url( $user->ID );
         $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );

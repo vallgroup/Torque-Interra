@@ -106,7 +106,7 @@ function interra_update_listings_with_authors() {
   ob_implicit_flush(true);
   ob_start();
 
-  $listings = interra_import_csv_to_acc_array( get_stylesheet_directory() . '/import_data/listing-author.csv' );
+  $listings = interra_import_csv_to_acc_array( get_stylesheet_directory() . '/import_data/listings.csv' );
 
   echo 'Importing '.count($listings).' listings <br>';
 
@@ -164,7 +164,8 @@ function interra_update_listings_with_authors() {
 
 function interra_insert_listings() {
   $should_run = get_option('interra_inserted_listings') !== '1';
-  if (!$should_run) return;
+
+  // if (!$should_run) return;
 
   ob_implicit_flush(true);
   ob_start();
@@ -197,7 +198,7 @@ function interra_insert_listings() {
     }
 
     if (isset($new_listing['tax'])) interra_add_listing_tax( $result, $new_listing['tax'] );
-    if (isset($new_listing['meta'])) interra_add_listing_meta( $result, $new_listing['meta'] );
+    if (isset($new_listing['meta'])) interra_add_listing_meta( $result, $new_listing['meta'], $new_listing['post'] );
     if (isset($new_listing['image'])) interra_add_post_image( $result, $new_listing['image'] );
 
     flush();
@@ -316,9 +317,9 @@ function interra_add_listing_tax( $listing_id, $tax_term_array ) {
   }
 }
 
-function interra_add_listing_meta( $listing_id, $meta_array ) {
+function interra_add_listing_meta( $listing_id, $meta_array, $post = null ) {
   try {
-    $broker_ids = [];
+    $broker_ids = $post && isset( $post['post_author'] ) ? [ $post['post_author'] ] : [];
 
     foreach ($meta_array as $meta_key => $meta_value) {
       if (!$meta_value) continue;
@@ -337,6 +338,7 @@ function interra_add_listing_meta( $listing_id, $meta_array ) {
 
         continue;
       }
+
 
       if (strpos($meta_key, '_broker_') !== false) {
         $broker_ids[] = $meta_value;

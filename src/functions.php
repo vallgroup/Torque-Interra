@@ -291,7 +291,7 @@ function add_social_media_options_acf() {
       'active' => 1,
       'description' => '',
     ));
-    
+
     endif;
 }
 
@@ -345,5 +345,6 @@ if ( isset($_GET['run_blog_post_content_update']) ) {
   });
 }
 */
+
 
 ?>
