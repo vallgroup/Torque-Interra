@@ -52,6 +52,16 @@ if (isset($_POST['tq-careers-form'])) {
       'message' => 'Thank you for your application. Your application ID is '.$application_id
     );
 
+    // send admin email notification
+    $notification_email = get_field( 'notification_email' );
+    $email_result = Interra_Job_Application_CPT::send_admin_notification( $application_id, $notification_email, $_POST );
+
+    // Check email was sent correctly...
+    if ( ! $email_result ) {
+      $admin_email = ( $notification_email != '' ? $notification_email : get_option( 'admin_email' ) );
+      throw new Exception('Your application has been successfully submitted, but the admin notification has failed to send. Please contact us directly via: <a href="mailto:' . $admin_email .'">' . $admin_email . '</a>. Sorry for any inconvenience this causes.' );
+    }
+
   } catch (Exception $e) {
 
     $message = array(
