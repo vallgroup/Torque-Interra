@@ -42,73 +42,47 @@ class Interra_Job_Application_CPT
 	public static function send_admin_notification(string $application_id, string $notification_email, array $application_data)
 	{
 
-		/*
-		* Initialize phpmailer class
-		*/
-		global $phpmailer;
-
-		// (Re)create it, if it's gone missing
-		if (!($phpmailer instanceof PHPMailer)) {
-			require_once ABSPATH . WPINC . '/class-phpmailer.php';
-			require_once ABSPATH . WPINC . '/class-smtp.php';
-		}
-		$phpmailer = new PHPMailer;
-
-		// SMTP configuration
-		$smtp_server = get_field('smtp_server', 'options');
-		$smtp_port = (int)get_field('smtp_port', 'options');
-		$smtp_security = strtolower(get_field('smtp_security', 'options'));
-		$smtp_email = get_field('smtp_email', 'options');
-		$smtp_password = get_field('smtp_password', 'options');
-
-		if ( $smtp_server && $smtp_port && $smtp_security && $smtp_email & $smtp_password ) {
-			$phpmailer->isSMTP(true);
-			$phpmailer->Host = $smtp_server;
-			$phpmailer->Port = $smtp_port;
-			$phpmailer->SMTPSecure = $smtp_security;
-			$phpmailer->SMTPAuth = true;
-			$phpmailer->Username = $smtp_email;
-			$phpmailer->Password = $smtp_password;
-		}
-
-		// Set email format to HTML
-		$phpmailer->isHTML(true);
-
 		// Email subject
-		$phpmailer->Subject = 'Career Application | Interra Realty';
+		$mail_subject = 'Career Application | Interra Realty';
 
 		// Gather $_POST vars
-		$name = $application_data['tq-name'];
-		$email = $application_data['tq-email'];
-		$phone = $application_data['tq-phone'];
-		$intro = $application_data['tq-intro'];
+		$form_name = $application_data['tq-name'];
+		$form_email = $application_data['tq-email'];
+		$form_phone = $application_data['tq-phone'];
+		$form_intro = $application_data['tq-intro'];
 
 		// Compile email message
-		$mailContent = '<p>Hi, <br><br>You have just received a new job application for Interra Realty. Please see below for details:</p><ul>';
-		$mailContent .= '<li><strong>Name: </strong>' . $name . '</li>';
-		$mailContent .= '<li><strong>Email: </strong>' . $email . '</li>';
-		$mailContent .= '<li><strong>Phone: </strong>' . $phone . '</li>';
-		$mailContent .= '<li><strong>Intro: </strong>' . $intro . '</li>';
-		$mailContent .= '<li><strong>Resume: </strong><a href="' . get_site_url() . '/wp-admin/post.php?post=' . $application_id . '&action=edit">' . get_site_url() . '/wp-admin/post.php?post=' . $application_id . '&action=edit</a></li>';
-		$mailContent .= '</ul>';
-		$mailContent .= '<p>Note: to repond to the applicant directly you can reply to this email.</p>';
+		$mail_content = '<p>Hi, <br><br>You have just received a new job application for Interra Realty. Please see below for details:</p><ul>';
+		$mail_content .= '<li><strong>Name: </strong>' . $form_name . '</li>';
+		$mail_content .= '<li><strong>Email: </strong>' . $form_email . '</li>';
+		$mail_content .= '<li><strong>Phone: </strong>' . $form_phone . '</li>';
+		$mail_content .= '<li><strong>Intro: </strong>' . $form_intro . '</li>';
+		$mail_content .= '<li><strong>Resume: </strong><a href="' . get_site_url() . '/wp-admin/post.php?post=' . $application_id . '&action=edit">' . get_site_url() . '/wp-admin/post.php?post=' . $application_id . '&action=edit</a></li>';
+		$mail_content .= '</ul>';
+		$mail_content .= '<p>Note: to repond to the applicant directly you can reply to this email.</p>';
 
 		// Email body content
-		$phpmailer->Body = $mailContent;
-
-		$phpmailer->setFrom($smtp_email);
+		$mail_body = $mail_content;
 
 		// Add a recipient
-		$phpmailer->addAddress( ( $notification_email != '' ? $notification_email : get_option( 'admin_email' ) ) );
+		$mail_to = ($notification_email != '' ? $notification_email : get_option('admin_email'));
 
-		// Add cc or bcc 
-		// $phpmailer->addCC('cc@example.com');
-		// $phpmailer->addBCC('bcc@example.com');
+		// Email headers
+		$mail_headers = array(
+			'From: Interra Careers <' . $notification_email . '>',
+			'Reply-To: ' . $form_name . ' <' . $form_email . '>',
+			'Content-Type: text/html; charset=UTF-8;'
+		);
 
-		$mailResult = $phpmailer->send();
+		// Attempt to send the email notification
+		$mail_result = wp_mail($mail_to, $mail_subject, $mail_body, $mail_headers);
 
-		return $mailResult;
+		return $mail_result;
+	}
 
+	public function html_email_content_type()
+	{
+		return 'text/html';
 	}
 
 	public function add_acf_metaboxes()
