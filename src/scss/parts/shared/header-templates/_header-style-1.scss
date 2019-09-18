@@ -72,9 +72,17 @@ header#header-style-1 {
         width: 30%;
       }
 
-      div {
-        width: auto;
-        max-width: 175px;
+      a {
+        display: inline-block;
+
+        div {
+          width: auto;
+          max-width: 175px;
+
+          img {
+            height: auto;
+          }
+        }
       }
     }
 

@@ -3,13 +3,15 @@
  * This template is used by the 'Load More' functionality (/torque-theme/includes/load-more/).
  * This helper currently doesn't play ball with 'echo get_the_permalink();' embedded in HTML, therefore all instances of the permalink have been wrapped in PHP and echo'd in their entirety...
  */
+
+$listing_img_url = get_field('thumbnail_image') ? get_field('thumbnail_image') : get_the_post_thumbnail_url(null, 'large');
 ?>
 <div class="loop-post loop-listing">
   <?php echo '<a href="' . get_the_permalink() . '">'; ?>
     <div class="featured-image-wrapper">
       <div
         class="featured-image"
-        style="background-image: url('<?php echo get_the_post_thumbnail_url(null, 'large'); ?>')"
+        style="background-image: url('<?php echo $listing_img_url; ?>')"
       ></div>
     </div>
   <?php echo '</a>'; ?>
