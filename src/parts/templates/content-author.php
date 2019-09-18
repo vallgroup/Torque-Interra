@@ -16,8 +16,8 @@ $available_listings_loop = new Torque_Load_More_Loop(
       ),
       array(
         'key' => 'listing_status',
-        'value' => 'available',
-        'compare' => 'LIKE'
+        'value' => array('under_contract', 'available'),
+        'compare' => 'IN'
       )
     )
   ),

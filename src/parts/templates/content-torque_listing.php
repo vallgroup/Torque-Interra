@@ -40,26 +40,34 @@ $highlights = get_field( 'listing_highlights' );
         }
 
         if ( in_array(strtoupper($sub_field_name), $price_search_values) ) {
+          if ( is_numeric( $sub_field_value ) ) {
           // First, remove any unwanted characters entered by the user
           $illegal_chars = array( ",", ".", "$", " " );
           $sub_field_value = str_replace( $illegal_chars, "", $sub_field_value );
           // Second, format the number as required
-          $sub_field_value = "$" . number_format( trim( $sub_field_value ) );
+            $sub_field_value = "$" . number_format( (float) trim( $sub_field_value ) );
+          } else {
+            $sub_field_value = $sub_field_value;
+          }
         }
 
         if ( in_array(strtoupper($sub_field_name), $size_search_values) ) {
           // First, remove any unwanted characters entered by the user
           $illegal_chars = array( ",", "SF", ".", "SQUARE FEET", " " );
-          $sub_field_value = str_replace( $illegal_chars, "", strtoupper($sub_field_value) );
-          // Second, format the number as required
-          $sub_field_value = number_format( trim( $sub_field_value ) ) . " SF";
+          if ( is_numeric( $sub_field_value ) ) {
+            $sub_field_value = str_replace( $illegal_chars, "", strtoupper($sub_field_value) );
+            // Second, format the number as required
+            $sub_field_value = number_format( (float) trim( $sub_field_value ) ) . " SF";
+          } else {
+            $sub_field_value = $sub_field_value;
+          }
         }?>
         <div class="key-detail" >
           <div class="key-detail-name">
             <?php echo $sub_field_name; ?>
           </div>
           <div class="key-detail-value">
-            <?php echo $sub_field_value; ?>
+            <?php echo ( 'pins' === strtolower( $sub_field_name ) ) ? str_replace( ',', '<br />', $sub_field_value ) : $sub_field_value; ?>
           </div>
         </div>
       <?php endwhile ?>
