@@ -258,7 +258,7 @@ class Interra_Listing_CPT {
 								'key' => 'field_5c8aea9a94452',
 								'label' => 'Value',
 								'name' => 'value',
-								'type' => 'text',
+								'type' => 'textarea',
 								'instructions' => '',
 								'required' => 1,
 								'conditional_logic' => 0,

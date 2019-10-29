@@ -69,7 +69,7 @@ $highlights = get_field( 'listing_highlights' );
             <?php echo $sub_field_name; ?>
           </div>
           <div class="key-detail-value">
-            <?php echo ( 'pins' === strtolower( $sub_field_name ) ) ? str_replace( ',', '<br />', $sub_field_value ) : $sub_field_value; ?>
+            <?php echo nl2br( $sub_field_value ); ?>
           </div>
         </div>
       <?php endwhile ?>
