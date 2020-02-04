@@ -102,6 +102,38 @@ if ( class_exists( 'Torque_Slideshow' ) ) {
 }
 
 
+/**
+ * Remove various CPTs from search results
+ */
+add_action( 'pre_get_posts', 'remove_ss_cpt_from_search_results' );
+function remove_ss_cpt_from_search_results( $query ){
+  /* check is front end main loop content */
+  if ( is_admin() || !$query->is_main_query() ) return;
+
+  $post_types_to_remove = array();
+
+  if ( class_exists( 'Torque_Slideshow_CPT' ) ) {
+    $post_types_to_remove[] = Torque_Slideshow_CPT::$slideshow_labels['post_type_name'];
+    if ( class_exists( 'Torque_Post_Slideshow_CPT' ) ) {
+      $post_type_to_remove[] = Torque_Post_Slideshow_CPT::$post_slideshow_labels['post_type_name'];
+    }
+  }
+
+  /* check is search result query */
+  if ( !empty( $post_types_to_remove ) && $query->is_search() ) {
+    foreach ( $post_types_to_remove as $post_type_to_remove ) {
+      /* get all searchable post types */
+      $searchable_post_types = get_post_types(array('exclude_from_search' => false));
+      /* make sure you got the proper results, and that your post type is in the results */
+      if (is_array($searchable_post_types) && in_array($post_type_to_remove, $searchable_post_types)){
+          /* remove the post type from the array */
+          unset( $searchable_post_types[ $post_type_to_remove ] );
+          /* set the query to the remaining searchable post types */
+          $query->set('post_type', $searchable_post_types);
+      }
+    }
+  }
+}
 
 
 //excerpt length
