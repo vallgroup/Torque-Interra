@@ -8,7 +8,7 @@ $col_1 =  $image_2_start_int;
 
 ?>
 
-<div class="row images-wrapper <?php echo $tablet_stack; ?>">
+<div class="row images-wrapper">
   <img class="gallery-col gallery-col-<?php echo $col_1; ?>" src="<?php echo $image_1; ?>"/>
   <img class="gallery-col gallery-col-<?php echo $col_2; ?>" src="<?php echo $image_2; ?>"/>
 </div>
