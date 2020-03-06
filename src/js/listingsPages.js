@@ -74,8 +74,8 @@
             // Setup the selector used to check when element matching the selector has been loaded
             // Note: this is necessary because the listings grid is loaded via ReactJS, therefore not available on document.ready()
             let listingSelector = 'a[href*="' + prevListingSlug + '"]';
-            let loadMoreBtnSelector = 'button.torque-filtered-loop-load-more';
-            let prependOverlayToSelector = '.torque-filtered-loop';
+            let loadMoreBtnSelector = 'button.torque-filtered-gallery-load-more';
+            let prependOverlayToSelector = '.torque-filtered-gallery';
             let attemptsBeforeCallingLoadMore = 100;
             let maxTotalAttempts = 4000; // Set high as there are SO. MANY. LISTINGS.
             let searchInterval = 10;

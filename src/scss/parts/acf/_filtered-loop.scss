@@ -109,7 +109,7 @@
   }
 }
 
-.torque-filtered-loop-react-entry {
+.torque-filtered-gallery-react-entry {
   .custom-filters {
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +121,7 @@
 
       background-color: $light-green;
 
-      button.torque-filtered-loop-filter-button {
+      button.torque-filtered-gallery-filter-button {
         flex-grow: 1;
 
         font-size: 13px;
@@ -335,7 +335,7 @@
     }
   }
 
-  button.torque-filtered-loop-load-more {
+  button.torque-filtered-gallery-load-more {
     @extend %useLoadMoreButtonStyle;
 
     color: $medium-green;
