@@ -186,7 +186,7 @@ function torque_enqueue_child_styles() {
 
     // enqueue child style
     wp_enqueue_style( 'interra-child-styles',
-        get_stylesheet_directory_uri() . '/bundles/main.css',
+        get_stylesheet_directory_uri() . '/bundles/main.css?ts='.time(),
         array( $parent_style, $parent_main_style ),
         wp_get_theme()->get('Version')
     );
