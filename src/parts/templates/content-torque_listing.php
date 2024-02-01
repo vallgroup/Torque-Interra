@@ -6,7 +6,6 @@ $highlights = get_field( 'listing_highlights' );
 ?>
 
 <div class="torque-listing-content">
-
   <div class="torque-listing-content-details" >
     <?php if ($content) { ?>
       <h4>Property Overview</h4>
@@ -117,7 +116,7 @@ $highlights = get_field( 'listing_highlights' );
 
 
               <?php if ($email) { ?>
-                <a href="mailto:<?php echo $email; ?>" >
+                <a href="mailto:<?php echo $email; ?>?subject=<?php echo rawurlencode(get_the_title() . ' Info Request'); ?>&body=<?php echo rawurlencode('Hi, I would like to receive more information on ' . get_the_title() . '. Thanks!'); ?>">
                   <div class="broker-icon envelope"></div>
                 </a>
               <?php } ?>
