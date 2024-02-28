@@ -5,9 +5,9 @@ class Interra_Job_Application_CPT
 
 	public function __construct()
 	{
-		add_filter(Torque_Job_Application_CPT::$PUBLIC_FILTER_HOOK, function () {
+		/*add_filter(Torque_Job_Application_CPT::$PUBLIC_FILTER_HOOK, function () {
 			return true;
-		});
+		});*/
 
 		add_action('acf/init', array($this, 'add_acf_metaboxes'));
 	}
