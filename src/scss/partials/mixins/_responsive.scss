@@ -11,6 +11,11 @@
       @content;
     }
   }
+  @elseif $media == hddesktop {
+    @media only screen and (min-width: $DesktopMaxWidth + 1px) {
+      @content;
+    }
+  }
 }
 
 @mixin respond-to-max($media) {

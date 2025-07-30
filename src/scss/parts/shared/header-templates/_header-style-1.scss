@@ -35,41 +35,28 @@ $header-transition: none;
   }
 }
 
-header#header-style-1 {
-  position: fixed;
+header#header-style-1-alt {
+  /*position: fixed;
   top: 0;
-  left: 0;
+  left: 0;*/
+  position: absolute;
   z-index: 100;
   width: 100%;
 
   .torque-header-content-wrapper {
-    @include useHeaderHeight(height);
-
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    padding: 0 $bodyPadding1;
+    flex-wrap: wrap;
     box-sizing: border-box;
-
-    background-color: $header-gray;
+    padding: 2rem 9vw 0 9vw;
+    justify-content: space-between;
 
     @include respond-to(desktop) {
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: center;
+      padding: 4rem 9vw 0 9vw;
     }
 
     .torque-header-logo-wrapper {
-      @include useHeaderPadding();
-
-      flex: 1 0 50%;
-      height: 100%;
-
       @include respond-to(desktop) {
-        height: 100%;
-        width: 30%;
+        display: block;
       }
 
       a {
@@ -77,89 +64,55 @@ header#header-style-1 {
 
         div {
           width: auto;
-          max-width: 175px;
+          max-width: 103px;
+
+          @include respond-to(desktop) {
+            max-width: 182px;
+          }
 
           img {
             height: auto;
+            width: 100%;
           }
         }
       }
     }
 
-    form.searchform {
-      @include useHeaderPadding();
-
-      flex: 1 1 50%;
+    .torque-header-right {
       display: flex;
+      gap: 1.25rem;
       align-items: center;
-      justify-content: flex-end;
-
-      padding-left: 8px;
-      padding-right: $bodyPadding1;
-      height: 100%;
-
-      background-color: transparent;
-
-      transition: $header-transition;
 
       @include respond-to(desktop) {
-        padding: 10px 0;
-        width: 300px;
-        height: 49%;
-        max-height: 49%;
+        gap: 3rem;
       }
+    }
 
-      .search-icon {
-        flex: 0 0 auto;
-        padding-right: 10px;
-        width: 17px;
-        height: 17px;
+    .link-phone {
+      background-image: url("../statics/images/phone-rotated.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      text-indent: -100px;
+      display: inline-block;
+      overflow: hidden;
+      width: 20px;
+      height: 20px;
+    }
 
-        background-image: url("../statics/images/searchicon.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: left;
-      }
-
-      input#search {
-        font-size: 14px;
-        flex: 1 1 100%;
-        border: none;
-        border-bottom: 2px solid white;
-        padding: 2px 5px;
-
-        background-color: transparent;
-        color: white;
-        outline: none;
-
-        transition: $header-transition;
-      }
-
-      &:not(.closed) {
-        @include respond-to-max(desktop) {
-          background-color: $header-gray;
-        }
-      }
-
-      &.closed {
-        @include respond-to-max(desktop) {
-          padding-right: 10px;
-
-          input#search {
-            flex: 0 1 0;
-            padding: 0;
-          }
-        }
-      }
+    .link-email {
+      background-image: url("../statics/images/envelope-new.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      text-indent: -100px;
+      display: inline-block;
+      overflow: hidden;
+      width: 20px;
+      height: 20px;
     }
 
     .torque-header-burger-menu-wrapper {
-      @include useHeaderPadding();
-
-      flex: 0 0 25px;
       z-index: $mobileMenuZ + 1;
       overflow: hidden;
-
       transition: $header-transition;
 
       @include respond-to(desktop) {
@@ -171,186 +124,267 @@ header#header-style-1 {
       }
     }
 
-    .torque-header-menu-items-inline-wrapper {
-      @include useHeaderPadding();
-      flex-grow: 1;
+    .torque-menu-items-inline {
+      display: none;
 
-      text-align: right;
+      @include respond-to(hddesktop) {
+        display: flex;
+        gap: 4rem;
+      }
+    }
 
-      @include respond-to-max(desktop) {
-        display: none;
+    .torque-menu-item-wrapper {
+      font-size: 16px;
+      font-weight: 500;
+      color: $white;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $medium-green;
       }
 
-      @include respond-to(desktop) {
-        padding: 10px 0 0;
-        width: 70%;
-        height: 51%;
+      &.active {
+        color: $medium-green;
       }
 
-      .torque-menu-items-inline {
-        height: 100%;
-      }
+      &.parent {
+        position: relative;
+        padding-right: 20px;
+        background-image: url("/wp-content/themes/interra-child/statics/images/dropdownarrow.png");
+        background-repeat: no-repeat;
+        background-position: right 12%;
+        background-size: 15px;
+        margin-right: 5px;
 
-      .torque-menu-item-wrapper {
-        height: 100%;
-        padding: 0 10px;
+        .torque-menu-item-children-wrapper {
+          position: absolute;
+          top: 100%;
+          left: -12%;
+          width: auto;
+          min-width: 200px;
+          background-color: $header-gray;
+          padding: 10px;
+          box-sizing: border-box;
 
-        font-size: 16px;
-        font-weight: 500;
-        color: $white;
-        text-transform: uppercase;
+          border-top: 5px solid $medium-green;
 
-        cursor: pointer;
+          transition: opacity 0.4s ease-in-out;
+          visibility: hidden;
+          opacity: 0;
 
-        transition: all 0.3s ease;
+          z-index: 99;
+
+          box-shadow: 0 0 1px $submenu-background;
+
+          .torque-menu-item-wrapper {
+            display: block;
+            text-align: left;
+            padding: 0 10px;
+          }
+        }
 
         &:hover {
-          color: $medium-green;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.active {
-          color: $medium-green;
-        }
-
-        &.parent {
-          position: relative;
-          padding-right: 20px;
-          background-image: url('/wp-content/themes/interra-child/statics/images/dropdownarrow.png');
-          background-repeat: no-repeat;
-          background-position: right 12%;
-          background-size: 15px;
-          margin-right: 5px;
-
           .torque-menu-item-children-wrapper {
-            position: absolute;
             top: 100%;
-            left: -12%;
-            width: auto;
-            min-width: 200px;
-            background-color: $header-gray;
-            padding: 10px;
-            box-sizing: border-box;
-
-            border-top: 5px solid $medium-green;
-
-            transition: opacity .4s ease-in-out;
-            visibility: hidden;
-            opacity: 0;
-
-            z-index: 99;
-
-            box-shadow: 0 0 1px $submenu-background;
+            visibility: visible;
+            opacity: 1;
 
             .torque-menu-item-wrapper {
               display: block;
               text-align: left;
-              padding: 0 10px;
             }
           }
-
-          &:hover {
-            .torque-menu-item-children-wrapper {
-              top: 100%;
-              visibility: visible;
-              opacity: 1;
-
-              .torque-menu-item-wrapper {
-                display: block;
-                text-align: left;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.searchform-open {
-      @include respond-to-max(desktop) {
-        padding-right: 0;
-
-        .torque-header-burger-menu-wrapper {
-          flex: 0;
         }
       }
     }
   }
 
-  .torque-header-menu-items-mobile {
-    right: 0;
-    left: unset;
-    z-index: $mobileMenuZ;
-    @include useHeaderHeight(padding-top);
-    width: auto;
+  .wrap-search {
+    position: relative;
 
-    background-color: transparent;
+    &.open {
+      form.searchform {
+        display: flex;
+        right: -1rem;
+        background-color: #383838;
+        z-index: 5;
+        top: -12px;
+      }
+    }
+    #mobile-search-button {
+      display: block;
+      width: 36px;
+      height: 20px;
+      background-color: transparent;
+      border: none;
+      padding: 0px;
+      overflow: hidden;
+      text-indent: -200px;
+      position: relative;
+      right: 0px;
+      top: 0px;
 
-    @include respond-to(desktop) {
-      display: none;
+      background-image: url("../statics/images/search-icon-alt.svg");
+      background-size: initial;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include respond-to(desktop) {
+        display: none;
+      }
     }
 
-    .torque-menu-items-stacked {
-      padding: 10px $bodyPadding1;
-      width: auto;
-      min-width: 170px;
-      box-sizing: border-box;
+    form.searchform {
+      display: none;
+      position: absolute;
+      transition: $header-transition;
 
-      background-color: $light-green;
-
-      @include respond-to(tablet) {
-        min-width: 250px;
+      @include respond-to(desktop) {
+        display: flex;
+        position: relative;
       }
 
-      .torque-menu-item-wrapper {
-        padding: 5px 0px;
+      .search-button {
+        width: 36px;
+        height: 20px;
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        overflow: hidden;
+        text-indent: -100px;
+        position: relative;
+        right: 0px;
+        top: 12px;
 
-        text-align: right;
-        text-transform: uppercase;
-        color: $white;
+        background-image: url("../statics/images/search-icon-alt.svg");
+        background-size: initial;
+        background-repeat: no-repeat;
+        background-position: center;
 
-        transition: all 0.3s ease;
-
-        &:hover {
-          color: $darkest-green;
+        @include respond-to(desktop) {
+          display: block;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          height: 46px;
+          background-position: left;
         }
+      }
 
-        &.parent {
-          .torque-menu-item-children-wrapper {
-            padding-right: 30px;
-            position: relative;
+      input#search {
+        font-size: 16px;
+        border: none;
+        padding: 2px 42px 2px 12px;
+        width: 260px;
+        height: 46px;
+        border-radius: 23.5px;
+        background: rgba(217, 217, 217, 0.4);
+        color: white;
+        outline: none;
+        transition: $header-transition;
 
-            &:after {
-              content: '';
-              position: absolute;
-              top: 5%;
-              right: 2px;
-              height: 90%;
-              width: 10px;
-              // border-top: 1px solid #fff;
-              border-left: 1px solid #fff;
-              border-bottom: 1px solid #fff;
-            }
-          }
-        }
-
-        .torque-menu-item {
-          @include respond-to(tablet) {
-            font-weight: 500;
-          }
+        @include respond-to(desktop) {
+          display: block;
+          position: relative;
         }
       }
     }
   }
 }
 
+.torque-header-menu-items-mobile {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: -212px;
+  left: unset;
+  z-index: -1;
+  @include useHeaderHeight(padding-top);
+  width: auto;
+  transition: all 0.5s;
+  background-color: transparent;
+
+  @include respond-to(desktop) {
+    display: none;
+  }
+
+  &.active {
+    top: 0px;
+    max-height: 100vh;
+    opacity: 1;
+    z-index: $mobileMenuZ;
+  }
+  &:not(.active) {
+    padding: 0;
+  }
+
+  .torque-menu-items-stacked {
+    padding: 10px $bodyPadding1;
+    width: auto;
+    min-width: 170px;
+    box-sizing: border-box;
+
+    background-color: $light-green;
+
+    @include respond-to(tablet) {
+      min-width: 250px;
+    }
+
+    .torque-menu-item-wrapper {
+      padding: 5px 0px;
+
+      text-align: right;
+      text-transform: uppercase;
+      color: $white;
+
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $darkest-green;
+      }
+
+      &.parent {
+        .torque-menu-item-children-wrapper {
+          padding-right: 30px;
+          position: relative;
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 5%;
+            right: 2px;
+            height: 90%;
+            width: 10px;
+            // border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+          }
+        }
+      }
+
+      .torque-menu-item {
+        @include respond-to(tablet) {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
 
 // work with admin bar
-body.admin-bar #header-style-1 {
+body.admin-bar #header-style-2 {
   margin-top: 32px;
   @media screen and (max-width: 782px) {
     margin-top: 46px;
+  }
+}
+
+header#header-style-1-alt .wrap-search.open form.searchform {
+  @media screen and (min-width: 782px) {
+    top: 0px;
+    background-color: transparent;
+    right: 0px;
   }
 }
