@@ -177,7 +177,7 @@ class Interra_ACF
 					),
 					array(
 						'key' => 'field_5c954e7f5e0fc',
-						'label' => 'Video Src',
+						'label' => 'Video Src Small',
 						'name' => 'hero_video_src',
 						'type' => 'file',
 						'instructions' => '',
@@ -203,6 +203,67 @@ class Interra_ACF
 						'append' => '',
 						'maxlength' => '',
 					),
+					array(
+						'key' => 'field_5c954e7f5e0fe',
+						'label' => 'Video Src Full',
+						'name' => 'hero_video_src_full',
+						'type' => 'file',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5c954a9886085',
+									'operator' => '==',
+									'value' => 'video',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'return_format' => 'url',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_5c954ac48608a',
+						'label' => 'Video Image Poster',
+						'name' => 'hero_video_poster',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5c954a9886085',
+									'operator' => '==',
+									'value' => 'video',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'url',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+
 					array(
 						'key' => 'field_5c954bb12e42b',
 						'label' => 'Overlay Title',
