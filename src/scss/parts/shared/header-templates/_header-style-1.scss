@@ -36,9 +36,6 @@ $header-transition: none;
 }
 
 header#header-style-1-alt {
-  /*position: fixed;
-  top: 0;
-  left: 0;*/
   position: absolute;
   z-index: 100;
   width: 100%;
@@ -84,7 +81,7 @@ header#header-style-1-alt {
       align-items: center;
 
       @include respond-to(desktop) {
-        gap: 3rem;
+        gap: 2rem;
       }
     }
 
@@ -129,13 +126,14 @@ header#header-style-1-alt {
 
       @include respond-to(hddesktop) {
         display: flex;
-        gap: 4rem;
+        gap: 3rem;
       }
     }
 
     .torque-menu-item-wrapper {
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 2px;
       color: $white;
       text-transform: uppercase;
       cursor: pointer;
