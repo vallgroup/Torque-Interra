@@ -8,3 +8,4 @@ import "./backToTop";
 import "./teamImageResize";
 import "./listingsGridImageResize";
 import "./backBtnEvents";
+import "./popupVideo";

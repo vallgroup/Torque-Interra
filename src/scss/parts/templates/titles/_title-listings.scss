@@ -1,7 +1,8 @@
 .listings-title {
   @extend %useCustomTemplateHeader;
+  margin-top: 0px;
   @include respond-to(desktop) {
-    padding: 70px 16vw;
+    padding: 0px 16vw;
   } 
 }
 

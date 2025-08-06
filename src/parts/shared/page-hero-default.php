@@ -1,15 +1,15 @@
 <?php
 
-$type = get_field('hero_type');
+$type = get_field('hero_type', 'options');
 
-$image = get_field('hero_image');
-$slideshow = get_field('hero_image_slideshow');
-$video_small = get_field('hero_video_src');
-$video_full = get_field('hero_video_src_full');
-$video_poster = get_field('hero_video_poster');
+$image = get_field('hero_image', 'options');
+$slideshow = get_field('hero_image_slideshow', 'options');
+$video_small = get_field('hero_video_src', 'options');
+$video_full = get_field('hero_video_src_full', 'options');
+$video_poster = get_field('hero_video_poster', 'options');
 
-$overlay_title = get_field('hero_overlay_title');
-$overlay_subtitle = get_field('hero_overlay_subtitle');
+$overlay_title = get_field('hero_overlay_title', 'options');
+$overlay_subtitle = get_field('hero_overlay_subtitle', 'options');
 
 
 if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow) || ($type === 'video' && $video_small)) { ?>
@@ -53,16 +53,6 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
         <button aria-haspopup="true" aria-expanded="false" class="play-full-video">Play Video</button>
       </div>
     <?php } ?>
-  </div>
-  <div class="popup-video">
-    <button class="popup-video-close" type="button" aria-label="Close Video Popup">x</button>
-    <video
-      controls
-      autoplay
-      class="popup-video-content"
-      src="<?php echo $video_full; ?>"
-      style="width: 100%; height: 100%;">
-    </video>
   </div>
 
 <?php } else { ?>

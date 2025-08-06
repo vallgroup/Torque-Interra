@@ -409,6 +409,253 @@ function add_contact_links_options_acf()
 }
 
 
+add_action('acf/init', 'default_hero_options_acf');
+function default_hero_options_acf()
+{
+  if (function_exists('acf_add_local_field_group')):
+
+    acf_add_local_field_group(array(
+      'key' => 'group_68926ed4be691',
+      'title' => 'Default hero',
+      'fields' => array(
+        array(
+          'key' => 'field_5c954a9886085',
+          'label' => 'Type',
+          'name' => 'hero_type',
+          'type' => 'radio',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'choices' => array(
+            'none' => 'None',
+            'image' => 'Image',
+            'image_slideshow' => 'Image Slideshow',
+            'video' => 'Video',
+          ),
+          'allow_null' => 0,
+          'other_choice' => 0,
+          'default_value' => 'image',
+          'layout' => 'horizontal',
+          'return_format' => 'value',
+          'save_other_choice' => 0,
+        ),
+        array(
+          'key' => 'field_5c954ac486086',
+          'label' => 'Image',
+          'name' => 'hero_image',
+          'type' => 'image',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085',
+                'operator' => '==',
+                'value' => 'image',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'return_format' => 'url',
+          'preview_size' => 'thumbnail',
+          'library' => 'all',
+          'min_width' => '',
+          'min_height' => '',
+          'min_size' => '',
+          'max_width' => '',
+          'max_height' => '',
+          'max_size' => '',
+          'mime_types' => '',
+        ),
+        array(
+          'key' => 'field_5c954ae486087',
+          'label' => 'Image Slideshow',
+          'name' => 'hero_image_slideshow',
+          'type' => 'post_object',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085',
+                'operator' => '==',
+                'value' => 'image_slideshow',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'post_type' => array(
+            0 => 'torque_slideshow',
+          ),
+          'taxonomy' => array(),
+          'allow_null' => 0,
+          'multiple' => 0,
+          'return_format' => 'id',
+          'ui' => 1,
+        ),
+        array(
+          'key' => 'field_5c954e7f5e0fc',
+          'label' => 'Video Src',
+          'name' => 'hero_video_src',
+          'type' => 'file',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085',
+                'operator' => '==',
+                'value' => 'video',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'return_format' => 'url',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+
+        array(
+          'key' => 'field_5c954e7f5e0fe',
+          'label' => 'Video Src Full',
+          'name' => 'hero_video_src_full',
+          'type' => 'file',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085',
+                'operator' => '==',
+                'value' => 'video',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'return_format' => 'url',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        array(
+          'key' => 'field_5c954ac48608a',
+          'label' => 'Video Image Poster',
+          'name' => 'hero_video_poster',
+          'type' => 'image',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085',
+                'operator' => '==',
+                'value' => 'video',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'return_format' => 'url',
+          'preview_size' => 'thumbnail',
+          'library' => 'all',
+          'min_width' => '',
+          'min_height' => '',
+          'min_size' => '',
+          'max_width' => '',
+          'max_height' => '',
+          'max_size' => '',
+          'mime_types' => '',
+        ),
+        array(
+          'key' => 'field_5c954bb12e42b',
+          'label' => 'Overlay Title',
+          'name' => 'hero_overlay_title',
+          'type' => 'text',
+          'instructions' => 'use em tags to emphasise certain words',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => 'eg <em>Emphasised text</em> in title',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        array(
+          'key' => 'field_5c954be22e42c',
+          'label' => 'Overlay Subtitle',
+          'name' => 'hero_overlay_subtitle',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+      ),
+      'location' => array(
+        array(
+          array(
+            'param' => 'options_page',
+            'operator' => '==',
+            'value' => 'acf-options',
+          ),
+        ),
+      ),
+      'menu_order' => 0,
+      'position' => 'normal',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'hide_on_screen' => '',
+      'active' => 1,
+      'description' => '',
+    ));
+
+  endif;
+}
+
 /*
 if ( isset($_GET['run_user_import']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );

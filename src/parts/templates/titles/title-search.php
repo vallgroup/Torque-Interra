@@ -1,5 +1,7 @@
 <?php
 
+get_template_part('parts/shared/page-hero-default');
+
 global $wp_query;
 $found_posts = $wp_query->found_posts;
 

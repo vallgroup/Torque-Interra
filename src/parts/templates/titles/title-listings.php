@@ -1,5 +1,7 @@
 <?php
 
+get_template_part('parts/shared/page-hero-default');
+
 $heading = get_field('custom_template_heading');
 
 ?>
