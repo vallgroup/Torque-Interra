@@ -16,6 +16,7 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
 
   <?php if ($type === 'image' && $image) { ?>
     <div class="hero-image-size">
+      <div class="hero-overlay-bg"></div>
       <div class="hero-image" style="background-image: url(<?php echo $image; ?>);" ></div>
     </div>
   <?php } else if ($type === 'image_slideshow' && $slideshow) {
@@ -23,6 +24,7 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
   } else if ($type === 'video' && $video) {
     ?>
     <div class="hero-video-wrapper">
+      <div class="hero-overlay-bg"></div>
       <video
         autoplay
         loop

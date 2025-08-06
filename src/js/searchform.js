@@ -1,33 +1,32 @@
-($ => {
+(($) => {
   $(document).ready(() => {
-    const headerContent = $("header .torque-header-content-wrapper");
-    const headerSearchForm = headerContent.find("form.searchform");
-    const headerSearchFormInput = headerSearchForm.find("input");
-    const outsideSearchForm = $("main");
-
-    if (headerContent && headerSearchForm) {
-      headerSearchForm.click(function(e) {
-        headerContent.toggleClass("searchform-open");
-        $(this).toggleClass("closed");
-        // If we've opened the search form then forcus on it...
-        if ( headerContent.hasClass("searchform-open") ) {
-          headerSearchFormInput.focus();
-        }
-      });
-
-      headerSearchForm.find("input").click(function(e) {
-        e.stopPropagation();
-      });
-
-      // When user clicks outside of search form
-      outsideSearchForm.click(function(){
-        // If the form is open
-        if ( headerContent.hasClass("searchform-open") ) {
-          // Close it...
-          headerContent.toggleClass("searchform-open");
-          headerSearchForm.toggleClass("closed");
-        }
-      });
+    if (window.innerWidth > 1200) {
+      return;
     }
+
+    const wrapSearch = document.querySelector(".wrap-search");
+
+    if (!wrapSearch) {
+      return;
+    }
+
+    const toggleButton = wrapSearch.querySelector("#mobile-search-button");
+    toggleButton.addEventListener("click", () => {
+      wrapSearch.classList.toggle("open");
+    });
+
+    // close search on click outside
+    document.addEventListener("click", (e) => {
+      if (!wrapSearch.contains(e.target)) {
+        wrapSearch.classList.remove("open");
+      }
+    });
+
+    // close if esc pressed
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        wrapSearch.classList.remove("open");
+      }
+    });
   });
 })(jQuery);
