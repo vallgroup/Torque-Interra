@@ -1,31 +1,17 @@
 <?php
-
-$menu_items = Torque_Nav_Menus::get_nav_menu_items_by_location( 'footer' );
-
-$copyright = get_field('copyright', 'options');
-
+$address = get_field('address', 'options');
 ?>
 
 <footer>
-
-  <div class="footer-block footer-logo">
-    <?php get_template_part( 'parts/shared/logo', 'white'); ?>
+  <div id="contact">
+    <h3>Contact Us</h3>
+    <?php echo apply_shortcodes('[contact-form-7 id="e133e7c" title="Contact form footer"]'); ?>
+    <p class="address"><?php echo $address; ?></p>
   </div>
+  
+  <?php get_template_part('parts/shared/footer-bottom'); ?>
 
-  <div class="footer-block footer-contact-details">
-    <?php get_template_part( 'parts/shared/contact-details' ); ?>
-  </div>
-
-  <div class="footer-block footer-menu">
-    <?php include locate_template('/parts/shared/header-parts/menu-items/menu-items-stacked.php'); ?>
-  </div>
-
-  <?php if ($copyright) { ?>
-    <div class="footer-copyright">
-      <?php echo $copyright; ?>
-    </div>
-  <?php } ?>
-
+  <div class="footer-overlay"></div>
 </footer>
 
 <div class="back-to-top-container">

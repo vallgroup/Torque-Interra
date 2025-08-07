@@ -1,142 +1,251 @@
 footer {
-  @extend %useSideGraphic;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  padding: 35px $bodyPadding2 10px;
+  background-image: url("../statics/images/footer-contact-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
   box-sizing: border-box;
+}
 
-  background-color: $dark-grey;
-  color: $white;
+.footer-overlay {
+  background: rgba(19, 19, 19, 0.8);
+  inset: 0;
+  position: absolute;
+}
 
-  @include respond-to(tablet) {
-    padding: 40px $bodyPadding1 20px;
-    justify-content: space-between;
+#contact {
+  position: relative;
+  z-index: 10;
+  padding: 46px 9vw 0px 9vw;
+
+  @include respond-to(desktop) {
+    padding-top: 96px;
+  }
+
+  .wpcf7-response-output {
+    color: #dc3232;
+  }
+
+  .address {
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.7px;
+    margin-top: 0px;
+
+    @include respond-to(tablet) {
+      margin-top: 46px;
+    }
+  }
+
+  .wrap-fields {
+    display: flex;
+    flex-direction: column;
+
+    .fields-left,
+    .fields-right {
+      width: 100%;
+
+      @include respond-to(tablet) {
+        width: 50%;
+      }
+    }
+
+    label {
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      font-family: $font-primary;
+      letter-spacing: 3.6px;
+      margin-bottom: 20px;
+      display: block;
+
+      @include respond-to(tablet) {
+        font-size: 16px;
+        letter-spacing: 4.5px;
+      }
+    }
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      gap: 46px;
+      margin-bottom: 42px;
+    }
+  }
+
+  h3 {
+    font-size: 50px;
+    font-family: $font-secondary;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-top: 0px;
+    margin-bottom: 14px;
+
+    @include respond-to(tablet) {
+      font-size: 100px;
+    }
+  }
+
+  .single-field {
+    margin-bottom: 20px;
+  }
+
+  input:not([type="submit"]),
+  textarea {
+    background: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-size: 18px;
+  }
+
+  input {
+    height: 38px;
+
+    @include respond-to(tablet) {
+      height: 64px;
+    }
+  }
+  textarea {
+    min-height: 316px;
+  }
+
+  input[type="submit"] {
+    background: rgba(184, 219, 184, 0.4);
+    font-size: 18px;
+    font-family: $font-primary;
+    font-weight: 800;
+    letter-spacing: 5.4px;
+    text-transform: uppercase;
+    color: #fff;
+    height: auto;
+  }
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  border-top: #fff 1px solid;
+  padding: 54px 9vw 42px 9vw;
+
+  .torque-menu-items-stacked {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 5.4px;
+
+    .torque-menu-item-wrapper {
+      text-align: left;
+      margin-bottom: 32px;
+    }
   }
 
   @include respond-to(desktop) {
-    padding: 80px $bodyPadding1;
-  }
-
-  .footer-block {
-    margin-bottom: 20px;
-    width: 100%;
-
-    font-weight: 300;
-    text-align: center;
-
-    @include respond-to(tablet) {
-      margin-bottom: 50px;
-      flex: 1 1 33%;
-
-      text-align: left;
-    }
-
-    @include respond-to(desktop) {
-      flex-basis: 25%;
-    }
-
-    &.footer-logo {
-      box-sizing: border-box;
-
-      @include respond-to(tablet) {
-        padding-right: 50px;
-      }
-
-      @include respond-to(desktop) {
-        flex-basis: 50%;
-      }
-
-      img {
-        width: 100%;
-        max-width: 200px;
-        height: auto;
-        object-fit: contain;
-
-        @include respond-to(tablet) {
-          max-width: 130px;
-        }
-
-        @include respond-to(desktop) {
-          padding-right: 50px;
-          max-width: 250px;
-        }
-      }
-    }
-
-    .contact-details {
-      line-height: 1.5;
-
-      &>*{
-        margin-bottom: 15px;
-      }
-    }
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 36px 9vw 24px 9vw;
 
     .torque-menu-items-stacked {
+      display: flex;
+      column-gap: 119px;
+
       .torque-menu-item-wrapper {
-        padding: 8px 0;
-
-        font-weight: 500;
-        color: $medium-green;
-
-        text-align: left;
-        text-transform: uppercase;
-
-        @include respond-to-max(tablet) {
-          text-align: center;
-        }
-      }
-    }
-
-    .social-media {
-      margin-top: 18px;
-
-      ul {
-        margin:0; padding:0;
-        list-style: none;
-
-        li {
-          display: inline-block;
-          font-size: 1.5rem;
-          margin: 0 0.4rem;
-
-          a {
-            background: $medium-green;
-            border-radius: 50%;
-            color: white;
-            display: inline-block;
-            height: 42px;
-            line-height: 42px;
-            text-align: center;
-            transition: 0.2s;
-            width: 42px;
-
-            span {
-              &.hidden {
-                display:none;
-              }
-            }
-
-            &:hover {
-              opacity: 0.8;
-            }
-          }
-        }
+        margin-bottom: 0px;
       }
     }
   }
+}
+.footer-bottom-icons {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 40px;
+  margin-bottom: 20px;
 
-  .footer-copyright {
-    width: 100%;
+  .wrap-item {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    font-size: 14px;
-    font-weight: 300;
-    text-align: center;
+  a {
+    color: #fff;
+    font-size: 26px;
+    line-height: 0;
+  }
+  .icon-phone {
+    background-image: url("../statics/images/phone-rotated.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+  }
 
-    @include respond-to(tablet) {
-      text-align: left;
+  .icon-email {
+    background-image: url("../statics/images/envelope-new.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .icon-location {
+    background-image: url("../statics/images/map-pin.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .fa-twitter {
+    background-image: url("../statics/images/ex-twitter.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -2000px;
+    width: 20px;
+    height: 20px;
+  }
+
+  @include respond-to(desktop) {
+    column-gap: 46px;
+    row-gap: 16px;
+
+    .wrap-item {
+      width: 25px;
+      height: 25px;
+    }
+
+    a {
+      font-size: 20px;
+    }
+    .icon-phone {
+      width: 20px;
+      height: 20px;
+    }
+
+    .icon-email {
+      width: 20px;
+      height: 20px;
+    }
+
+    .icon-location {
+      width: 20px;
+      height: 20px;
+    }
+
+    .fa-twitter {
+      width: 14px;
+      height: 14px;
     }
   }
 }
@@ -158,6 +267,6 @@ footer {
     transition: 0.2s;
   }
   .back-to-top-btn {
-    color: #FFF;
+    color: #fff;
   }
 }
