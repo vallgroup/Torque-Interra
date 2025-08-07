@@ -339,7 +339,7 @@ function add_social_media_options_acf()
   endif;
 }
 
-add_action('acf/init', 'add_contact_links_options_acf');
+//add_action('acf/init', 'add_contact_links_options_acf');
 function add_contact_links_options_acf()
 {
   if (function_exists('acf_add_local_field_group')):
@@ -371,7 +371,7 @@ function add_contact_links_options_acf()
           'key' => 'field_688a7ab8d4c79',
           'label' => 'Email',
           'name' => 'email',
-          'type' => 'email',
+          'type' => 'text',
           'instructions' => '',
           'required' => 0,
           'conditional_logic' => 0,
