@@ -54,6 +54,16 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
       </div>
     <?php } ?>
   </div>
+  <div class="popup-video">
+    <button class="popup-video-close" type="button" aria-label="Close Video Popup">x</button>
+    <video
+      controls
+      autoplay
+      class="popup-video-content"
+      src="<?php echo $video_full; ?>"
+      style="width: 100%; height: 100%;">
+    </video>
+  </div>
 
 <?php } else { ?>
 
