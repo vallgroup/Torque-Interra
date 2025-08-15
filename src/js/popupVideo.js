@@ -2,6 +2,16 @@
   $(document).ready(() => {
     const btnsOpenVideo = document.querySelectorAll(".play-full-video");
 
+    // we have a bug that plays the popup video when the page loads
+    // so we are going to force a pause on the video if the overlay is not visible
+    const video = document.querySelector(".popup-video video");
+    const isVideoOverlayVisible = document.querySelector(
+      ".popup-video.is-active"
+    );
+    if (!isVideoOverlayVisible && video) {
+      video.pause();
+    }
+
     if (btnsOpenVideo) {
       btnsOpenVideo.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -24,7 +34,7 @@
 
     const closeBtn = document.querySelector(".popup-video-close");
     if (closeBtn) {
-      closeBtn.addEventListener("click", handleClosePopup); 
+      closeBtn.addEventListener("click", handleClosePopup);
     }
 
     // also close if the esc key is pressed
