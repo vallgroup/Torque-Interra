@@ -27,7 +27,7 @@ $email = get_field('email', 'options');
       <?php
       if (!empty($email)) {
       ?>
-        <a href="<?php echo 'mailto:' . $email; ?>" class="link-email">
+        <a href="<?php echo $email; ?>" class="link-email">
           email
         </a>
       <?php
