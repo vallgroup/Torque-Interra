@@ -1157,6 +1157,18 @@ class Interra_ACF
 							'value' => 'blog.php',
 						),
 					),
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'page',
+						),
+						array(
+							'param' => 'post_template',
+							'operator' => '==',
+							'value' => 'news.php',
+						),
+					),
 				),
 				'menu_order' => 0,
 				'position' => 'normal',
