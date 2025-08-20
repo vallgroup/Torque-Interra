@@ -114,6 +114,15 @@
     display: flex;
     flex-wrap: wrap;
 
+    .wrap-filters {
+      display: flex;
+      width: 100%;
+
+      p {
+        display: none;
+      }
+    }
+
     .torque-acf-tabs-filters {
       display: flex;
       justify-content: center;
@@ -235,8 +244,8 @@
         }
 
         @include respond-to-max-custom(425px) {
-          font-size: 14px !important;
-          line-height: 1.4 !important;
+          font-size: 14px;
+          line-height: 1.4;
           padding: 10px;
         }
 
