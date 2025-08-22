@@ -50,7 +50,9 @@ if (($type === 'image' && $image) || ($type === 'image_slideshow' && $slideshow)
           <div class="hero-subtitle"><?php echo $overlay_subtitle; ?></div>
         <?php } ?>
 
-        <button aria-haspopup="true" aria-expanded="false" class="play-full-video">Play Video</button>
+        <?php if ($type === 'video' && $video_small) { ?>
+          <button aria-haspopup="true" aria-expanded="false" class="play-full-video">Play Video</button>
+        <?php } ?>
       </div>
     <?php } ?>
   </div>

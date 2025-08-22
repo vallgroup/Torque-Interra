@@ -1,109 +1,38 @@
 .staff-members-module {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   justify-content: flex-start;
-
-  padding: 40px $bodyPadding1;
+  gap: 30px;
+  padding: 0px;
+  grid-template-columns: 1fr 1fr;
+  padding: 46px 9vw 46px 9vw;
 
   @include respond-to(tablet) {
-    padding: 75px $bodyPadding1;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   @include respond-to(desktop) {
-    padding: 95px $bodyPadding1;
+    grid-template-columns: repeat(6, 1fr);
+    padding-top: 100px;
+    padding-bottom: 130px;
+    row-gap: 16px;
+    column-gap: 34px;
   }
 
   .staff-member {
-    display: flex;
-    margin-bottom: 50px;
     width: 100%;
-
-    @include respond-to(tablet) {
-      display: block;
-
-      min-height: 345px;
-
-      margin-left: 2%;
-      margin-right: 2%;
-
-      width: 46%;
-    }
-
-    @include respond-to(desktop) {
-      min-height: 315px;
-
-      margin-left: 2.15%;
-      margin-right: 2.15%;
-      width: 29%;
-    }
+    display: flex;
+    flex-direction: column;
 
     .image-wrapper {
       display: block;
-      width: 100% !important;
-      height: 100% !important;
-      position: relative;
-      overflow: hidden;
-      
-      @include respond-to-max-custom(550px) {
-        max-height: 160px;
-        max-width: 40% !important;
-      }
-
-      @include respond-to-max-custom(767px) {
-        max-height: 220px;
-        max-width: 30%;
-      }
-
-      @include respond-to-max(tablet) {
-        flex: 0 0 auto;
-      }
-
-      @include respond-to(tablet) {
-        margin-bottom: 15px;
-
-        max-height: 465px;
-        max-width: 100%;
-      }
-
-      @include respond-to(desktop) {
-        margin-bottom: 15px;
-        
-        max-height: 560px;
-        max-width: 100%;
-      }
+      width: 100%;
+      margin-bottom: 0.5rem;
 
       .staff-member-image {
-        opacity: 1;
-        z-index: 20;
-      }
-
-      .staff-member-second-image {
-        opacity: 1;
-        z-index: 15;
-      }
-
-      .staff-member-image,
-      .staff-member-second-image {
         width: 100%;
         height: 100%;
-
         object-fit: cover;
-        object-position: center top;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      &:hover {
-        .staff-member-image {
-          opacity: 0;
-          transition: 0.2s ease-in-out all;
-        }
-        .staff-member-second-image {
-          opacity: 1;
-          transition: 0.2s ease-in-out all;
-        }
+        aspect-ratio: 20 / 22;
       }
     }
 
@@ -112,7 +41,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      padding-left: 40px;
 
       @include respond-to(tablet) {
         padding-left: 0;
@@ -127,14 +55,31 @@
       }
 
       .staff-roles {
-        margin-bottom: 25px;
+        color: #000;
+        margin-bottom: 0;
+        font-size: 12px;
       }
 
       h4 {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 500;
-        color: $medium-green;
         text-transform: uppercase;
+        font-family: $font_secondary;
+        line-height: 24px;
+        color: #000;
+        text-transform: capitalize;
+
+        span {
+          display: block;
+        }
+
+        @include respond-to(desktop) {
+          font-size: 34px;
+
+          span {
+            font-size: 25px;
+          }
+        }
       }
 
       .contact-container {
