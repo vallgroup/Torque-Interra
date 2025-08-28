@@ -1,0 +1,35 @@
+.headline-and-content {
+  padding: 0px 9vw 0px 9vw;
+  margin-top: 70px;
+  margin-bottom: 70px;
+
+  h3 {
+    color: #000;
+    font-family: $font_secondary;
+    font-size: 3.125rem;
+    margin-top: 0px;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+  }
+  .content {
+    font-size: 1.125rem;
+    color: #000;
+    letter-spacing: 0.9px;
+    font-weight: 300;
+  }
+
+  @include respond-to(desktop) {
+
+    h3 {
+      font-size: 6.25rem;
+      margin-bottom: 3.125rem;
+      letter-spacing: -2px;
+    }
+
+    .content {
+      font-size: 1.75rem;
+      letter-spacing: 1.4px;
+    }
+  }
+}
