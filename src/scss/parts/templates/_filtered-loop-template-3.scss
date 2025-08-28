@@ -218,9 +218,6 @@
     .wrap-title h4 {
       margin-top: 0px;
       margin-bottom: 0.5rem;
-      width: 200px;
-      overflow: hidden;
-      height: 36px;
     }
 
     @include respond-to(desktop) {
