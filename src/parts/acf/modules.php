@@ -2,25 +2,25 @@
 
 $modules = 'modules';
 
-if ( have_rows( $modules ) ):
+if (have_rows($modules)):
 
-  while ( have_rows( $modules ) ) : the_row();
+  while (have_rows($modules)) : the_row();
 
-    switch ( get_row_layout() ) {
+    switch (get_row_layout()) {
 
-      case 'content_section' :
+      case 'content_section':
 
-        $align = get_sub_field( 'align' );
+        $align = get_sub_field('align');
         $image = get_sub_field('image');
-        $heading = get_sub_field( 'heading' );
-        $content = get_sub_field( 'content' );
+        $heading = get_sub_field('heading');
+        $content = get_sub_field('content');
         $cta = get_sub_field('cta');
 
         include locate_template('/parts/acf/modules/content-section.php');
 
         break;
 
-      case 'images' :
+      case 'images':
 
         $image_1 = get_sub_field('image_1');
         $image_2_start = get_sub_field('image_2_start');
@@ -30,27 +30,27 @@ if ( have_rows( $modules ) ):
 
         break;
 
-      case 'cta_section' :
+      case 'cta_section':
 
-        $heading = get_sub_field( 'heading' );
-        $content = get_sub_field( 'content' );
+        $heading = get_sub_field('heading');
+        $content = get_sub_field('content');
         $cta = get_sub_field('cta');
 
         include locate_template('/parts/acf/modules/cta-section.php');
 
         break;
 
-      case 'post_slideshow' :
+      case 'post_slideshow':
 
         $slideshow_id = get_sub_field('slideshow_id');
 
-        echo do_shortcode('[torque_slideshow id="'.$slideshow_id.'" type="post" template="interra"]');
+        echo do_shortcode('[torque_slideshow id="' . $slideshow_id . '" type="post" template="interra"]');
 
         break;
 
-      case 'region_quick_search' :
+      case 'region_quick_search':
 
-        if ( class_exists( 'Interra_Listing_CPT' ) ) {
+        if (class_exists('Interra_Listing_CPT')) {
           $taxonomy = Interra_Listing_CPT::$LISTING_REGION_TAX_SLUG;
 
           include locate_template('/parts/acf/modules/quick-search.php');
@@ -58,21 +58,31 @@ if ( have_rows( $modules ) ):
 
         break;
 
-      case 'staff_members' :
+      case 'staff_members':
 
         include locate_template('/parts/acf/modules/staff-members.php');
 
         break;
 
-      case 'mailchimp_form' :
+      case 'mailchimp_form':
 
         include locate_template('/parts/acf/modules/mailchimp-form.php');
 
         break;
 
+      case 'headline_and_content':
+        $headline = get_sub_field('headline');
+        $content = get_sub_field('content');
+        include locate_template('/parts/acf/modules/headline-and-content.php');
+
+        break;
+
+      case 'images_row':
+        $images = get_sub_field('images_row');
+        include locate_template('/parts/acf/modules/images-row.php');
+
+        break;
     }
 
   endwhile;
 endif;
-
-?>
