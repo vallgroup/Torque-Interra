@@ -1,6 +1,111 @@
 .torque-filtered-loop-react-entry.template-3 {
   background-color: black;
 
+  .wrap-top-filters {
+    padding: 0px;
+    width: 100%;
+    background-color: #2e2e2e;
+    padding: 0px 9vw 0px 9vw;
+
+    .dropdown-tax {
+      justify-content: flex-start;
+      background: none;
+      width: 100%;
+
+      .dropdown-title-wrapper {
+        background: none;
+        padding-left: 0;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        color: #fff;
+
+        .dropdown-title {
+          display: none;
+        }
+
+        .dropdown-value {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 4.8px;
+        }
+
+        &::before {
+          content: none;
+        }
+
+        &::after {
+          margin-left: 14px;
+          content: "";
+          background-image: url("../statics/images/chevron-down.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          border: none;
+          width: 11px;
+          height: 7px;
+        }
+      }
+
+      .dropdown-wrapper {
+        z-index: 200;
+        right: auto;
+        left: 0px;
+        top: 2.8rem;
+        width: auto;
+        background: #fff;
+        box-shadow: 0 3.333px 3.333px 0 rgba(0, 0, 0, 0.25);
+        max-width: none;
+        min-width: 80px;
+
+        .dropdown-item {
+          color: #000;
+          padding: 6px 0;
+
+          &:hover {
+            color: #b8dbb8;
+          }
+        }
+      }
+    }
+
+    .torque-acf-tabs-filters {
+      background-color: transparent;
+      justify-content: space-between;
+
+      .torque-filtered-loop-filter-button {
+        background: none;
+        border: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        letter-spacing: 6.6px;
+
+        &:hover {
+          background: none;
+          border: none;
+        }
+
+        &.active {
+          background: none;
+          color: #b8dbb8;
+          font-weight: 800;
+
+          &::after {
+            border: none;
+            height: 9px;
+            background-color: #b8dbb8;
+            width: 100%;
+            top: auto;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            transform: none;
+          }
+        }
+      }
+    }
+    /*@include respond-to(desktop) {
+    }*/
+  }
+
   .wrap-filters {
     padding: 1.5rem 9vw 0px 9vw;
     display: flex;
@@ -8,6 +113,8 @@
     text-transform: uppercase;
     flex-shrink: 0;
     box-sizing: border-box;
+    flex-wrap: wrap;
+    row-gap: 1rem;
 
     p {
       margin: 0;
@@ -60,7 +167,8 @@
       order: 2;
     }
 
-    .dropdown-date {
+    .dropdown-date,
+    .dropdown-tax {
       margin-right: 2rem;
     }
 
@@ -106,7 +214,7 @@
     }
 
     @include respond-to(desktop) {
-      padding: 64px 9vw 0px 9vw;
+      padding: 54px 9vw 0px 9vw;
 
       .dropdown-wrapper {
         width: 180px;
@@ -128,13 +236,14 @@
         }
       }
 
-      .dropdown-date {
+      .dropdown-date,
+      .dropdown-tax {
         margin-right: 3.75rem;
+      }
 
-        .dropdown-title-wrapper::before {
-          width: 20px;
-          height: 20px;
-        }
+      .dropdown-date .dropdown-title-wrapper::before {
+        width: 20px;
+        height: 20px;
       }
       .dropdown-tax .dropdown-title-wrapper::before {
         width: 20px;
@@ -196,6 +305,67 @@
     }
   }
 
+  .posts-wrapper-variation {
+    padding: 1.5rem 9vw 1.5rem 9vw;
+    margin-bottom: 5rem;
+    display: grid;
+    gap: 20px;
+
+    @include respond-to(desktop) {
+      padding: 64px 9vw 2rem 9vw;
+      margin-bottom: 6rem;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1.75rem;
+      row-gap: 3.75rem;
+    }
+  }
+
+  .post-item.template-3-variation {
+    .wrap-image {
+      margin-bottom: 0.5rem;
+      display: block;
+
+      img {
+        aspect-ratio: 2.7 / 2;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .wrap-title h4 {
+      margin-top: 0px;
+      margin-bottom: 0.5rem;
+      font-family: $font_secondary;
+      color: #000;
+      font-size: 1.875rem;
+    }
+
+    .post-terms-wrapper {
+      color: #a7a7a7;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.14px;
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      .term::after {
+        content: " | ";
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+      .term:last-child::after {
+        content: none;
+      }
+    }
+
+    @include respond-to(desktop) {
+      .wrap-title h4 {
+        font-size: 2.125rem;
+      }
+    }
+  }
+
   .post-item.template-3 {
     display: flex;
     width: 424px;
@@ -230,5 +400,10 @@
         }
       }
     }
+  }
+
+  button.torque-filtered-loop-load-more {
+    border-color: #2e2e2e;
+    color: #2e2e2e;
   }
 }
