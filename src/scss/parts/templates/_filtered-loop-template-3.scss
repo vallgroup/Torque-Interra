@@ -337,7 +337,7 @@
       margin-bottom: 0.5rem;
       font-family: $font_secondary;
       color: #000;
-      font-size: 1.875rem;
+      font-size: 1.3rem;
     }
 
     .post-terms-wrapper {
@@ -361,7 +361,7 @@
 
     @include respond-to(desktop) {
       .wrap-title h4 {
-        font-size: 2.125rem;
+        font-size: 1.3rem;
       }
     }
   }
