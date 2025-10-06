@@ -105,6 +105,7 @@ class Interra_ACF
 							'image' => 'Image',
 							'image_slideshow' => 'Image Slideshow',
 							'video' => 'Video',
+							'video_url' => 'Video URL',
 						),
 						'allow_null' => 0,
 						'other_choice' => 0,
@@ -263,6 +264,89 @@ class Interra_ACF
 						'max_size' => '',
 						'mime_types' => '',
 					),
+
+					// ---------------- video URL ----------------
+					array(
+						'key' => 'field_5c954e7f5e0fca',
+						'label' => 'Video URL Small',
+						'name' => 'hero_video_url',
+						'type' => 'url',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5c954a9886085',
+									'operator' => '==',
+									'value' => 'video_url',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+					),
+					array(
+						'key' => 'field_5c954e7f5e0fea',
+						'label' => 'Video URL Full',
+						'name' => 'hero_video_url_full',
+						'type' => 'url',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5c954a9886085',
+									'operator' => '==',
+									'value' => 'video_url',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+					),
+					array(
+						'key' => 'field_5c954ac48608aa',
+						'label' => 'Video Image Poster',
+						'name' => 'hero_video_url_poster',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5c954a9886085',
+									'operator' => '==',
+									'value' => 'video_url',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'url',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+					// ---------------- overlay ----------------
 
 					array(
 						'key' => 'field_5c954bb12e42b',
