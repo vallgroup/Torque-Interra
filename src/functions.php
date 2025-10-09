@@ -712,7 +712,7 @@ function torque_interra_parse_url_video($url, $iframe_class = "hero-video", $as_
   $embed_code = '';
   if ($video_id && $video_platform) {
     if ($video_platform === 'vimeo') {
-      $params_as_background = $as_background ? 'autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1' : '';
+      $params_as_background = $as_background ? 'autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&background=1' : '';
       // Vimeo embed format (autoplay=1&loop=1&title=0&byline=0&portrait=0) - common settings for hero videos
       $embed_code = '<iframe class="' . esc_attr($iframe_class) . ' is_vimeo" src="https://player.vimeo.com/video/' . esc_attr($video_id) . '?' . esc_attr($params_as_background) . '&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
     } elseif ($video_platform === 'youtube') {
