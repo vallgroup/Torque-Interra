@@ -204,6 +204,21 @@ function torque_enqueue_child_styles()
 add_action('wp_enqueue_scripts', 'torque_enqueue_child_scripts');
 function torque_enqueue_child_scripts()
 {
+  wp_enqueue_script(
+    'vimeo-player-api',
+    'https://player.vimeo.com/api/player.js',
+    array(),
+    null,
+    true
+  );
+
+  wp_enqueue_script(
+    'youtube-player-api',
+    'https://www.youtube.com/iframe_api',
+    array(),
+    null,
+    true
+  );
 
   wp_enqueue_script(
     'interra-child-script',
@@ -349,7 +364,7 @@ function default_hero_options_acf()
       'title' => 'Default hero',
       'fields' => array(
         array(
-          'key' => 'field_5c954a9886085',
+          'key' => 'field_5c954a9886085d',
           'label' => 'Type',
           'name' => 'hero_type',
           'type' => 'radio',
@@ -366,6 +381,7 @@ function default_hero_options_acf()
             'image' => 'Image',
             'image_slideshow' => 'Image Slideshow',
             'video' => 'Video',
+            'video_url' => 'Video URL',
           ),
           'allow_null' => 0,
           'other_choice' => 0,
@@ -375,7 +391,7 @@ function default_hero_options_acf()
           'save_other_choice' => 0,
         ),
         array(
-          'key' => 'field_5c954ac486086',
+          'key' => 'field_5c954ac486086d',
           'label' => 'Image',
           'name' => 'hero_image',
           'type' => 'image',
@@ -384,7 +400,7 @@ function default_hero_options_acf()
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_5c954a9886085',
+                'field' => 'field_5c954a9886085d',
                 'operator' => '==',
                 'value' => 'image',
               ),
@@ -407,7 +423,7 @@ function default_hero_options_acf()
           'mime_types' => '',
         ),
         array(
-          'key' => 'field_5c954ae486087',
+          'key' => 'field_5c954ae486087d',
           'label' => 'Image Slideshow',
           'name' => 'hero_image_slideshow',
           'type' => 'post_object',
@@ -416,7 +432,7 @@ function default_hero_options_acf()
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_5c954a9886085',
+                'field' => 'field_5c954a9886085d',
                 'operator' => '==',
                 'value' => 'image_slideshow',
               ),
@@ -437,7 +453,7 @@ function default_hero_options_acf()
           'ui' => 1,
         ),
         array(
-          'key' => 'field_5c954e7f5e0fc',
+          'key' => 'field_5c954e7f5e0fcd',
           'label' => 'Video Src',
           'name' => 'hero_video_src',
           'type' => 'file',
@@ -446,7 +462,7 @@ function default_hero_options_acf()
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_5c954a9886085',
+                'field' => 'field_5c954a9886085d',
                 'operator' => '==',
                 'value' => 'video',
               ),
@@ -466,7 +482,7 @@ function default_hero_options_acf()
         ),
 
         array(
-          'key' => 'field_5c954e7f5e0fe',
+          'key' => 'field_5c954e7f5e0fed',
           'label' => 'Video Src Full',
           'name' => 'hero_video_src_full',
           'type' => 'file',
@@ -475,7 +491,7 @@ function default_hero_options_acf()
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_5c954a9886085',
+                'field' => 'field_5c954a9886085d',
                 'operator' => '==',
                 'value' => 'video',
               ),
@@ -494,7 +510,7 @@ function default_hero_options_acf()
           'maxlength' => '',
         ),
         array(
-          'key' => 'field_5c954ac48608a',
+          'key' => 'field_5c954ac48608ad',
           'label' => 'Video Image Poster',
           'name' => 'hero_video_poster',
           'type' => 'image',
@@ -503,7 +519,7 @@ function default_hero_options_acf()
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_5c954a9886085',
+                'field' => 'field_5c954a9886085d',
                 'operator' => '==',
                 'value' => 'video',
               ),
@@ -525,8 +541,91 @@ function default_hero_options_acf()
           'max_size' => '',
           'mime_types' => '',
         ),
+        // ---------------- video URL ----------------
         array(
-          'key' => 'field_5c954bb12e42b',
+          'key' => 'field_5c954e7f5e0fce',
+          'label' => 'Video URL Small',
+          'name' => 'hero_video_url',
+          'type' => 'url',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085d',
+                'operator' => '==',
+                'value' => 'video_url',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+        ),
+        array(
+          'key' => 'field_5c954e7f5e0fee',
+          'label' => 'Video URL Full',
+          'name' => 'hero_video_url_full',
+          'type' => 'url',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085d',
+                'operator' => '==',
+                'value' => 'video_url',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+        ),
+        array(
+          'key' => 'field_5c954ac48608ae',
+          'label' => 'Video Image Poster',
+          'name' => 'hero_video_url_poster',
+          'type' => 'image',
+          'instructions' => '',
+          'required' => 1,
+          'conditional_logic' => array(
+            array(
+              array(
+                'field' => 'field_5c954a9886085d',
+                'operator' => '==',
+                'value' => 'video_url',
+              ),
+            ),
+          ),
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'return_format' => 'url',
+          'preview_size' => 'thumbnail',
+          'library' => 'all',
+          'min_width' => '',
+          'min_height' => '',
+          'min_size' => '',
+          'max_width' => '',
+          'max_height' => '',
+          'max_size' => '',
+          'mime_types' => '',
+        ),
+        // ---------------- overlay ----------------
+
+        array(
+          'key' => 'field_5c954bb12e42bd',
           'label' => 'Overlay Title',
           'name' => 'hero_overlay_title',
           'type' => 'text',
@@ -545,7 +644,7 @@ function default_hero_options_acf()
           'maxlength' => '',
         ),
         array(
-          'key' => 'field_5c954be22e42c',
+          'key' => 'field_5c954be22e42cd',
           'label' => 'Overlay Subtitle',
           'name' => 'hero_overlay_subtitle',
           'type' => 'text',
@@ -584,6 +683,47 @@ function default_hero_options_acf()
     ));
 
   endif;
+}
+
+function torque_interra_parse_url_video($url, $iframe_class = "hero-video", $as_background = true)
+{
+  $video_id = '';
+  $video_platform = '';
+
+  // Check if the URL is a Vimeo link
+  if (strpos($url, 'vimeo.com') !== false) {
+    $video_platform = 'vimeo';
+    // Extract the video ID from the URL path. This is a basic way to get the number before the next slash or end of string.
+    preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $matches);
+    if (!empty($matches[3])) {
+      $video_id = $matches[3];
+    }
+  }
+  // Check if the URL is a YouTube link
+  elseif (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+    $video_platform = 'youtube';
+    // Extract the video ID for various YouTube URL formats
+    if (preg_match('/(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/|v\/|shorts\/))([\w-]{11})/', $url, $matches)) {
+      $video_id = $matches[1];
+    }
+  }
+
+  // Generate the embed code if a video ID was found
+  $embed_code = '';
+  if ($video_id && $video_platform) {
+    if ($video_platform === 'vimeo') {
+      $params_as_background = $as_background ? 'autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&background=1' : '';
+      // Vimeo embed format (autoplay=1&loop=1&title=0&byline=0&portrait=0) - common settings for hero videos
+      $embed_code = '<iframe class="' . esc_attr($iframe_class) . ' is_vimeo" src="https://player.vimeo.com/video/' . esc_attr($video_id) . '?' . esc_attr($params_as_background) . '&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    } elseif ($video_platform === 'youtube') {
+      $params_as_background = $as_background ? 'autoplay=1&loop=1&mute=1&controls=0&' : '';
+      // YouTube embed format (autoplay=1&loop=1&mute=1&controls=0&playlist={video_id}) - common settings for hero videos
+      // For YouTube to loop, you must include &loop=1 and the &playlist={video_id}
+      $embed_code = $as_background ? '<iframe class="' . esc_attr($iframe_class) . ' is_youtube" data-video-id="' . esc_attr($video_id) . '" src="https://www.youtube.com/embed/' . esc_attr($video_id) . '?' . esc_attr($params_as_background) . 'playlist=' . esc_attr($video_id) . '" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>' : '<div id="youtube-video-wrapper" class="' . esc_attr($iframe_class) . '" data-video-id="' . esc_attr($video_id) . '"></div>';
+    }
+  }
+
+  return $embed_code;
 }
 
 /*
