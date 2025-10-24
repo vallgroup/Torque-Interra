@@ -6,6 +6,7 @@ $description = wpautop( $description, false );
 $thumbnail = get_field( 'featured_image', 'user_'.$user->ID );
 if (!$thumbnail) $thumbnail = get_avatar_url( $user->ID, array( 'size' => 1000 ) );
 
+get_template_part('parts/shared/page-hero-default');
 ?>
 
 <div class="torque_staff-title" >
