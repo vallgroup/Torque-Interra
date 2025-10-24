@@ -68,12 +68,19 @@
         // check if we are playing an iframe vimeo or youtube
         const iframe = videoPopup.querySelector("iframe");
         const isVimeo = iframe.classList.contains("is_vimeo");
+        const bgVideo = document.querySelector(".hero-video");
         if (iframe && isVimeo) {
           const playerVimeo = new Vimeo.Player(iframe);
           playerVimeo.pause();
+
+          const playerBgVideo = new Vimeo.Player(bgVideo);
+          playerBgVideo.play();
         } else {
           // is youtube video
           player.pauseVideo();
+          
+          const playerBgVideo = new Vimeo.Player(bgVideo);
+          playerBgVideo.play();
         }
       }
     }
