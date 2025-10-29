@@ -27,6 +27,7 @@
 
   .listing-title-content {
     @extend %useCustomTemplateHeader;
+    margin-top: 0px;
 
     padding: 60px $bodyPadding1 50px;
     width: 100%;
