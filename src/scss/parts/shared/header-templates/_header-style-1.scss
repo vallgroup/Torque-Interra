@@ -35,6 +35,20 @@ $header-transition: none;
   }
 }
 
+.single-torque_listing header#header-style-1-alt,
+.archive.author header#header-style-1-alt,
+.single-news-post header#header-style-1-alt{
+  background-color: rgba(56, 56, 56, 0.67);
+  position: relative;
+}
+
+.single-torque_listing header#header-style-1-alt .torque-header-content-wrapper,
+.archive.author header#header-style-1-alt .torque-header-content-wrapper, 
+.single-news-post header#header-style-1-alt .torque-header-content-wrapper{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 header#header-style-1-alt {
   position: absolute;
   z-index: 100;

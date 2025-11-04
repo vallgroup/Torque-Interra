@@ -4,7 +4,6 @@ $availability = get_field('listing_status');
 
 $image_type = get_field('listing_image');
 
-get_template_part('parts/shared/page-hero-default');
 ?>
 
 <div class="torque_listing-title" >
