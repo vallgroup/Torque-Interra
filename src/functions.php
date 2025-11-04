@@ -726,6 +726,23 @@ function torque_interra_parse_url_video($url, $iframe_class = "hero-video", $as_
   return $embed_code;
 }
 
+/**
+ * Add a custom body class to single 'post' type pages only.
+ *
+ * @param array $classes Array of existing body classes.
+ * @return array Modified array of body classes.
+ */
+function torque_single_post_body_class( $classes ) {
+    // Check if the current page is a singular view of the 'post' post type
+    if ( is_singular( 'post' ) ) {
+        // Add your custom class here
+        $classes[] = 'single-news-post';
+    }
+
+    return $classes;
+}
+add_filter( 'body_class', 'torque_single_post_body_class' );
+
 /*
 if ( isset($_GET['run_user_import']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );
