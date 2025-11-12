@@ -217,18 +217,30 @@ body .page-hero .hero-video-wrapper {
 }
 
 @include respond-to(tablet) {
-  body.admin-bar .page-hero .hero-video-wrapper {
-    padding-top: calc(37vh - 46px);
+  .page-hero.type-video_url {
+    height: 50vh;
+  }
+  .page-hero.type-video_url .hero-overlay {
+    height: 50vh;
   }
   body .page-hero .hero-video-wrapper {
-    padding-top: 37vh;
+    padding-top: 50vh;
   }
 }
 
 @include respond-to(desktop) {
-  body.admin-bar .page-hero .hero-video-wrapper {
-    padding-top: calc(95vh - 46px);
+  body .page-hero .hero-video-wrapper {
+    padding-top: 70vh;
   }
+  .page-hero.type-video_url {
+    height: 70vh;
+  }
+  .page-hero.type-video_url .hero-overlay {
+    height: 70vh;
+  }
+}
+
+@include respond-to(hddesktop) {
   body .page-hero .hero-video-wrapper {
     padding-top: 90vh;
   }
