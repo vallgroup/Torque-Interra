@@ -126,7 +126,7 @@ header#header-style-1-alt {
       overflow: hidden;
       transition: $header-transition;
 
-      @include respond-to(desktop) {
+      @include respond-to(hddesktop) {
         display: none;
       }
 
@@ -318,7 +318,7 @@ header#header-style-1-alt {
   transition: all 0.5s;
   background-color: transparent;
 
-  @include respond-to(desktop) {
+  @include respond-to(hddesktop) {
     display: none;
   }
 
