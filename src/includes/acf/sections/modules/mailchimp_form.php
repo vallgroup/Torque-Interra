@@ -1,0 +1,52 @@
+<?php
+
+return array(
+    'key' => '5c9d3f4702arg',
+    'name' => 'mailchimp_form',
+    'label' => 'MailChimp Form',
+    'display' => 'block',
+    'sub_fields' => array(
+        array(
+            'key' => 'field_5c951939e2222',
+            'label' => 'Title',
+            'name' => 'mailchimp_title',
+            'type' => 'text',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'post_type' => array(),
+            'taxonomy' => array(),
+            'allow_null' => 0,
+            'multiple' => 0,
+            'return_format' => '',
+            'ui' => 1,
+        ),
+        array(
+            'key' => 'field_5c951939e2332',
+            'label' => 'description',
+            'name' => 'mailchimp_desc',
+            'type' => 'textarea',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'post_type' => array(),
+            'taxonomy' => array(),
+            'allow_null' => 0,
+            'multiple' => 0,
+            'return_format' => '',
+            'ui' => 1,
+        ),
+    ),
+    'min' => '',
+    'max' => '',
+);

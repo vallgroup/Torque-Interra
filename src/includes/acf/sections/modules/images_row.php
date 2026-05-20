@@ -1,0 +1,72 @@
+<?php
+
+return array(
+    'key' => '68b0de1f09abf',
+    'name' => 'images_row',
+    'label' => 'Images row',
+    'display' => 'block',
+    'sub_fields' => array(
+        array(
+            'key' => 'field_68b0de27777b4',
+            'label' => 'Images row',
+            'name' => 'images_row',
+            'type' => 'repeater',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'collapsed' => '',
+            'min' => 4,
+            'max' => 4,
+            'layout' => 'block',
+            'button_label' => '',
+            'sub_fields' => array(
+                array(
+                    'key' => 'field_68b0de3d777b5',
+                    'label' => 'Image',
+                    'name' => 'image',
+                    'type' => 'image',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'return_format' => 'url',
+                    'preview_size' => 'thumbnail',
+                    'library' => 'all',
+                    'min_width' => '',
+                    'min_height' => '',
+                    'min_size' => '',
+                    'max_width' => '',
+                    'max_height' => '',
+                    'max_size' => '',
+                    'mime_types' => '',
+                ),
+            ),
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'post',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => '',
+);
