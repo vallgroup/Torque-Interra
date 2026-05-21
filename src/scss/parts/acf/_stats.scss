@@ -1,0 +1,65 @@
+.stats {
+  display: flex;
+  gap: 3.5rem;
+  background-color: #2e2e2e;
+  padding: 3rem;
+  padding-bottom: 3.75rem;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  justify-content: center;
+  border-top: 3px solid #cacaca;
+  
+  margin-top: -8rem;
+  position: relative;
+  z-index: 10;
+
+  h3 {
+    color: #a6ca64;
+    font-weight: 200;
+    font-family: $font_secondary;
+    font-size: 90px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: white;
+    font-size: 24px;
+    font-weight: 200;
+    margin: 0px;
+  }
+
+  .single-stat {
+    text-align: center;
+  }
+
+  @include respond-to(tablet) {
+    h3 {
+      font-size: 113px;
+    }
+
+    p {
+      font-size: 26px;
+    }
+  }
+
+  @include respond-to(desktop) {
+    padding: 4rem 2rem 3rem 2rem;
+    flex-direction: row;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    gap: 6rem;
+    border-top: 5px solid #cacaca;
+  }
+
+  @include respond-to-custom(1600px) {
+    h3 {
+      font-size: 136px;
+    }
+
+    p {
+      font-size: 32px;
+    }
+  }
+}
