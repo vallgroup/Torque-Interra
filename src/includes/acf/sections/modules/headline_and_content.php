@@ -1,0 +1,50 @@
+<?php
+
+return array(
+    'key' => 'group_68af906c5d2fc',
+    'name' => 'headline_and_content',
+    'label' => 'Headline and content',
+    'display' => 'block',
+    'sub_fields' => array(
+        array(
+            'key' => 'field_68af907cc053c',
+            'label' => 'Headline',
+            'name' => 'headline',
+            'type' => 'text',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'maxlength' => '',
+        ),
+        array(
+            'key' => 'field_68af90d5c053d',
+            'label' => 'Content',
+            'name' => 'content',
+            'type' => 'textarea',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'maxlength' => '',
+            'rows' => '',
+            'new_lines' => 'br',
+        ),
+    ),
+    'min' => '',
+    'max' => '',
+);

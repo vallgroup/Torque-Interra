@@ -19,6 +19,17 @@ if (have_rows($modules)):
         include locate_template('/parts/acf/modules/content-section.php');
 
         break;
+      
+      case 'stats':
+        $stats = get_sub_field('stats');
+        include locate_template('/parts/acf/modules/stats.php');
+        break;
+      
+      case 'our_difference':
+        $our_difference = get_sub_field('our_difference');
+        $title = get_sub_field('title');
+        include locate_template('/parts/acf/modules/our_difference.php');
+        break;
 
       case 'images':
 

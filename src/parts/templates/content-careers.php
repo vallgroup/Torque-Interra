@@ -22,6 +22,6 @@ Torque_Load_More::get_inst()->register_loop( $careers_loop );
 
 <?php }
 
-get_template_part( 'parts/forms/form', 'careers' );
+//get_template_part( 'parts/forms/form', 'careers' );
 
 ?>
