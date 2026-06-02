@@ -60,6 +60,11 @@ if (! empty($sorted_users)) { ?>
 
   <div class="staff-members-module">
 
+    <?php $heading = get_sub_field('heading'); ?>
+    <?php if ($heading): ?>
+      <h2 class="heading"><?php echo $heading; ?></h2>
+    <?php endif; ?>
+
     <?php foreach ($sorted_users as $user) {
 
       $title = $user->data->display_name;
