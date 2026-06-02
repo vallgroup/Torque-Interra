@@ -4,7 +4,7 @@ $sorted_users = array();
 
 /* Check the ACF for rows */
 if (have_rows('staff_job_titles', 'options')):
-
+  
   /* Loop through any existing rows */
   while (have_rows('staff_job_titles', 'options')) : the_row();
 
@@ -69,12 +69,18 @@ if (! empty($sorted_users)) { ?>
 
       $title = $user->data->display_name;
       $permalink = get_author_posts_url($user->ID);
+
+      // we need to fetch an asset that only lives at the main website
+      switch_to_blog(1);
       $tel = get_field('telephone', 'user_' . $user->ID);
       $thumbnail = get_field('featured_image', 'user_' . $user->ID);
+      $second_img = get_field('second_image', 'user_' . $user->ID);
+      restore_current_blog();
+      // restore the logic
+      
       if (!$thumbnail) {
         $thumbnail = get_avatar_url($user->ID, array('size' => 400));
       }
-      $second_img = get_field('second_image', 'user_' . $user->ID);
       if (!$second_img) {
         $second_img = $thumbnail;
       }
