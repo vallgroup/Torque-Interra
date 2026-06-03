@@ -2,6 +2,7 @@
 
 $email = $user->user_email;
 $tel = get_field( 'telephone', 'user_'.$user->ID );
+$website = $user->user_url;
 $vcard = get_field( 'vcard_file', 'user_'.$user->ID );
 
 ?>
@@ -18,6 +19,13 @@ $vcard = get_field( 'vcard_file', 'user_'.$user->ID );
     <a class="broker-icon-link" href="tel:<?php echo $tel; ?>" >
       <div class="broker-icon phone"></div>
       <?php echo $tel; ?>
+    </a>
+  <?php } ?>
+  
+  <?php if ($website) { ?>
+    <a class="broker-icon-link" href="<?php echo $website; ?>" target="_blank" referrer="noreferrer noopener">
+      <div class="broker-icon website"></div>
+      <?php echo $website; ?>
     </a>
   <?php } ?>
 
