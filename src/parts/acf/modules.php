@@ -116,6 +116,18 @@ if (have_rows($modules)):
         echo do_shortcode($shortcode);
 
         break;
+
+      case 'headline_and_content_2_columns':
+        $columns_wrapper = get_sub_field('columns_wrapper');
+        $headline = get_sub_field('headline');
+        include locate_template('/parts/acf/modules/headline-and-content-2-columns.php');
+        break;
+
+      case 'featured_cards':
+        $cards = get_sub_field('cards');
+        $title = get_sub_field('title');
+        include locate_template('/parts/acf/modules/featured-cards.php');
+        break;
     }
 
   endwhile;
