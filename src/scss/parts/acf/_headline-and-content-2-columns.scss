@@ -1,0 +1,68 @@
+.headline-and-content-2-columns {
+  color: $black;
+  padding: 3.125rem 2rem 3.125rem 2rem;
+
+  h2 {
+    font-family: $font_secondary;
+    font-size: 50px;
+    color: $black;
+    font-weight: 300;
+    line-height: 1;
+    margin-top: 0px;
+    margin-bottom: 2.5rem;
+
+    @include respond-to(desktop) {
+      font-size: 60px;
+      margin-bottom: 5rem;
+    }
+  }
+
+  .columns {
+    display: grid;
+    gap: 1.5rem;
+
+    h3 {
+      font-family: $font_secondary;
+      font-size: 24px;
+      font-weight: 600;
+      color: #A6CA64;
+      margin-top: 0px;
+      margin-bottom: 0.5rem;
+      letter-spacing: -4%;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    @include respond-to(tablet) {
+      h3 {
+        font-size: 30px;
+        letter-spacing: -2%;
+      }
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .single-our-difference {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+
+    @include respond-to(desktop) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @include respond-to(desktop) {
+    padding: 3.125rem 9vw 3.125rem 9vw;
+    margin-bottom: 2rem;
+  }
+}

@@ -30,6 +30,8 @@ return array(
                 '68b0de1f09abf1' => require __DIR__ . '/modules/stats.php',
                 '5c9561c747434a' => require __DIR__ . '/modules/our_difference.php',
                 '5c9561c747434b' => require __DIR__ . '/modules/torque_filtered_loop.php',
+                '5c9561c747434b' => require __DIR__ . '/modules/headline_and_content_2_columns.php',
+                '5c9561c747434c' => require __DIR__ . '/modules/featured_cards.php',
             ),
             'button_label' => 'Add Module',
             'min' => '',
