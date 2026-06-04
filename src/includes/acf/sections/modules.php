@@ -29,6 +29,7 @@ return array(
                 '5c9d3f4702arh' => require __DIR__ . '/modules/headline_and_content.php',
                 '68b0de1f09abf1' => require __DIR__ . '/modules/stats.php',
                 '5c9561c747434a' => require __DIR__ . '/modules/our_difference.php',
+                '5c9561c747434b' => require __DIR__ . '/modules/torque_filtered_loop.php',
             ),
             'button_label' => 'Add Module',
             'min' => '',

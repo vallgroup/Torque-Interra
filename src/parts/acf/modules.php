@@ -19,12 +19,12 @@ if (have_rows($modules)):
         include locate_template('/parts/acf/modules/content-section.php');
 
         break;
-      
+
       case 'stats':
         $stats = get_sub_field('stats');
         include locate_template('/parts/acf/modules/stats.php');
         break;
-      
+
       case 'our_difference':
         $our_difference = get_sub_field('our_difference');
         $title = get_sub_field('title');
@@ -91,6 +91,29 @@ if (have_rows($modules)):
       case 'images_row':
         $images = get_sub_field('images_row');
         include locate_template('/parts/acf/modules/images-row.php');
+
+        break;
+
+      case 'torque_filtered_loop':
+        $post_type = get_sub_field('post_type');
+        $posts_per_page = get_sub_field('posts_per_page');
+        $filters_types = get_sub_field('filters_types');
+        $use_template_variation = get_sub_field('use_template_variation');
+        $use_custom_label = get_sub_field('use_custom_label');
+        $custom_label = get_sub_field('custom_label');
+        $filters_args = get_sub_field('filters_args');
+
+        $shortcode = '[torque_filtered_loop ';
+        $shortcode .= 'post_type="' . $post_type . '" ';
+        $shortcode .= 'posts_per_page="' . $posts_per_page . '" ';
+        $shortcode .= 'filters_types="' . $filters_types . '" ';
+        $shortcode .= 'use_template_variation="' . $use_template_variation . '" ';
+        $shortcode .= 'use_custom_label="' . $use_custom_label . '" ';
+        $shortcode .= 'custom_label="' . $custom_label . '" ';
+        $shortcode .= 'filters_args="' . $filters_args . '" ';
+        $shortcode .= ']';
+
+        echo do_shortcode($shortcode);
 
         break;
     }
