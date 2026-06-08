@@ -7,6 +7,8 @@ require_once(get_stylesheet_directory() . '/includes/acf/interra-child-acf-class
 require_once(get_stylesheet_directory() . '/includes/cpts/interra-child-listing-cpt-class.php');
 require_once(get_stylesheet_directory() . '/includes/cpts/interra-child-job-application-cpt-class.php');
 require_once(get_stylesheet_directory() . '/includes/interra-roles-class.php');
+require_once(get_stylesheet_directory() . '/includes/interra-seo.php');
+
 
 
 /**
