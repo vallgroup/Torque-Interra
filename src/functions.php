@@ -743,6 +743,31 @@ function torque_single_post_body_class( $classes ) {
 }
 add_filter( 'body_class', 'torque_single_post_body_class' );
 
+/**
+ * Enable shortcode processing in Contact Form 7
+ */
+add_filter( 'wpcf7_form_elements', 'torque_enable_shortcodes_in_cf7' );
+function torque_enable_shortcodes_in_cf7( $form ) {
+    return do_shortcode( $form );
+}
+
+/**
+ * Add Google Analytics tracking code to header
+ */
+add_action( 'wp_head', 'torque_add_google_analytics' );
+function torque_add_google_analytics() {
+    ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM4JE96BBH"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CM4JE96BBH');
+    </script>
+    <?php
+}
+
 /*
 if ( isset($_GET['run_user_import']) ) {
   require_once( get_stylesheet_directory() . '/import_data/import.php' );
