@@ -14,6 +14,7 @@
   h2 {
     margin: 0;
     margin-bottom: 10px;
+    font-family: $font_secondary;
 
     @include respond-to(tablet) {
       color: $white;
